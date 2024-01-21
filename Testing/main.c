@@ -1,44 +1,55 @@
 #include "stdint.h"
+#include "stm32f10x.h"
 
-#define RCC_BASE    (0x40021000U)
-#define GPIOC_BASE  (0x40011000U)
+volatile uint32_t* reg = (uint32_t*)&RCC->APB2ENR;
 
-#define RCC_CR      ((volatile uint32_t*)(RCC_BASE + 0x00U))
-#define RCC_APB2ENR ((volatile uint32_t*)(RCC_BASE + 0x18U))
-
-#define GPIOC_CRH   ((volatile uint32_t*)(GPIOC_BASE + 0x4U))
-#define GPIOC_BSRR  ((volatile uint32_t*)(GPIOC_BASE + 0x10U))
-
-void GPIOC_Config(void){
-    //Enable clock for GPIOC peripheral
-    *RCC_APB2ENR |= (1 << 4);
-
-    //Config OUTPUT Mode for GPIOC Pin 13
-    *GPIOC_CRH |= (0b0010 << 20);
+void Enable_GPIOC_Clock(){
+    RCC->APB2ENR |= (1UL << 4UL); //(RCC_APB2ENR_IOPCEN);
 }
 
-void GPIO_Set(void){
-    *GPIOC_BSRR |= (1 << 13);
+void GPIOC_Config(){
+    Enable_GPIOC_Clock();
+    GPIOC->CRH |= (0b0010UL << 20UL);
 }
 
-void GPIO_Reset(void){
-    *GPIOC_BSRR |= (1 << 29);
+void GPIO_Set(){
+    GPIOC->BSRR |= (1UL << 13UL);
 }
 
+void GPIO_Reset(){
+    GPIOC->BSRR |= (1UL << 29UL);
+}
 
+void GPIOC_Toggle(){
+    GPIOC->ODR ^= (1 << 13);
+}
 void delay(uint32_t ms){
-    for(int i=0; i<ms; i++);
+    for(int i=0; i< ms; i++);
+}
+
+void systick_handler(){
+    GPIOC_Toggle();
+}
+
+void Clock_Init(void){
+    RCC->CR |= (RCC_CR_HSEON); //Enable HSE clock source
+    while (!(RCC->CR & (RCC_CR_HSERDY)));
+
+    RCC->CFGR |= (RCC_CFGR_SW_HSE);
+    while (!(RCC->CFGR & RCC_CFGR_SWS_HSE));
+    
 }
 
 int main(void){
+    SystemInit();
+
+    SysTick_Config(100000);
+    __enable_irq();
+
     GPIOC_Config();
 
     while (1)
     {
-        GPIO_Set();
-        delay(1000000);
-        GPIO_Reset();
-        delay(1000000);
     }
     
 }
