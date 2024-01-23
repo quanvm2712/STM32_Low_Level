@@ -1,4 +1,4 @@
-#include "spi.h"
+#include "SPI.h"
 #include "DMA.h"
 
 void SPI_EnableClock(SPI_TypeDef* SPIx){
@@ -67,8 +67,8 @@ void SPI_Init(SPI_TypeDef* SPIx, uint8_t SPI_Mode){
 	
 	SPI_SetClockPolarity(SPIx, SPI_Polarity_HIGH);		//Clock is low at idle state
 	SPI_SetClockPhase(SPIx, SPI_ClockPhase_1st);		//Capture data at 1st clock transition
-	SPI_SetMasterSlave(SPIx, SPI_Mode);							//SPI as slave or master
-	SPI_SetSourceClock(SPIx);												//9Mb/s baudrate
+	SPI_SetMasterSlave(SPIx, SPI_Mode);					//SPI as slave or master
+	SPI_SetSourceClock(SPIx);							//9Mb/s baudrate
 	SPI_SoftwareSlaveSelect_Enable(SPIx);
 	SPI_SetFrameFormat(SPIx, SPI_MSBFirst);
 	

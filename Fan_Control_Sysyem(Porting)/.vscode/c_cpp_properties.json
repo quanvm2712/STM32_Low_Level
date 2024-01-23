@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/vendor/CMSIS/Device/ST/cmsis_device_f1/Include",
                 "${workspaceFolder}/vendor/CMSIS/CMSIS/Core/Include",
-                "${workspaceFolder}/F103_Library"
+                "${workspaceFolder}/Source/F103_Library",
+                "${workspaceFolder}/Source/Hardware_Library"
             ],
             "defines": [
                 "_DEBUG",

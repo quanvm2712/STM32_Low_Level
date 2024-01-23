@@ -30,9 +30,9 @@ void UART_init()
 }
 char USART2_ReceiveChar(void) {
 	char receive;
-  while (!(USART2->SR & (1 << 5))); ///waite RXNE set
+  	while (!(USART2->SR & (1 << 5))){}; ///waite RXNE set
 	receive = USART2->DR;
-  return receive;
+  	return receive;
 }
 
 

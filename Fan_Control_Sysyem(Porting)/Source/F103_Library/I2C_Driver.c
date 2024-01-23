@@ -1,6 +1,5 @@
-
-#include "i2c_drive.h"
-#include "stm32f10x.h"                 
+#include "I2C_Driver.h"
+#include "stm32f1xx.h"                 
 
 void I2C_init(uint8_t isRemapEnabled)
 {

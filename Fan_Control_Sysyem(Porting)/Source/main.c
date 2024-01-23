@@ -1,6 +1,10 @@
 #include "stdint.h"
 #include "Delay.h"
 #include "GPIO.h"
+#include "SPI.h"
+#include "MAX7219.h"
+
+#define LED_PIN     13
 
 void ClockInit(void){
     FLASH->ACR |= (0b010 << 0); //Flash latency
@@ -21,18 +25,22 @@ void ClockInit(void){
 
 }
 
+void ToggleLED(){
+    GPIO_Toggle(GPIO_C, LED_PIN);
+}
+
 int main(void){
     ClockInit();
+    GPIO_Init(GPIO_C, LED_PIN, GPIO_OUTPUT);
 
-    SysTick_Config(72000000);  //Generate 1s time base for SysTick
-    __enable_irq();
-
-    GPIO_Init(GPIO_C, 13, GPIO_OUTPUT);
-
+    SPI_Init(SPI1, SPI_Master); //Init SPI1
+    MAX7219_Clean();
+    MAX7219_Init(15, DIGIT_0_TO_7, DECODE_MODE_DISABLE);
 
 
     while (1){
-        GPIO_Toggle(GPIO_C, 13);
+        MAX7219_PrintInt(2024, 4, DIGIT_POSITION_7);
+        ToggleLED();
         delay_ms(100);
     }
     

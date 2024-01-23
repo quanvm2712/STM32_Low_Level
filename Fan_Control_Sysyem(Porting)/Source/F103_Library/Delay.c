@@ -1,4 +1,4 @@
-#include "delay.h"
+#include "Delay.h"
 
 void TIM2_Config(void){
 	//enable timer2 clock

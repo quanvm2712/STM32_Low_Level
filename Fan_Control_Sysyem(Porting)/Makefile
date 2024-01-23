@@ -1,8 +1,10 @@
 CC=arm-none-eabi-gcc -g
-CFLAGS=-mcpu=cortex-m3 -mthumb -nostdlib
+CFLAGS=-mcpu=cortex-m3 -mthumb -nostdlib -Wall
 CPPFLAGS=-DSTM32F103xB \
 		 -Ivendor/CMSIS/CMSIS/Core/Include \
-		 -Ivendor/CMSIS/Device/ST/cmsis_device_f1/Include 
+		 -Ivendor/CMSIS/Device/ST/cmsis_device_f1/Include \
+		 -ISource/F103_LIBRARY/ \
+		 -ISource/Hardware_Library/
 LINKER_FILE=linker_script.ld
 LDFLAGS=-T $(LINKER_FILE) -Wl,-Map=$(target)final.map
 
@@ -12,29 +14,32 @@ PROGRAMMER_FLAGS = -f interface/stlink.cfg -f target/stm32f1x.cfg
 TARGET_DIR = Build/Output/
 OBJECT_DIR = Build/Objects/
 SOURCE_DIR = Source/
-F103_LIBRARY = F103_LIBRARY/
+F103_LIBRARY_DIR = Source/F103_Library/
+HARDWARE_LIBRARY_DIR = Source/Hardware_Library/
 
-OBJ = $(OBJECT_DIR)main.o $(OBJECT_DIR)startup.o $(OBJECT_DIR)system_stm32f1xx.o $(OBJECT_DIR)GPIO.o $(OBJECT_DIR)Delay.o
+# List of source files
+SRC := $(wildcard $(SOURCE_DIR)*.c)
+F103_LIBRARY := $(wildcard $(F103_LIBRARY_DIR)*.c)
+HARDWARE_LIBRARY := $(wildcard $(HARDWARE_LIBRARY_DIR)*.c)
+
+# Generate the list of object files from source files
+OBJ := 	$(patsubst $(SOURCE_DIR)%.c, $(OBJECT_DIR)%.o, $(SRC))
+OBJ1 := $(patsubst $(F103_LIBRARY_DIR)%.c, $(OBJECT_DIR)%.o, $(F103_LIBRARY))
+OBJ2 := $(patsubst $(HARDWARE_LIBRARY_DIR)%.c, $(OBJECT_DIR)%.o, $(HARDWARE_LIBRARY))
 
 all: $(TARGET_DIR)out.elf
 
-$(TARGET_DIR)out.elf: $(OBJ)
+$(TARGET_DIR)out.elf: $(OBJ) $(OBJ2) $(OBJ1)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(CPPFLAGS) -o $@ $^
 
-$(OBJECT_DIR)main.o: $(SOURCE_DIR)main.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< -I$(F103_LIBRARY)
+$(OBJECT_DIR)%.o: $(SOURCE_DIR)%.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
-$(OBJECT_DIR)GPIO.o: $(F103_LIBRARY)GPIO.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< -I$(F103_LIBRARY)
+$(OBJECT_DIR)%.o: $(F103_LIBRARY_DIR)%.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
-$(OBJECT_DIR)Delay.o: $(F103_LIBRARY)Delay.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< -I$(F103_LIBRARY)
-
-$(OBJECT_DIR)startup.o: $(SOURCE_DIR)startup.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $^
-
-$(OBJECT_DIR)system_stm32f1xx.o: Vendor/CMSIS/Device/ST/cmsis_device_f1/Source/Templates/system_stm32f1xx.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $^
+$(OBJECT_DIR)%.o: $(HARDWARE_LIBRARY_DIR)%.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 flash:	$(TARGET_DIR)out.elf
 	$(PROGRAMMER) $(PROGRAMMER_FLAGS) -c "program $(TARGET_DIR)out.elf verify reset exit"

@@ -1,5 +1,5 @@
 #include "Timer.h"
-#include "gpio.h"
+#include "GPIO.h"
 
 TIM_TypeDef* Timer_global;  //Variable to store selected Timer
 

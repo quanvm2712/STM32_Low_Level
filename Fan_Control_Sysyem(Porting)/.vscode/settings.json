@@ -5,7 +5,10 @@
         "stm32f103xb.h": "c",
         "delay.h": "c",
         "dma.h": "c",
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "max7219.h": "c",
+        "spi.h": "c",
+        "string.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": false
 }
