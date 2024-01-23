@@ -3,6 +3,7 @@
 #include "GPIO.h"
 #include "SPI.h"
 #include "MAX7219.h"
+#include "IWDG.h"
 
 #define LED_PIN     13
 
@@ -31,7 +32,10 @@ void ToggleLED(){
 
 int main(void){
     ClockInit();
-    GPIO_Init(GPIO_C, LED_PIN, GPIO_OUTPUT);
+
+    IWDG_Init(IWDG_DIV_64, 3125);
+
+    GPIO_Init(GPIO_C, LED_PIN, GPIO_OUTPUT);  //Config IO for blinking LED
 
     SPI_Init(SPI1, SPI_Master); //Init SPI1
     MAX7219_Clean();
@@ -42,6 +46,8 @@ int main(void){
         MAX7219_PrintInt(2024, 4, DIGIT_POSITION_7);
         ToggleLED();
         delay_ms(100);
+
+        IWDG_Reset(); 
     }
     
 }

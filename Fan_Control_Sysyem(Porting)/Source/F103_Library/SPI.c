@@ -116,7 +116,9 @@ void SPI_Transmit(SPI_TypeDef* SPIx, uint8_t* data, uint8_t dataSize){
 
 	//  Clear the Overrun flag by reading DR and SR
 	uint8_t temp = SPI1->DR;
-	temp = SPI1->SR;		
+	temp = SPI1->SR;	
+
+	SPI_Disable(SPIx); //Disable SPI	
 }
 
 void SPI_Transmit_DMA(SPI_TypeDef* SPIx, uint8_t* data, uint8_t dataSize){

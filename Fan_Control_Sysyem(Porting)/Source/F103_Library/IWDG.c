@@ -25,10 +25,10 @@ void IWDG_Reset(void){
 }
 
 void IWDG_Init(uint8_t PrescalerValue, uint16_t ReloadValue){
-	IWDG_Start();
+	IWDG_Start(); 
 	
 	IWDG_SetPrescaler(PrescalerValue);
 	IWDG_SetReloadValue(ReloadValue);
 	
-	IWDG_Reset();
+	IWDG_Reset();  //Reset to load reload value to specified register
 }
