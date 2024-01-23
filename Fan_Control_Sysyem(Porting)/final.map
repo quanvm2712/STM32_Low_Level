@@ -1,0 +1,227 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00010000         xr
+SRAM             0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD Build/Objects/main.o
+LOAD Build/Objects/startup.o
+LOAD Build/Objects/system_stm32f1xx.o
+LOAD Build/Objects/GPIO.o
+LOAD Build/Objects/Delay.o
+
+.isr_vector     0x08000000       0xec
+ *(.isr_vector)
+ .isr_vector    0x08000000       0xec Build/Objects/startup.o
+                0x08000000                isr_vector
+
+.text           0x080000ec      0xc68
+                0x080000ec                . = ALIGN (0x4)
+ *(.text)
+ .text          0x080000ec      0x15c Build/Objects/main.o
+                0x08000184                ClockInit
+                0x08000218                main
+ .text          0x08000248       0x84 Build/Objects/startup.o
+                0x08000248                FLASH_Handler
+                0x08000248                TIM1_TRG_COM_Handler
+                0x08000248                USART3_Handler
+                0x08000248                DMA1_Channel7_Handler
+                0x08000248                DMA1_Channel6_Handler
+                0x08000248                EXTI15_10_Handler
+                0x08000248                USBWakeup_Handler
+                0x08000248                I2C1_EV_Handler
+                0x08000248                ADC1_2_Handler
+                0x08000248                WWDG_Handler
+                0x08000248                EXTI4_Handler
+                0x08000248                DMA1_Channel1_Handler
+                0x08000248                svcall_handler
+                0x08000248                systick_handler
+                0x08000248                I2C1_ER_Handler
+                0x08000248                RTC_Handler
+                0x08000248                TIM1_CC_Handler
+                0x08000248                I2C2_ER_Handler
+                0x08000248                usage_fault_handler
+                0x08000248                USB_HP_CAN_TX_Handler
+                0x08000248                default_handler
+                0x08000248                CAN_RX1_Handler
+                0x08000248                TIM1_BRK_Handler
+                0x08000248                EXTI1_Handler
+                0x08000248                EXTI3_Handler
+                0x08000248                USB_LP_CAN_RX0_Handler
+                0x08000248                EXTI2_Handler
+                0x08000248                EXTI9_5_Handler
+                0x08000248                TIM2_Handler
+                0x08000248                USART1_Handler
+                0x08000248                hard_fault_handler
+                0x08000248                DMA1_Channel4_Handler
+                0x08000248                TIM3_Handler
+                0x08000248                CAN_SCE_Handler
+                0x08000248                DMA1_Channel3_Handler
+                0x08000248                TIM4_Handler
+                0x08000248                debug_monitor_handler
+                0x08000248                SPI2_Handler
+                0x08000248                DMA1_Channel2_Handler
+                0x08000248                pendsv_handler
+                0x08000248                EXTI0_Handler
+                0x08000248                TIM1_UP_Handler
+                0x08000248                mem_manage_handler
+                0x08000248                DMA1_Channel5_Handler
+                0x08000248                USART2_Handler
+                0x08000248                SPI1_Handler
+                0x08000248                I2C2_EV_Handler
+                0x08000248                RCC_Handler
+                0x08000248                PVD_Handler
+                0x08000248                nmi_handler
+                0x08000248                RTCAlarm_Handler
+                0x08000248                bus_fault_handler
+                0x08000248                TAMPER_Handler
+                0x0800024e                reset_handler
+ .text          0x080002cc       0xf0 Build/Objects/system_stm32f1xx.o
+                0x080002cc                SystemInit
+                0x080002d8                SystemCoreClockUpdate
+ .text          0x080003bc      0x8d0 Build/Objects/GPIO.o
+                0x080003bc                GPIO_EnableClock
+                0x080003e8                GPIO_Init
+                0x08000890                GPIO_Set
+                0x08000934                GPIO_Reset
+                0x080009e0                GPIO_Toggle
+                0x08000b04                GPIO_PullUpDown
+                0x08000c0c                GPIO_ReadPin
+ .text          0x08000c8c       0xb0 Build/Objects/Delay.o
+                0x08000c8c                TIM2_Config
+                0x08000cdc                delay_us
+                0x08000d0a                delay_ms
+ *(.rodata)
+ .rodata        0x08000d3c       0x18 Build/Objects/system_stm32f1xx.o
+                0x08000d3c                AHBPrescTable
+                0x08000d4c                APBPrescTable
+                0x08000d54                . = ALIGN (0x4)
+                0x08000d54                _etext = .
+
+.glue_7         0x08000d54        0x0
+ .glue_7        0x08000d54        0x0 linker stubs
+
+.glue_7t        0x08000d54        0x0
+ .glue_7t       0x08000d54        0x0 linker stubs
+
+.vfp11_veneer   0x08000d54        0x0
+ .vfp11_veneer  0x08000d54        0x0 linker stubs
+
+.v4_bx          0x08000d54        0x0
+ .v4_bx         0x08000d54        0x0 linker stubs
+
+.iplt           0x08000d54        0x0
+ .iplt          0x08000d54        0x0 Build/Objects/main.o
+
+.rel.dyn        0x08000d54        0x0
+ .rel.iplt      0x08000d54        0x0 Build/Objects/main.o
+
+.data           0x20000000        0x4 load address 0x08000d54
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _sdata = .
+ *(.data)
+ .data          0x20000000        0x0 Build/Objects/main.o
+ .data          0x20000000        0x0 Build/Objects/startup.o
+ .data          0x20000000        0x4 Build/Objects/system_stm32f1xx.o
+                0x20000000                SystemCoreClock
+ .data          0x20000004        0x0 Build/Objects/GPIO.o
+ .data          0x20000004        0x0 Build/Objects/Delay.o
+                0x20000004                . = ALIGN (0x4)
+                0x20000004                _edata = .
+
+.igot.plt       0x20000004        0x0 load address 0x08000d58
+ .igot.plt      0x20000004        0x0 Build/Objects/main.o
+
+.bss            0x20000004        0x0 load address 0x08000d58
+                0x20000004                . = ALIGN (0x4)
+                0x20000004                _sbss = .
+ *(.bss)
+ .bss           0x20000004        0x0 Build/Objects/main.o
+ .bss           0x20000004        0x0 Build/Objects/startup.o
+ .bss           0x20000004        0x0 Build/Objects/system_stm32f1xx.o
+ .bss           0x20000004        0x0 Build/Objects/GPIO.o
+ .bss           0x20000004        0x0 Build/Objects/Delay.o
+                0x20000004                . = ALIGN (0x4)
+                0x20000004                _ebss = .
+OUTPUT(Build/Output/out.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000     0x1287
+ .debug_info    0x00000000      0x72a Build/Objects/main.o
+ .debug_info    0x0000072a      0x1a0 Build/Objects/startup.o
+ .debug_info    0x000008ca      0x232 Build/Objects/system_stm32f1xx.o
+ .debug_info    0x00000afc      0x496 Build/Objects/GPIO.o
+ .debug_info    0x00000f92      0x2f5 Build/Objects/Delay.o
+
+.debug_abbrev   0x00000000      0x5dd
+ .debug_abbrev  0x00000000      0x199 Build/Objects/main.o
+ .debug_abbrev  0x00000199       0xe6 Build/Objects/startup.o
+ .debug_abbrev  0x0000027f      0x138 Build/Objects/system_stm32f1xx.o
+ .debug_abbrev  0x000003b7      0x145 Build/Objects/GPIO.o
+ .debug_abbrev  0x000004fc       0xe1 Build/Objects/Delay.o
+
+.debug_aranges  0x00000000       0xa0
+ .debug_aranges
+                0x00000000       0x20 Build/Objects/main.o
+ .debug_aranges
+                0x00000020       0x20 Build/Objects/startup.o
+ .debug_aranges
+                0x00000040       0x20 Build/Objects/system_stm32f1xx.o
+ .debug_aranges
+                0x00000060       0x20 Build/Objects/GPIO.o
+ .debug_aranges
+                0x00000080       0x20 Build/Objects/Delay.o
+
+.debug_line     0x00000000      0xde1
+ .debug_line    0x00000000      0x274 Build/Objects/main.o
+ .debug_line    0x00000274      0x195 Build/Objects/startup.o
+ .debug_line    0x00000409      0x236 Build/Objects/system_stm32f1xx.o
+ .debug_line    0x0000063f      0x5d8 Build/Objects/GPIO.o
+ .debug_line    0x00000c17      0x1ca Build/Objects/Delay.o
+
+.debug_str      0x00000000      0x817
+ .debug_str     0x00000000      0x578 Build/Objects/main.o
+                                0x5cf (size before relaxing)
+ .debug_str     0x00000578       0x7d Build/Objects/startup.o
+                                0x1be (size before relaxing)
+ .debug_str     0x000005f5       0xb0 Build/Objects/system_stm32f1xx.o
+                                0x230 (size before relaxing)
+ .debug_str     0x000006a5       0xdf Build/Objects/GPIO.o
+                                0x269 (size before relaxing)
+ .debug_str     0x00000784       0x93 Build/Objects/Delay.o
+                                0x20a (size before relaxing)
+
+.comment        0x00000000       0x49
+ .comment       0x00000000       0x49 Build/Objects/main.o
+                                 0x4a (size before relaxing)
+ .comment       0x00000049       0x4a Build/Objects/startup.o
+ .comment       0x00000049       0x4a Build/Objects/system_stm32f1xx.o
+ .comment       0x00000049       0x4a Build/Objects/GPIO.o
+ .comment       0x00000049       0x4a Build/Objects/Delay.o
+
+.ARM.attributes
+                0x00000000       0x2d
+ .ARM.attributes
+                0x00000000       0x2d Build/Objects/main.o
+ .ARM.attributes
+                0x0000002d       0x2d Build/Objects/startup.o
+ .ARM.attributes
+                0x0000005a       0x2d Build/Objects/system_stm32f1xx.o
+ .ARM.attributes
+                0x00000087       0x2d Build/Objects/GPIO.o
+ .ARM.attributes
+                0x000000b4       0x2d Build/Objects/Delay.o
+
+.debug_frame    0x00000000      0x2dc
+ .debug_frame   0x00000000       0x98 Build/Objects/main.o
+ .debug_frame   0x00000098       0x4c Build/Objects/startup.o
+ .debug_frame   0x000000e4       0x58 Build/Objects/system_stm32f1xx.o
+ .debug_frame   0x0000013c      0x128 Build/Objects/GPIO.o
+ .debug_frame   0x00000264       0x78 Build/Objects/Delay.o
+
+.debug_ranges   0x00000000      0x108
+ .debug_ranges  0x00000000      0x108 Build/Objects/GPIO.o

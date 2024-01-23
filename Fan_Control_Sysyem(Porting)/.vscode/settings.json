@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "stdint.h": "c",
+        "stm32f1xx.h": "c",
+        "stm32f103xb.h": "c",
+        "delay.h": "c",
+        "dma.h": "c",
+        "gpio.h": "c"
+    },
+    "cortex-debug.variableUseNaturalFormat": false
+}
