@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/vendor/CMSIS/Device/ST/cmsis_device_f1/Include",
-                "${workspaceFolder}/vendor/CMSIS/CMSIS/Core/Include"
+                "${workspaceFolder}/vendor/CMSIS/CMSIS/Core/Include",
+                "${workspaceFolder}/F103_Library"
             ],
             "defines": [
                 "_DEBUG",

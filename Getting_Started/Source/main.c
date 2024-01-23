@@ -1,35 +1,7 @@
 #include "stdint.h"
 #include "stm32f1xx.h"
-
-uint32_t ms_count = 0;
-
-volatile uint32_t* reg = (uint32_t*)&RCC->APB2ENR;
-
-void Enable_GPIOC_Clock(){
-    RCC->APB2ENR |= (1UL << 4UL); //(RCC_APB2ENR_IOPCEN);
-}
-
-void GPIOC_Config(){
-    Enable_GPIOC_Clock();
-    GPIOC->CRH |= (0b0010UL << 20UL);
-}
-
-void GPIO_Set(){
-    GPIOC->BSRR |= (1UL << 13UL);
-}
-
-void GPIO_Reset(){
-    GPIOC->BSRR |= (1UL << 29UL);
-}
-
-void GPIOC_Toggle(){
-    GPIOC->ODR ^= (1 << 13);
-}
-
-void systick_handler(){
-    ms_count++;
-
-}
+#include "Delay.h"
+#include "GPIO.h"
 
 void ClockInit(void){
     FLASH->ACR |= (0b010 << 0); //Flash latency
@@ -52,20 +24,17 @@ void ClockInit(void){
 
 int main(void){
     ClockInit();
-    
-    GPIOC_Config();
 
-    SysTick_Config(72000);  //Generate 1ms time base for SysTick
+    SysTick_Config(72000000);  //Generate 1s time base for SysTick
     __enable_irq();
 
-    GPIOC_Config();
+    GPIO_Init(GPIO_C, 13, GPIO_OUTPUT);
+
 
 
     while (1){
-        if(ms_count >= 1000){
-            GPIOC_Toggle();
-            ms_count = 0;
-        }
+        GPIO_Toggle(GPIO_C, 13);
+        delay_ms(1000);
     }
     
 }
