@@ -16,7 +16,7 @@
                 "interface/stlink.cfg",
                 "target/stm32f1x.cfg"
             ],
-            "executable": "./Build/Output/blink.elf"
+            "executable": "./Build/Output/out.elf"
             
         }
 
