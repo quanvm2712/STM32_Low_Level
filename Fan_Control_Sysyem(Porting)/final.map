@@ -186,7 +186,7 @@ LOAD Build/Objects/UART_Driver.o
                 0x080023ec                TIM_PWM_Init
                 0x080024da                TIM_EnableCCOutput
                 0x0800253e                TIM_PWM_Mode
-                0x080025e6                PWM_EnableUpdateGeneration
+                0x080025e6                TIM_EnableUpdateGeneration
                 0x08002604                TIM_PWM_Start
                 0x0800262e                TIM_SetPrescaler
                 0x0800264e                TIM_SetARRReg

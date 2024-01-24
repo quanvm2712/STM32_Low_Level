@@ -1,0 +1,286 @@
+\doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+Sysyem(Porting)/\+Source/\+F103\+\_\+\+Library/\+DMA.c File Reference}
+\hypertarget{_d_m_a_8c}{}\label{_d_m_a_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/DMA.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/DMA.c}}
+
+
+DMA Hardware Abstraction Layer for STM32\+F103\+C8\+T6.  
+
+
+{\ttfamily \#include "{}DMA.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_d_m_a_8c_a291071e91d73466b5ea1d9b95eed6b74}{DMA\+\_\+\+Enable\+Clock}} (DMA\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Instance)
+\begin{DoxyCompactList}\small\item\em Enable clock for DMA peripheral. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_a1ae2ca259963a6729405afe1de8aaf97}{DMA\+\_\+\+Set\+Peripheral\+Address}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint32\+\_\+t Peripheral\+Address)
+\begin{DoxyCompactList}\small\item\em Load address of peripheral\textquotesingle{}s register for data transferring. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_a7b4a5b1e5700c4619eadc4f191629491}{DMA\+\_\+\+Set\+Memory\+Address}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint32\+\_\+t Memory\+Address)
+\begin{DoxyCompactList}\small\item\em Load address of memory region used for data transferring. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_ad3ff1f98f36c954da7fcb802605c7035}{DMA\+\_\+\+Set\+Number\+Of\+Data}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint16\+\_\+t Number\+Of\+Data)
+\begin{DoxyCompactList}\small\item\em Set number of data (in bytes) that will be transferred. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_a05ec6aaf84658728ba668ff28e36b29a}{DMA\+\_\+\+Set\+Channel\+Priority}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint8\+\_\+t Priority)
+\begin{DoxyCompactList}\small\item\em Set DMA channel priority. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_ad973f1a0a7ae9f13d528f5027a88e84d}{DMA\+\_\+\+Set\+Direction}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint8\+\_\+t Direction)
+\begin{DoxyCompactList}\small\item\em Configure direction of DMA channel (MEMORY-\/\+PERIPHERAL or PERIPHERAL-\/\+MEMORY) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_ad5acb988fe12a0400282a61dde01c66f}{DMA\+\_\+\+Set\+Circular\+Mode}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, \+\_\+\+Bool is\+Enabled)
+\begin{DoxyCompactList}\small\item\em Enable or disable DMA Circular Mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_a674e06e150f1dd0f48a541d723ea79da}{DMA\+\_\+\+Set\+Incremented\+Mode}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, \+\_\+\+Bool source, \+\_\+\+Bool is\+Enabled)
+\begin{DoxyCompactList}\small\item\em Configure Incremented mode for memory or peripheral. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_afce413118eb1f99161ffbd0cb6dbe63b}{DMA\+\_\+\+Set\+Memory\+Size}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint8\+\_\+t Mem\+Size)
+\begin{DoxyCompactList}\small\item\em Configure size of memory address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_a08e620f9edb1ecbd04b5dac97cc84022}{DMA\+\_\+\+Set\+Peripheral\+Size}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint8\+\_\+t Peripheral\+Size)
+\begin{DoxyCompactList}\small\item\em Configure size of peripheral\textquotesingle{}s register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_a26a185434e84578f22e810f88560b62a}{DMA\+\_\+\+Init}} (DMA\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMAx, DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint8\+\_\+t Direction, uint8\+\_\+t Priority, \+\_\+\+Bool Circular\+Mode)
+\begin{DoxyCompactList}\small\item\em Initialize DMA for data transferring (By default incremented mode is enabled on memory address and disabled on peripheral register) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_a167296ec99363bc6d079092b90d58abb}{DMA\+\_\+\+Set\+Transaction\+Info}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint32\+\_\+t memory\+Address, uint32\+\_\+t peripheral\+Address, uint16\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Configure information about source, destination and size of data to be transferred. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_d_m_a_8c_a93c73e78dee7e4c3304b028b14792f03}{DMA\+\_\+\+Enable}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel)
+\begin{DoxyCompactList}\small\item\em Enable selected DMA channel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+DMA Hardware Abstraction Layer for STM32\+F103\+C8\+T6. 
+
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan (\href{mailto:quanvm198@gmail.com}{\texttt{ quanvm198@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/01-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_d_m_a_8c_a93c73e78dee7e4c3304b028b14792f03}\label{_d_m_a_8c_a93c73e78dee7e4c3304b028b14792f03} 
+\index{DMA.c@{DMA.c}!DMA\_Enable@{DMA\_Enable}}
+\index{DMA\_Enable@{DMA\_Enable}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_Enable()}{DMA\_Enable()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Enable (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel }\end{DoxyParamCaption})}
+
+
+
+Enable selected DMA channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_a291071e91d73466b5ea1d9b95eed6b74}\label{_d_m_a_8c_a291071e91d73466b5ea1d9b95eed6b74} 
+\index{DMA.c@{DMA.c}!DMA\_EnableClock@{DMA\_EnableClock}}
+\index{DMA\_EnableClock@{DMA\_EnableClock}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_EnableClock()}{DMA\_EnableClock()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Enable\+Clock (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Instance }\end{DoxyParamCaption})}
+
+
+
+Enable clock for DMA peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Instance} & Target DMA channel \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_a26a185434e84578f22e810f88560b62a}\label{_d_m_a_8c_a26a185434e84578f22e810f88560b62a} 
+\index{DMA.c@{DMA.c}!DMA\_Init@{DMA\_Init}}
+\index{DMA\_Init@{DMA\_Init}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_Init()}{DMA\_Init()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Init (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMAx,  }\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{uint8\+\_\+t}]{Direction,  }\item[{uint8\+\_\+t}]{Priority,  }\item[{\+\_\+\+Bool}]{Circular\+Mode }\end{DoxyParamCaption})}
+
+
+
+Initialize DMA for data transferring (By default incremented mode is enabled on memory address and disabled on peripheral register) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMAx} & DMA\+\_\+\+Instance \\
+\hline
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em Direction} & Data transferring direction \\
+\hline
+{\em Priority} & DMA Channel priority \\
+\hline
+{\em Circular\+Mode} & Circular mode on or off \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_a05ec6aaf84658728ba668ff28e36b29a}\label{_d_m_a_8c_a05ec6aaf84658728ba668ff28e36b29a} 
+\index{DMA.c@{DMA.c}!DMA\_SetChannelPriority@{DMA\_SetChannelPriority}}
+\index{DMA\_SetChannelPriority@{DMA\_SetChannelPriority}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetChannelPriority()}{DMA\_SetChannelPriority()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Channel\+Priority (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{uint8\+\_\+t}]{Priority }\end{DoxyParamCaption})}
+
+
+
+Set DMA channel priority. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em Priority} & DMA Channel priority \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_ad5acb988fe12a0400282a61dde01c66f}\label{_d_m_a_8c_ad5acb988fe12a0400282a61dde01c66f} 
+\index{DMA.c@{DMA.c}!DMA\_SetCircularMode@{DMA\_SetCircularMode}}
+\index{DMA\_SetCircularMode@{DMA\_SetCircularMode}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetCircularMode()}{DMA\_SetCircularMode()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Circular\+Mode (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{\+\_\+\+Bool}]{is\+Enabled }\end{DoxyParamCaption})}
+
+
+
+Enable or disable DMA Circular Mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em is\+Enabled} & Circular mode on or off \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_ad973f1a0a7ae9f13d528f5027a88e84d}\label{_d_m_a_8c_ad973f1a0a7ae9f13d528f5027a88e84d} 
+\index{DMA.c@{DMA.c}!DMA\_SetDirection@{DMA\_SetDirection}}
+\index{DMA\_SetDirection@{DMA\_SetDirection}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetDirection()}{DMA\_SetDirection()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Direction (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{uint8\+\_\+t}]{Direction }\end{DoxyParamCaption})}
+
+
+
+Configure direction of DMA channel (MEMORY-\/\+PERIPHERAL or PERIPHERAL-\/\+MEMORY) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em Direction} & Data transferring direction \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_a674e06e150f1dd0f48a541d723ea79da}\label{_d_m_a_8c_a674e06e150f1dd0f48a541d723ea79da} 
+\index{DMA.c@{DMA.c}!DMA\_SetIncrementedMode@{DMA\_SetIncrementedMode}}
+\index{DMA\_SetIncrementedMode@{DMA\_SetIncrementedMode}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetIncrementedMode()}{DMA\_SetIncrementedMode()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Incremented\+Mode (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{\+\_\+\+Bool}]{source,  }\item[{\+\_\+\+Bool}]{is\+Enabled }\end{DoxyParamCaption})}
+
+
+
+Configure Incremented mode for memory or peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em source} & Target to be configured \\
+\hline
+{\em is\+Enabled} & Enable or disable \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_a7b4a5b1e5700c4619eadc4f191629491}\label{_d_m_a_8c_a7b4a5b1e5700c4619eadc4f191629491} 
+\index{DMA.c@{DMA.c}!DMA\_SetMemoryAddress@{DMA\_SetMemoryAddress}}
+\index{DMA\_SetMemoryAddress@{DMA\_SetMemoryAddress}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetMemoryAddress()}{DMA\_SetMemoryAddress()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Memory\+Address (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{uint32\+\_\+t}]{Memory\+Address }\end{DoxyParamCaption})}
+
+
+
+Load address of memory region used for data transferring. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em Memory\+Address} & Address of memory region used for data transferring \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_afce413118eb1f99161ffbd0cb6dbe63b}\label{_d_m_a_8c_afce413118eb1f99161ffbd0cb6dbe63b} 
+\index{DMA.c@{DMA.c}!DMA\_SetMemorySize@{DMA\_SetMemorySize}}
+\index{DMA\_SetMemorySize@{DMA\_SetMemorySize}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetMemorySize()}{DMA\_SetMemorySize()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Memory\+Size (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{uint8\+\_\+t}]{Mem\+Size }\end{DoxyParamCaption})}
+
+
+
+Configure size of memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em Mem\+Size} & Size of memory address \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_ad3ff1f98f36c954da7fcb802605c7035}\label{_d_m_a_8c_ad3ff1f98f36c954da7fcb802605c7035} 
+\index{DMA.c@{DMA.c}!DMA\_SetNumberOfData@{DMA\_SetNumberOfData}}
+\index{DMA\_SetNumberOfData@{DMA\_SetNumberOfData}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetNumberOfData()}{DMA\_SetNumberOfData()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Number\+Of\+Data (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{uint16\+\_\+t}]{Number\+Of\+Data }\end{DoxyParamCaption})}
+
+
+
+Set number of data (in bytes) that will be transferred. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em Number\+Of\+Data} & Number of bytes which will be transferred \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_a1ae2ca259963a6729405afe1de8aaf97}\label{_d_m_a_8c_a1ae2ca259963a6729405afe1de8aaf97} 
+\index{DMA.c@{DMA.c}!DMA\_SetPeripheralAddress@{DMA\_SetPeripheralAddress}}
+\index{DMA\_SetPeripheralAddress@{DMA\_SetPeripheralAddress}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetPeripheralAddress()}{DMA\_SetPeripheralAddress()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Peripheral\+Address (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{uint32\+\_\+t}]{Peripheral\+Address }\end{DoxyParamCaption})}
+
+
+
+Load address of peripheral\textquotesingle{}s register for data transferring. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em Peripheral\+Address} & Address of peripheral register \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_a08e620f9edb1ecbd04b5dac97cc84022}\label{_d_m_a_8c_a08e620f9edb1ecbd04b5dac97cc84022} 
+\index{DMA.c@{DMA.c}!DMA\_SetPeripheralSize@{DMA\_SetPeripheralSize}}
+\index{DMA\_SetPeripheralSize@{DMA\_SetPeripheralSize}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetPeripheralSize()}{DMA\_SetPeripheralSize()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Peripheral\+Size (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{uint8\+\_\+t}]{Peripheral\+Size }\end{DoxyParamCaption})}
+
+
+
+Configure size of peripheral\textquotesingle{}s register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em Peripheral\+Size} & Size of peripheral register \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_d_m_a_8c_a167296ec99363bc6d079092b90d58abb}\label{_d_m_a_8c_a167296ec99363bc6d079092b90d58abb} 
+\index{DMA.c@{DMA.c}!DMA\_SetTransactionInfo@{DMA\_SetTransactionInfo}}
+\index{DMA\_SetTransactionInfo@{DMA\_SetTransactionInfo}!DMA.c@{DMA.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_SetTransactionInfo()}{DMA\_SetTransactionInfo()}}
+{\footnotesize\ttfamily void DMA\+\_\+\+Set\+Transaction\+Info (\begin{DoxyParamCaption}\item[{DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{DMA\+\_\+\+Channel,  }\item[{uint32\+\_\+t}]{memory\+Address,  }\item[{uint32\+\_\+t}]{peripheral\+Address,  }\item[{uint16\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Configure information about source, destination and size of data to be transferred. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+\hline
+{\em memory\+Address} & Address of memory region used for data transferring \\
+\hline
+{\em peripheral\+Address} & Address of peripheral register \\
+\hline
+{\em size} & Number of bytes which will be transferred \\
+\hline
+\end{DoxyParams}

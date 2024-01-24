@@ -1,0 +1,87 @@
+\doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+Sysyem(Porting)/\+Source/\+F103\+\_\+\+Library/\+IWDG.c File Reference}
+\hypertarget{_i_w_d_g_8c}{}\label{_i_w_d_g_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/IWDG.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/IWDG.c}}
+
+
+IWDG Hardware Abstraction Layer for STM32\+F103\+C8\+T6.  
+
+
+{\ttfamily \#include "{}IWDG.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_i_w_d_g_8c_a59c063ed839b55eb0bbcbc654509c4ac}{IWDG\+\_\+\+Set\+Prescaler}} (uint8\+\_\+t Prescaler\+Value)
+\begin{DoxyCompactList}\small\item\em Set prescaler for IWDG source clock (LSI) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_w_d_g_8c_ab443a5741036c6ce439cc063553e7cba}{IWDG\+\_\+\+Set\+Reload\+Value}} (uint16\+\_\+t Reload\+Value)
+\begin{DoxyCompactList}\small\item\em Set reload value for IWDG. \end{DoxyCompactList}\item 
+\Hypertarget{_i_w_d_g_8c_af8d8dd6ada0602470b2cc01e42fa5840}\label{_i_w_d_g_8c_af8d8dd6ada0602470b2cc01e42fa5840} 
+void {\bfseries IWDG\+\_\+\+Start} (void)
+\begin{DoxyCompactList}\small\item\em Start the IWDG. \end{DoxyCompactList}\item 
+\Hypertarget{_i_w_d_g_8c_a01505e58442cbc9df8dedfe62fc81366}\label{_i_w_d_g_8c_a01505e58442cbc9df8dedfe62fc81366} 
+void {\bfseries IWDG\+\_\+\+Reset} (void)
+\begin{DoxyCompactList}\small\item\em Reset the IWDG. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_w_d_g_8c_adec2d199b4c56d60f7dd57dae314cc47}{IWDG\+\_\+\+Init}} (uint8\+\_\+t Prescaler\+Value, uint16\+\_\+t Reload\+Value)
+\begin{DoxyCompactList}\small\item\em Initialize IWDG. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+IWDG Hardware Abstraction Layer for STM32\+F103\+C8\+T6. 
+
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan (\href{mailto:quanvm198@gmail.com}{\texttt{ quanvm198@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/01-\/24 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_i_w_d_g_8c_adec2d199b4c56d60f7dd57dae314cc47}\label{_i_w_d_g_8c_adec2d199b4c56d60f7dd57dae314cc47} 
+\index{IWDG.c@{IWDG.c}!IWDG\_Init@{IWDG\_Init}}
+\index{IWDG\_Init@{IWDG\_Init}!IWDG.c@{IWDG.c}}
+\doxysubsubsection{\texorpdfstring{IWDG\_Init()}{IWDG\_Init()}}
+{\footnotesize\ttfamily void IWDG\+\_\+\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Prescaler\+Value,  }\item[{uint16\+\_\+t}]{Reload\+Value }\end{DoxyParamCaption})}
+
+
+
+Initialize IWDG. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Prescaler\+Value} & Desired prescaler value \\
+\hline
+{\em Reload\+Value} & Desired reload value \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i_w_d_g_8c_a59c063ed839b55eb0bbcbc654509c4ac}\label{_i_w_d_g_8c_a59c063ed839b55eb0bbcbc654509c4ac} 
+\index{IWDG.c@{IWDG.c}!IWDG\_SetPrescaler@{IWDG\_SetPrescaler}}
+\index{IWDG\_SetPrescaler@{IWDG\_SetPrescaler}!IWDG.c@{IWDG.c}}
+\doxysubsubsection{\texorpdfstring{IWDG\_SetPrescaler()}{IWDG\_SetPrescaler()}}
+{\footnotesize\ttfamily void IWDG\+\_\+\+Set\+Prescaler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Prescaler\+Value }\end{DoxyParamCaption})}
+
+
+
+Set prescaler for IWDG source clock (LSI) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Prescaler\+Value} & Desired prescaler value \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i_w_d_g_8c_ab443a5741036c6ce439cc063553e7cba}\label{_i_w_d_g_8c_ab443a5741036c6ce439cc063553e7cba} 
+\index{IWDG.c@{IWDG.c}!IWDG\_SetReloadValue@{IWDG\_SetReloadValue}}
+\index{IWDG\_SetReloadValue@{IWDG\_SetReloadValue}!IWDG.c@{IWDG.c}}
+\doxysubsubsection{\texorpdfstring{IWDG\_SetReloadValue()}{IWDG\_SetReloadValue()}}
+{\footnotesize\ttfamily void IWDG\+\_\+\+Set\+Reload\+Value (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Reload\+Value }\end{DoxyParamCaption})}
+
+
+
+Set reload value for IWDG. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Reload\+Value} & Desired reload value \\
+\hline
+\end{DoxyParams}

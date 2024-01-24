@@ -1,0 +1,65 @@
+\doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+Sysyem(Porting)/\+Source/\+F103\+\_\+\+Library/\+Delay.c File Reference}
+\hypertarget{_delay_8c}{}\label{_delay_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/Delay.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/Delay.c}}
+
+
+Implementing function for generating precise delay.  
+
+
+{\ttfamily \#include "{}Delay.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_delay_8c_a2d4340324348ad02e8f86cc5874748cc}\label{_delay_8c_a2d4340324348ad02e8f86cc5874748cc} 
+void {\bfseries TIM2\+\_\+\+Config} (void)
+\begin{DoxyCompactList}\small\item\em Configure Timer2 for generating presise delay. Configure the timer so that its counter will increase every 1us. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_delay_8c_ac14ffdfa5deebc3891eb526222b1b082}{delay\+\_\+us}} (uint16\+\_\+t time\+\_\+us)
+\begin{DoxyCompactList}\small\item\em Generate delay in us. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_delay_8c_a8a36c4837d1220b55a19cf38f568443b}{delay\+\_\+ms}} (uint16\+\_\+t time\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Generate delay in ms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementing function for generating precise delay. 
+
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan (\href{mailto:quanvm198@gmail.com}{\texttt{ quanvm198@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/01-\/24 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_delay_8c_a8a36c4837d1220b55a19cf38f568443b}\label{_delay_8c_a8a36c4837d1220b55a19cf38f568443b} 
+\index{Delay.c@{Delay.c}!delay\_ms@{delay\_ms}}
+\index{delay\_ms@{delay\_ms}!Delay.c@{Delay.c}}
+\doxysubsubsection{\texorpdfstring{delay\_ms()}{delay\_ms()}}
+{\footnotesize\ttfamily void delay\+\_\+ms (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+\_\+ms }\end{DoxyParamCaption})}
+
+
+
+Generate delay in ms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+\_\+ms} & Desired time (in us) for the processor to be delayed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_delay_8c_ac14ffdfa5deebc3891eb526222b1b082}\label{_delay_8c_ac14ffdfa5deebc3891eb526222b1b082} 
+\index{Delay.c@{Delay.c}!delay\_us@{delay\_us}}
+\index{delay\_us@{delay\_us}!Delay.c@{Delay.c}}
+\doxysubsubsection{\texorpdfstring{delay\_us()}{delay\_us()}}
+{\footnotesize\ttfamily void delay\+\_\+us (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+\_\+us }\end{DoxyParamCaption})}
+
+
+
+Generate delay in us. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+\_\+us} & Desired time (in us) for the processor to be delayed \\
+\hline
+\end{DoxyParams}

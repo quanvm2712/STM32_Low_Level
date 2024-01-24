@@ -1,5 +1,10 @@
 \doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+Sysyem(Porting)/\+Source/\+F103\+\_\+\+Library/\+Timer.c File Reference}
 \hypertarget{_timer_8c}{}\label{_timer_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/Timer.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/Timer.c}}
+
+
+Timer Hardware Abstraction Layer for STM32\+F103\+C8\+T6.  
+
+
 {\ttfamily \#include "{}Timer.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -26,7 +31,7 @@ void \mbox{\hyperlink{_timer_8c_ad6a62879f1aed3b6c768c09ae54826c1}{TIM\+\_\+\+En
 \begin{DoxyCompactList}\small\item\em Enable Capture/\+Compare functionality on selected timer channel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_timer_8c_a264e8eda762b4cb8ae4ba081576540ed}{TIM\+\_\+\+PWM\+\_\+\+Mode}} (TIM\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}Timer, uint8\+\_\+t channel, uint8\+\_\+t PWM\+\_\+\+Mode)
 \begin{DoxyCompactList}\small\item\em Configure PWM mode for timer channel. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_timer_8c_ac3993c9dc0154d184af468ed79c4fe8d}{PWM\+\_\+\+Enable\+Update\+Generation}} (TIM\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}Timer)
+void \mbox{\hyperlink{_timer_8c_acde8efc2157571e5b620e5c4e667ca97}{TIM\+\_\+\+Enable\+Update\+Generation}} (TIM\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}Timer)
 \begin{DoxyCompactList}\small\item\em Reinitialize timer counter and generate an update event. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_timer_8c_ad705a527c4ec37a4c5b1f78138aaa9e6}{TIM\+\_\+\+PWM\+\_\+\+Start}} (TIM\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}Timer, uint8\+\_\+t Channel)
 \begin{DoxyCompactList}\small\item\em Start generating PWM signal on selected timer channel. \end{DoxyCompactList}\item 
@@ -45,22 +50,18 @@ void \mbox{\hyperlink{_timer_8c_ad388eeef3c35aae636e1b87328db1029}{TIM\+\_\+\+En
 \doxysubsection{Detailed Description}
 Timer Hardware Abstraction Layer for STM32\+F103\+C8\+T6. 
 
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan (\href{mailto:quanvm198@gmail.com}{\texttt{ quanvm198@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/01-\/24 
+\end{DoxyDate}
+
+
 \doxysubsection{Function Documentation}
-\Hypertarget{_timer_8c_ac3993c9dc0154d184af468ed79c4fe8d}\label{_timer_8c_ac3993c9dc0154d184af468ed79c4fe8d} 
-\index{Timer.c@{Timer.c}!PWM\_EnableUpdateGeneration@{PWM\_EnableUpdateGeneration}}
-\index{PWM\_EnableUpdateGeneration@{PWM\_EnableUpdateGeneration}!Timer.c@{Timer.c}}
-\doxysubsubsection{\texorpdfstring{PWM\_EnableUpdateGeneration()}{PWM\_EnableUpdateGeneration()}}
-{\footnotesize\ttfamily void PWM\+\_\+\+Enable\+Update\+Generation (\begin{DoxyParamCaption}\item[{TIM\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{Timer }\end{DoxyParamCaption})}
-
-
-
-Reinitialize timer counter and generate an update event. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em Timer} & Timer instance \\
-\hline
-\end{DoxyParams}
 \Hypertarget{_timer_8c_acd9f032cd90aae2b39392b05eebd2e0f}\label{_timer_8c_acd9f032cd90aae2b39392b05eebd2e0f} 
 \index{Timer.c@{Timer.c}!TIM\_EnableCaptureInput@{TIM\_EnableCaptureInput}}
 \index{TIM\_EnableCaptureInput@{TIM\_EnableCaptureInput}!Timer.c@{Timer.c}}
@@ -135,6 +136,21 @@ Enables the clock for the APB bus containing the selected timer.
 {\em Timer} & Pointer to the TIM\+\_\+\+Type\+Def structure representing the timer. \begin{DoxyItemize}
 \item TIM1 \item TIM2 \item TIM3 \item TIM4 \end{DoxyItemize}
 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_timer_8c_acde8efc2157571e5b620e5c4e667ca97}\label{_timer_8c_acde8efc2157571e5b620e5c4e667ca97} 
+\index{Timer.c@{Timer.c}!TIM\_EnableUpdateGeneration@{TIM\_EnableUpdateGeneration}}
+\index{TIM\_EnableUpdateGeneration@{TIM\_EnableUpdateGeneration}!Timer.c@{Timer.c}}
+\doxysubsubsection{\texorpdfstring{TIM\_EnableUpdateGeneration()}{TIM\_EnableUpdateGeneration()}}
+{\footnotesize\ttfamily void TIM\+\_\+\+Enable\+Update\+Generation (\begin{DoxyParamCaption}\item[{TIM\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{Timer }\end{DoxyParamCaption})}
+
+
+
+Reinitialize timer counter and generate an update event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Timer} & Timer instance \\
 \hline
 \end{DoxyParams}
 \Hypertarget{_timer_8c_aed32b49e239aa5b5ab3fd82dc9876ad3}\label{_timer_8c_aed32b49e239aa5b5ab3fd82dc9876ad3} 

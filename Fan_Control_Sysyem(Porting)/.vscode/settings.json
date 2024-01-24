@@ -9,7 +9,8 @@
         "max7219.h": "c",
         "spi.h": "c",
         "string.h": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "timer.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": false
 }

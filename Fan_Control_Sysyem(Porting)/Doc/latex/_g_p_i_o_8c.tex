@@ -1,0 +1,166 @@
+\doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+Sysyem(Porting)/\+Source/\+F103\+\_\+\+Library/\+GPIO.c File Reference}
+\hypertarget{_g_p_i_o_8c}{}\label{_g_p_i_o_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/GPIO.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/GPIO.c}}
+
+
+GPIO Hardware Abstraction Layer for STM32\+F103\+C8\+T6.  
+
+
+{\ttfamily \#include "{}GPIO.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_g_p_i_o_8c_a26e571050f7a03f06681d844d7a34dc2}{GPIO\+\_\+\+Enable\+Clock}} (uint8\+\_\+t GPIO\+\_\+\+Port)
+\begin{DoxyCompactList}\small\item\em Enable clock for selected GPIO port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_g_p_i_o_8c_a564e4741350ea16338efa6c92d011324}{GPIO\+\_\+\+Init}} (uint8\+\_\+t GPIO\+\_\+\+Port, uint8\+\_\+t GPIO\+\_\+\+Pin, uint8\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Configure a GPIO pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_g_p_i_o_8c_adeab14bbe643989c4296c856568bd0c3}{GPIO\+\_\+\+Set}} (uint8\+\_\+t GPIO\+\_\+\+Port, uint8\+\_\+t GPIO\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em Set selected GPIO pin to high state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_g_p_i_o_8c_a418247fc79384a1926d59e25454b2295}{GPIO\+\_\+\+Reset}} (uint8\+\_\+t GPIO\+\_\+\+Port, uint8\+\_\+t GPIO\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em Set selected GPIO pin to low state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_g_p_i_o_8c_a3ff81139b4b46099baaf9c21647d07b0}{GPIO\+\_\+\+Toggle}} (uint8\+\_\+t GPIO\+\_\+\+Port, uint8\+\_\+t GPIO\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em Toggle the state of selected GPIO pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_g_p_i_o_8c_af54af1cf1cc6a0d3ccba0de0aedb63e0}{GPIO\+\_\+\+Pull\+Up\+Down}} (uint8\+\_\+t GPIO\+\_\+\+Port, uint8\+\_\+t GPIO\+\_\+\+Pin, bool pull\+Mode)
+\begin{DoxyCompactList}\small\item\em Pull selected GPIO pin up or down. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_g_p_i_o_8c_adb75ba282d21e88afd9ddb55e23ad391}{GPIO\+\_\+\+Read\+Pin}} (uint8\+\_\+t GPIO\+\_\+\+Port, uint8\+\_\+t GPIO\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em Read state of a GPIO pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+GPIO Hardware Abstraction Layer for STM32\+F103\+C8\+T6. 
+
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan (\href{mailto:quanvm198@gmail.com}{\texttt{ quanvm198@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/01-\/24 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_g_p_i_o_8c_a26e571050f7a03f06681d844d7a34dc2}\label{_g_p_i_o_8c_a26e571050f7a03f06681d844d7a34dc2} 
+\index{GPIO.c@{GPIO.c}!GPIO\_EnableClock@{GPIO\_EnableClock}}
+\index{GPIO\_EnableClock@{GPIO\_EnableClock}!GPIO.c@{GPIO.c}}
+\doxysubsubsection{\texorpdfstring{GPIO\_EnableClock()}{GPIO\_EnableClock()}}
+{\footnotesize\ttfamily void GPIO\+\_\+\+Enable\+Clock (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Port }\end{DoxyParamCaption})}
+
+
+
+Enable clock for selected GPIO port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GPIO\+\_\+\+Port} & GPIO port \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_g_p_i_o_8c_a564e4741350ea16338efa6c92d011324}\label{_g_p_i_o_8c_a564e4741350ea16338efa6c92d011324} 
+\index{GPIO.c@{GPIO.c}!GPIO\_Init@{GPIO\_Init}}
+\index{GPIO\_Init@{GPIO\_Init}!GPIO.c@{GPIO.c}}
+\doxysubsubsection{\texorpdfstring{GPIO\_Init()}{GPIO\_Init()}}
+{\footnotesize\ttfamily void GPIO\+\_\+\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Port,  }\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Pin,  }\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Configure a GPIO pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GPIO\+\_\+\+Port} & Target GPIO port \\
+\hline
+{\em GPIO\+\_\+\+Pin} & Target GPIO pin \\
+\hline
+{\em mode} & GPIO pin\textquotesingle{}s mode \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_g_p_i_o_8c_af54af1cf1cc6a0d3ccba0de0aedb63e0}\label{_g_p_i_o_8c_af54af1cf1cc6a0d3ccba0de0aedb63e0} 
+\index{GPIO.c@{GPIO.c}!GPIO\_PullUpDown@{GPIO\_PullUpDown}}
+\index{GPIO\_PullUpDown@{GPIO\_PullUpDown}!GPIO.c@{GPIO.c}}
+\doxysubsubsection{\texorpdfstring{GPIO\_PullUpDown()}{GPIO\_PullUpDown()}}
+{\footnotesize\ttfamily void GPIO\+\_\+\+Pull\+Up\+Down (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Port,  }\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Pin,  }\item[{bool}]{pull\+Mode }\end{DoxyParamCaption})}
+
+
+
+Pull selected GPIO pin up or down. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GPIO\+\_\+\+Port} & Target GPIO port. \\
+\hline
+{\em GPIO\+\_\+\+Pin} & Target GPIO pin. \\
+\hline
+{\em pull\+Mode} & Pull up or down \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_g_p_i_o_8c_adb75ba282d21e88afd9ddb55e23ad391}\label{_g_p_i_o_8c_adb75ba282d21e88afd9ddb55e23ad391} 
+\index{GPIO.c@{GPIO.c}!GPIO\_ReadPin@{GPIO\_ReadPin}}
+\index{GPIO\_ReadPin@{GPIO\_ReadPin}!GPIO.c@{GPIO.c}}
+\doxysubsubsection{\texorpdfstring{GPIO\_ReadPin()}{GPIO\_ReadPin()}}
+{\footnotesize\ttfamily uint8\+\_\+t GPIO\+\_\+\+Read\+Pin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Port,  }\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+Read state of a GPIO pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GPIO\+\_\+\+Port} & Target GPIO port. \\
+\hline
+{\em GPIO\+\_\+\+Pin} & Target GPIO pin. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t State of selected GPIO pin 
+\end{DoxyReturn}
+\Hypertarget{_g_p_i_o_8c_a418247fc79384a1926d59e25454b2295}\label{_g_p_i_o_8c_a418247fc79384a1926d59e25454b2295} 
+\index{GPIO.c@{GPIO.c}!GPIO\_Reset@{GPIO\_Reset}}
+\index{GPIO\_Reset@{GPIO\_Reset}!GPIO.c@{GPIO.c}}
+\doxysubsubsection{\texorpdfstring{GPIO\_Reset()}{GPIO\_Reset()}}
+{\footnotesize\ttfamily void GPIO\+\_\+\+Reset (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Port,  }\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+Set selected GPIO pin to low state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GPIO\+\_\+\+Port} & Target GPIO port. \\
+\hline
+{\em GPIO\+\_\+\+Pin} & Target GPIO pin. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_g_p_i_o_8c_adeab14bbe643989c4296c856568bd0c3}\label{_g_p_i_o_8c_adeab14bbe643989c4296c856568bd0c3} 
+\index{GPIO.c@{GPIO.c}!GPIO\_Set@{GPIO\_Set}}
+\index{GPIO\_Set@{GPIO\_Set}!GPIO.c@{GPIO.c}}
+\doxysubsubsection{\texorpdfstring{GPIO\_Set()}{GPIO\_Set()}}
+{\footnotesize\ttfamily void GPIO\+\_\+\+Set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Port,  }\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+Set selected GPIO pin to high state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GPIO\+\_\+\+Port} & Target GPIO port. \\
+\hline
+{\em GPIO\+\_\+\+Pin} & Target GPIO pin. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_g_p_i_o_8c_a3ff81139b4b46099baaf9c21647d07b0}\label{_g_p_i_o_8c_a3ff81139b4b46099baaf9c21647d07b0} 
+\index{GPIO.c@{GPIO.c}!GPIO\_Toggle@{GPIO\_Toggle}}
+\index{GPIO\_Toggle@{GPIO\_Toggle}!GPIO.c@{GPIO.c}}
+\doxysubsubsection{\texorpdfstring{GPIO\_Toggle()}{GPIO\_Toggle()}}
+{\footnotesize\ttfamily void GPIO\+\_\+\+Toggle (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Port,  }\item[{uint8\+\_\+t}]{GPIO\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+Toggle the state of selected GPIO pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GPIO\+\_\+\+Port} & Target GPIO port. \\
+\hline
+{\em GPIO\+\_\+\+Pin} & Target GPIO pin. \\
+\hline
+\end{DoxyParams}

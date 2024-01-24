@@ -1,11 +1,30 @@
+/**
+ * @file GPIO.c
+ * @author Vo Minh Quan (quanvm198@gmail.com)
+ * @brief GPIO Hardware Abstraction Layer for STM32F103C8T6.
+ * @version 0.1
+ * @date 2024-01-24
+ * 
+ */
+
 #include "GPIO.h"
 
-
-
+/**
+ * @brief Enable clock for selected GPIO port
+ * 
+ * @param GPIO_Port GPIO port
+ */
 void GPIO_EnableClock(uint8_t GPIO_Port){
 		RCC->APB2ENR |= (1<<GPIO_Port);
 }
 
+/**
+ * @brief Configure a GPIO pin
+ * 
+ * @param GPIO_Port Target GPIO port
+ * @param GPIO_Pin Target GPIO pin
+ * @param mode GPIO pin's mode
+ */
 void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 	GPIO_EnableClock(GPIO_Port);  
 	
@@ -57,7 +76,6 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 			break;
 			
 			
-			
 
 		case GPIO_B:
 			// Case 1: GPIO_Pin is less than 8
@@ -99,9 +117,7 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 					GPIOB->CRH |= ((0b1010) << config_bit);					
 				}
 			}
-			break;
-			
-			
+			break;	
 			
 			
 		case GPIO_C:
@@ -148,7 +164,12 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 	}
 }
 
-
+/**
+ * @brief Set selected GPIO pin to high state.
+ * 
+ * @param GPIO_Port Target GPIO port.
+ * @param GPIO_Pin Target GPIO pin.
+ */
 void GPIO_Set(uint8_t GPIO_Port, uint8_t GPIO_Pin){
 	switch (GPIO_Port){
 		case GPIO_A: 
@@ -170,6 +191,12 @@ void GPIO_Set(uint8_t GPIO_Port, uint8_t GPIO_Pin){
 	}
 }
 
+/**
+ * @brief Set selected GPIO pin to low state.
+ * 
+ * @param GPIO_Port Target GPIO port.
+ * @param GPIO_Pin Target GPIO pin.
+ */
 void GPIO_Reset(uint8_t GPIO_Port, uint8_t GPIO_Pin){
 	switch (GPIO_Port){
 		case GPIO_A: 
@@ -191,6 +218,12 @@ void GPIO_Reset(uint8_t GPIO_Port, uint8_t GPIO_Pin){
 	}
 }
 
+/**
+ * @brief Toggle the state of selected GPIO pin
+ * 
+ * @param GPIO_Port Target GPIO port.
+ * @param GPIO_Pin Target GPIO pin.
+ */
 void GPIO_Toggle(uint8_t GPIO_Port, uint8_t GPIO_Pin){
     switch (GPIO_Port){
 			case GPIO_A:
@@ -235,7 +268,13 @@ void GPIO_Toggle(uint8_t GPIO_Port, uint8_t GPIO_Pin){
     }
 }
 
-
+/**
+ * @brief Pull selected GPIO pin up or down
+ * 
+ * @param GPIO_Port Target GPIO port.
+ * @param GPIO_Pin Target GPIO pin.
+ * @param pullMode Pull up or down
+ */
 void GPIO_PullUpDown(uint8_t GPIO_Port,uint8_t GPIO_Pin, bool pullMode){
 		switch(GPIO_Port){
 			case GPIO_A:
@@ -255,6 +294,13 @@ void GPIO_PullUpDown(uint8_t GPIO_Port,uint8_t GPIO_Pin, bool pullMode){
 		}
 }
 
+/**
+ * @brief Read state of a GPIO pin
+ * 
+ * @param GPIO_Port Target GPIO port.
+ * @param GPIO_Pin Target GPIO pin.
+ * @return uint8_t State of selected GPIO pin
+ */
 uint8_t GPIO_ReadPin(uint8_t GPIO_Port, uint8_t GPIO_Pin){
 		switch(GPIO_Port){
 			case GPIO_A:

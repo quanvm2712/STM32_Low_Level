@@ -1,6 +1,10 @@
 /**
  * @file Timer.c
- * Timer Hardware Abstraction Layer for STM32F103C8T6.
+ * @author Vo Minh Quan (quanvm198@gmail.com)
+ * @brief Timer Hardware Abstraction Layer for STM32F103C8T6.
+ * @version 0.1
+ * @date 2024-01-24
+ * 
  */
 
 #include "Timer.h"
@@ -410,7 +414,7 @@ void TIM_PWM_Mode(TIM_TypeDef* Timer, uint8_t channel, uint8_t PWM_Mode){
  * @brief Reinitialize timer counter and generate an update event
  * @param Timer	Timer instance
  */
-void PWM_EnableUpdateGeneration(TIM_TypeDef* Timer){
+void TIM_EnableUpdateGeneration(TIM_TypeDef* Timer){
 	Timer->EGR |= (1 << 0);
 }
 
@@ -431,7 +435,7 @@ void PWM_EnableUpdateGeneration(TIM_TypeDef* Timer){
  * 		@arg TIM_Channel_4
  */
 void TIM_PWM_Start(TIM_TypeDef* Timer, uint8_t Channel){
-	PWM_EnableUpdateGeneration(Timer);
+	TIM_EnableUpdateGeneration(Timer);
 	TIM_EnableCCOutput(Timer, Channel);
 	TIM_EnableCounter(Timer);
 }
