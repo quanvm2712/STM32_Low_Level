@@ -97,8 +97,6 @@ int main(void){
     MAX7219_Init(15, DIGIT_0_TO_7, DECODE_MODE_DISABLE);
 
 	//Init Timer 3 channel 3 IO for PWM functionality
-	GPIO_Init(GPIO_B, 0, AFIO_OUTPUT);	
-	//PWM Init and run
 	TIM_PWM_Init(TIM3, TIM_Channel_3, 72, 100, 50);
 	TIM_PWM_Start(TIM3, TIM_Channel_3);
 	
