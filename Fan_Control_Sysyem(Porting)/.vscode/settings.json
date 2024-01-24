@@ -8,7 +8,8 @@
         "gpio.h": "c",
         "max7219.h": "c",
         "spi.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "time.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": false
 }
