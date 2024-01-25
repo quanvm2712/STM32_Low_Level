@@ -13,6 +13,9 @@
  * @brief Enable clock for selected GPIO port
  * 
  * @param GPIO_Port GPIO port
+ * 	@arg GPIO_A
+ * 	@arg GPIO_B
+ * 	@arg GPIO_C
  */
 void GPIO_EnableClock(uint8_t GPIO_Port){
 		RCC->APB2ENR |= (1<<GPIO_Port);
@@ -22,8 +25,14 @@ void GPIO_EnableClock(uint8_t GPIO_Port){
  * @brief Configure a GPIO pin
  * 
  * @param GPIO_Port Target GPIO port
+ * 	@arg GPIO_A
+ * 	@arg GPIO_B
+ * 	@arg GPIO_C
  * @param GPIO_Pin Target GPIO pin
  * @param mode GPIO pin's mode
+ * 	@arg GPIO_OUTPUT
+ * 	@arg GPIO_INPUT
+ * 	@arg AFIO_OUTPUT
  */
 void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 	GPIO_EnableClock(GPIO_Port);  
@@ -38,7 +47,7 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 			if(GPIO_Pin < 8){	
 				uint8_t config_bit = (GPIO_Pin * 4);
 				
-	      if(mode == GPIO_INPUT){
+	      		if(mode == GPIO_INPUT){
 					GPIOA->CRL &= ~((0b1111) << config_bit);
 					GPIOA->CRL |= ((0b1000) << config_bit);
 
@@ -52,13 +61,17 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 					GPIOA->CRL &= ~((0b1111) << config_bit);
 					GPIOA->CRL |= ((0b1010) << config_bit);					
 				}
+				else if(mode == AFIO_OPEN_DRAIN){
+					GPIOA->CRL &= ~((0b1111) << config_bit);
+					GPIOA->CRL |= ((0b1110) << config_bit);						
+				}
 			}
 			
 			// Case 2: GPIO_Pin is 8 or bigger
 			else if ((GPIO_Pin >= 8) & (GPIO_Pin < 16)){
 				uint8_t config_bit = 4 * (GPIO_Pin - 8);
 				
-	      if(mode == GPIO_INPUT){
+	     		if(mode == GPIO_INPUT){
 					GPIOA->CRH &= ~((0b1111) << config_bit);
 					GPIOA->CRH |= ((0b1000) << config_bit);
 
@@ -72,6 +85,10 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 					GPIOA->CRH &= ~((0b1111) << config_bit);
 					GPIOA->CRH |= ((0b1010) << config_bit);					
 				}
+				else if (mode == AFIO_OPEN_DRAIN){
+					GPIOA->CRH &= ~((0b1111) << config_bit);
+					GPIOA->CRH |= ((0b1110) << config_bit);					
+				}
 			}
 			break;
 			
@@ -82,7 +99,7 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 			if(GPIO_Pin < 8){	
 				uint8_t config_bit = (GPIO_Pin * 4);
 				
-	      if(mode == GPIO_INPUT){
+	      		if(mode == GPIO_INPUT){
 					GPIOB->CRL &= ~((0b1111) << config_bit);
 					GPIOB->CRL |= ((0b1000) << config_bit);
 
@@ -96,13 +113,17 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 					GPIOB->CRL &= ~((0b1111) << config_bit);
 					GPIOB->CRL |= ((0b1010) << config_bit);					
 				}
+				else if (mode == AFIO_OPEN_DRAIN){
+					GPIOB->CRL &= ~((0b1111) << config_bit);
+					GPIOB->CRL |= ((0b1110) << config_bit);					
+				}
 			}
 			
 			// Case 2: GPIO_Pin is 8 or bigger
 			else if ((GPIO_Pin >= 8) & (GPIO_Pin < 16)){
 				uint8_t config_bit = 4 * (GPIO_Pin - 8);
 				
-	      if(mode == GPIO_INPUT){
+	      		if(mode == GPIO_INPUT){
 					GPIOB->CRH &= ~((0b1111) << config_bit);
 					GPIOB->CRH |= ((0b1000) << config_bit);
 
@@ -116,6 +137,10 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 					GPIOB->CRH &= ~((0b1111) << config_bit);
 					GPIOB->CRH |= ((0b1010) << config_bit);					
 				}
+				else if (mode == AFIO_OPEN_DRAIN){
+					GPIOB->CRH &= ~((0b1111) << config_bit);
+					GPIOB->CRH |= ((0b1110) << config_bit);					
+				}
 			}
 			break;	
 			
@@ -125,7 +150,7 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 			if(GPIO_Pin < 8){	
 				uint8_t config_bit = (GPIO_Pin * 4);
 				
-	      if(mode == GPIO_INPUT){
+	      		if(mode == GPIO_INPUT){
 					GPIOC->CRL &= ~((0b1111) << config_bit);
 					GPIOC->CRL |= ((0b1000) << config_bit);
 
@@ -139,13 +164,17 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 					GPIOC->CRL &= ~((0b1111) << config_bit);
 					GPIOC->CRL |= ((0b1010) << config_bit);					
 				}
+				else if (mode == AFIO_OPEN_DRAIN){
+					GPIOC->CRL &= ~((0b1111) << config_bit);
+					GPIOC->CRL |= ((0b1110) << config_bit);					
+				}
 			}
 			
 			// Case 2: GPIO_Pin is 8 or bigger
 			else if ((GPIO_Pin >= 8) & (GPIO_Pin < 16)){
 				uint8_t config_bit = 4 * (GPIO_Pin - 8);
 				
-	      if(mode == GPIO_INPUT){
+	      		if(mode == GPIO_INPUT){
 					GPIOC->CRH &= ~((0b1111) << config_bit);
 					GPIOC->CRH |= ((0b1000) << config_bit);
 
@@ -159,6 +188,10 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
 					GPIOC->CRH &= ~((0b1111) << config_bit);
 					GPIOC->CRH |= ((0b1010) << config_bit);					
 				}
+				else if (mode == AFIO_OPEN_DRAIN){
+					GPIOC->CRH &= ~((0b1111) << config_bit);
+					GPIOC->CRH |= ((0b1110) << config_bit);					
+				}
 			}
 			break;
 	}
@@ -168,6 +201,9 @@ void GPIO_Init(uint8_t GPIO_Port, uint8_t GPIO_Pin, uint8_t mode){
  * @brief Set selected GPIO pin to high state.
  * 
  * @param GPIO_Port Target GPIO port.
+ * 	@arg GPIO_A
+ * 	@arg GPIO_B
+ * 	@arg GPIO_C
  * @param GPIO_Pin Target GPIO pin.
  */
 void GPIO_Set(uint8_t GPIO_Port, uint8_t GPIO_Pin){
@@ -195,6 +231,9 @@ void GPIO_Set(uint8_t GPIO_Port, uint8_t GPIO_Pin){
  * @brief Set selected GPIO pin to low state.
  * 
  * @param GPIO_Port Target GPIO port.
+ * 	@arg GPIO_A
+ * 	@arg GPIO_B
+ * 	@arg GPIO_C
  * @param GPIO_Pin Target GPIO pin.
  */
 void GPIO_Reset(uint8_t GPIO_Port, uint8_t GPIO_Pin){
@@ -222,6 +261,9 @@ void GPIO_Reset(uint8_t GPIO_Port, uint8_t GPIO_Pin){
  * @brief Toggle the state of selected GPIO pin
  * 
  * @param GPIO_Port Target GPIO port.
+ * 	@arg GPIO_A
+ * 	@arg GPIO_B
+ * 	@arg GPIO_C
  * @param GPIO_Pin Target GPIO pin.
  */
 void GPIO_Toggle(uint8_t GPIO_Port, uint8_t GPIO_Pin){
@@ -272,8 +314,13 @@ void GPIO_Toggle(uint8_t GPIO_Port, uint8_t GPIO_Pin){
  * @brief Pull selected GPIO pin up or down
  * 
  * @param GPIO_Port Target GPIO port.
+ * 	@arg GPIO_A
+ * 	@arg GPIO_B
+ * 	@arg GPIO_C
  * @param GPIO_Pin Target GPIO pin.
  * @param pullMode Pull up or down
+ * 	@arg GPIO_PIN_PULLDOWN
+ * 	@arg GPIO_PIN_PULLUP
  */
 void GPIO_PullUpDown(uint8_t GPIO_Port,uint8_t GPIO_Pin, bool pullMode){
 		switch(GPIO_Port){
@@ -298,6 +345,9 @@ void GPIO_PullUpDown(uint8_t GPIO_Port,uint8_t GPIO_Pin, bool pullMode){
  * @brief Read state of a GPIO pin
  * 
  * @param GPIO_Port Target GPIO port.
+ * 	@arg GPIO_A
+ * 	@arg GPIO_B
+ * 	@arg GPIO_C
  * @param GPIO_Pin Target GPIO pin.
  * @return uint8_t State of selected GPIO pin
  */

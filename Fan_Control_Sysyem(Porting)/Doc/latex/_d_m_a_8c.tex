@@ -10,7 +10,7 @@ DMA Hardware Abstraction Layer for STM32\+F103\+C8\+T6.
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{_d_m_a_8c_a291071e91d73466b5ea1d9b95eed6b74}{DMA\+\_\+\+Enable\+Clock}} (DMA\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Instance)
-\begin{DoxyCompactList}\small\item\em Enable clock for DMA peripheral. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Enable clock for DMA peripheral (Since STM32 only have 1 DMA controller, DMA1 should be selected) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_d_m_a_8c_a1ae2ca259963a6729405afe1de8aaf97}{DMA\+\_\+\+Set\+Peripheral\+Address}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint32\+\_\+t Peripheral\+Address)
 \begin{DoxyCompactList}\small\item\em Load address of peripheral\textquotesingle{}s register for data transferring. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_d_m_a_8c_a7b4a5b1e5700c4619eadc4f191629491}{DMA\+\_\+\+Set\+Memory\+Address}} (DMA\+\_\+\+Channel\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}DMA\+\_\+\+Channel, uint32\+\_\+t Memory\+Address)
@@ -67,7 +67,9 @@ Enable selected DMA channel.
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
 \end{DoxyParams}
 \Hypertarget{_d_m_a_8c_a291071e91d73466b5ea1d9b95eed6b74}\label{_d_m_a_8c_a291071e91d73466b5ea1d9b95eed6b74} 
@@ -78,11 +80,13 @@ Enable selected DMA channel.
 
 
 
-Enable clock for DMA peripheral. 
+Enable clock for DMA peripheral (Since STM32 only have 1 DMA controller, DMA1 should be selected) 
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Instance} & Target DMA channel \\
+{\em DMA\+\_\+\+Instance} & Target DMA channel \begin{DoxyItemize}
+\item DMA1 \end{DoxyItemize}
+\\
 \hline
 \end{DoxyParams}
 \Hypertarget{_d_m_a_8c_a26a185434e84578f22e810f88560b62a}\label{_d_m_a_8c_a26a185434e84578f22e810f88560b62a} 
@@ -97,15 +101,25 @@ Initialize DMA for data transferring (By default incremented mode is enabled on 
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMAx} & DMA\+\_\+\+Instance \\
+{\em DMAx} & DMA\+\_\+\+Instance \begin{DoxyItemize}
+\item DMA1 \end{DoxyItemize}
+\\
 \hline
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
-{\em Direction} & Data transferring direction \\
+{\em Direction} & Data transferring direction \begin{DoxyItemize}
+\item DMA\+\_\+\+Peripheral\+To\+Memory \item DMA\+\_\+\+Memory\+To\+Peripheral \end{DoxyItemize}
+\\
 \hline
-{\em Priority} & DMA Channel priority \\
+{\em Priority} & DMA Channel priority \begin{DoxyItemize}
+\item DMA\+\_\+\+PRIORITY\+\_\+\+LOW \item DMA\+\_\+\+PRIORITY\+\_\+\+MEDIUM \item DMA\+\_\+\+PRIORITY\+\_\+\+HIGH \item DMA\+\_\+\+PRIORITY\+\_\+\+VERY HIGH \end{DoxyItemize}
+\\
 \hline
-{\em Circular\+Mode} & Circular mode on or off \\
+{\em Circular\+Mode} & Circular mode on or off \begin{DoxyItemize}
+\item DMA\+\_\+\+CIRCULARMODE\+\_\+\+DISABLE \item DMA\+\_\+\+CIRCULARMODE\+\_\+\+ENABLE \end{DoxyItemize}
+\\
 \hline
 \end{DoxyParams}
 \Hypertarget{_d_m_a_8c_a05ec6aaf84658728ba668ff28e36b29a}\label{_d_m_a_8c_a05ec6aaf84658728ba668ff28e36b29a} 
@@ -120,9 +134,13 @@ Set DMA channel priority.
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
-{\em Priority} & DMA Channel priority \\
+{\em Priority} & DMA Channel priority \begin{DoxyItemize}
+\item DMA\+\_\+\+PRIORITY\+\_\+\+LOW \item DMA\+\_\+\+PRIORITY\+\_\+\+MEDIUM \item DMA\+\_\+\+PRIORITY\+\_\+\+HIGH \item DMA\+\_\+\+PRIORITY\+\_\+\+VERY HIGH \end{DoxyItemize}
+\\
 \hline
 \end{DoxyParams}
 \Hypertarget{_d_m_a_8c_ad5acb988fe12a0400282a61dde01c66f}\label{_d_m_a_8c_ad5acb988fe12a0400282a61dde01c66f} 
@@ -137,9 +155,13 @@ Enable or disable DMA Circular Mode.
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
-{\em is\+Enabled} & Circular mode on or off \\
+{\em is\+Enabled} & Circular mode on or off \begin{DoxyItemize}
+\item DMA\+\_\+\+CIRCULARMODE\+\_\+\+DISABLE \item DMA\+\_\+\+CIRCULARMODE\+\_\+\+ENABLE \end{DoxyItemize}
+\\
 \hline
 \end{DoxyParams}
 \Hypertarget{_d_m_a_8c_ad973f1a0a7ae9f13d528f5027a88e84d}\label{_d_m_a_8c_ad973f1a0a7ae9f13d528f5027a88e84d} 
@@ -154,9 +176,13 @@ Configure direction of DMA channel (MEMORY-\/\+PERIPHERAL or PERIPHERAL-\/\+MEMO
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
-{\em Direction} & Data transferring direction \\
+{\em Direction} & Data transferring direction \begin{DoxyItemize}
+\item DMA\+\_\+\+Peripheral\+To\+Memory \item DMA\+\_\+\+Memory\+To\+Peripheral \end{DoxyItemize}
+\\
 \hline
 \end{DoxyParams}
 \Hypertarget{_d_m_a_8c_a674e06e150f1dd0f48a541d723ea79da}\label{_d_m_a_8c_a674e06e150f1dd0f48a541d723ea79da} 
@@ -171,11 +197,17 @@ Configure Incremented mode for memory or peripheral.
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
-{\em source} & Target to be configured \\
+{\em source} & Target to be configured \begin{DoxyItemize}
+\item DMA\+\_\+\+SOURCE\+\_\+\+PERIPHERAL \item DMA\+\_\+\+SOURCE\+\_\+\+MEMORY \end{DoxyItemize}
+\\
 \hline
-{\em is\+Enabled} & Enable or disable \\
+{\em is\+Enabled} & Enable or disable \begin{DoxyItemize}
+\item DMA\+\_\+\+INCREMENTED\+\_\+\+DISABLE \item DMA\+\_\+\+INCREMENTED\+\_\+\+ENABLE \end{DoxyItemize}
+\\
 \hline
 \end{DoxyParams}
 \Hypertarget{_d_m_a_8c_a7b4a5b1e5700c4619eadc4f191629491}\label{_d_m_a_8c_a7b4a5b1e5700c4619eadc4f191629491} 
@@ -190,7 +222,9 @@ Load address of memory region used for data transferring.
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
 {\em Memory\+Address} & Address of memory region used for data transferring \\
 \hline
@@ -207,7 +241,9 @@ Configure size of memory address.
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
 {\em Mem\+Size} & Size of memory address \\
 \hline
@@ -224,7 +260,9 @@ Set number of data (in bytes) that will be transferred.
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
 {\em Number\+Of\+Data} & Number of bytes which will be transferred \\
 \hline
@@ -241,7 +279,9 @@ Load address of peripheral\textquotesingle{}s register for data transferring.
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
 {\em Peripheral\+Address} & Address of peripheral register \\
 \hline
@@ -258,7 +298,9 @@ Configure size of peripheral\textquotesingle{}s register.
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
 {\em Peripheral\+Size} & Size of peripheral register \\
 \hline
@@ -275,7 +317,9 @@ Configure information about source, destination and size of data to be transferr
 
 
 \begin{DoxyParams}{Parameters}
-{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \\
+{\em DMA\+\_\+\+Channel} & DMA channel which includes the peripheral \begin{DoxyItemize}
+\item DMA1\+\_\+\+Channel1 \item DMA1\+\_\+\+Channel2 \item DMA1\+\_\+\+Channel3 \item DMA1\+\_\+\+Channel4 \item DMA1\+\_\+\+Channel5 \item DMA1\+\_\+\+Channel6 \item DMA1\+\_\+\+Channel7 \end{DoxyItemize}
+\\
 \hline
 {\em memory\+Address} & Address of memory region used for data transferring \\
 \hline

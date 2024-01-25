@@ -1,0 +1,307 @@
+\doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+Sysyem(Porting)/\+Source/\+F103\+\_\+\+Library/\+SPI.c File Reference}
+\hypertarget{_s_p_i_8c}{}\label{_s_p_i_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/SPI.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_Sysyem(Porting)/Source/F103\_Library/SPI.c}}
+
+
+SPI Hardware Abstraction Layer for STM32\+F103\+C8\+T6.  
+
+
+{\ttfamily \#include "{}SPI.\+h"{}}\newline
+{\ttfamily \#include "{}DMA.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_s_p_i_8c_ad6c9c6502f911e2d12210c3df9582420}{SPI\+\_\+\+Enable\+Clock}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx)
+\begin{DoxyCompactList}\small\item\em Enable clock for selected SPI instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_a06ce98957ca342ef3b61e5c37a20783f}{SPI\+\_\+\+Set\+Clock\+Phase}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx, uint8\+\_\+t Clock\+Phase)
+\begin{DoxyCompactList}\small\item\em Configure SPI clock line\textquotesingle{}s edge to be used for data sampling. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_a75483365f1237e16ec4b6dafc46ccc4b}{SPI\+\_\+\+Set\+Clock\+Polarity}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx, uint8\+\_\+t Clock\+Polarity)
+\begin{DoxyCompactList}\small\item\em Configure SPI clock\textquotesingle{}s logic level at idle state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_a0a2e5697d855d508c9c0dee05cdd3d3d}{SPI\+\_\+\+Set\+Master\+Slave}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx, uint8\+\_\+t Mode)
+\begin{DoxyCompactList}\small\item\em Configure selected SPI as slave or master. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_ad6f9f5290cfe6856eb2b633a0a6933a8}{SPI\+\_\+\+Set\+Source\+Clock}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx)
+\begin{DoxyCompactList}\small\item\em Configure selected SPI instance with 9Mb/s baudrate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_a2d860a76f454f4631adca7843f047b59}{SPI\+\_\+\+Enable}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx)
+\begin{DoxyCompactList}\small\item\em Enable selected SPI instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_a8cdb23f65a9244d9549be7697cf971f7}{SPI\+\_\+\+Disable}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx)
+\begin{DoxyCompactList}\small\item\em Disable selected SPI instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_a76d30b128c2b158a2613addeba19fda4}{SPI\+\_\+\+Software\+Slave\+Select\+\_\+\+Enable}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx)
+\begin{DoxyCompactList}\small\item\em Enable software slave select for target SPI instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_a8ff42236ba7e865a53e55a4dcedfbd8f}{SPI\+\_\+\+Set\+Frame\+Format}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx, uint8\+\_\+t Format)
+\begin{DoxyCompactList}\small\item\em Configure data format for SPI data transfer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_aa5f512db186aeba1489498394a85e482}{SPI\+\_\+\+Init}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx, uint8\+\_\+t SPI\+\_\+\+Mode)
+\begin{DoxyCompactList}\small\item\em Inititalize selected SPI instance. By default, SPI is configured to be low polarity, 1st-\/clock phase capture, 9Mb/s baudrate, MSBFirst and software slave select is enabled. \end{DoxyCompactList}\item 
+\Hypertarget{_s_p_i_8c_ad2084534d4ee7d998e3c6fabdadff98c}\label{_s_p_i_8c_ad2084534d4ee7d998e3c6fabdadff98c} 
+void {\bfseries SPI\+\_\+\+Set\+Transmit\+Only\+Mode} (void)
+\begin{DoxyCompactList}\small\item\em Configure selected SPI instance to be used in Transmit only mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_abb87df6c8d54bd9e75efb68b69d509c2}{SPI\+\_\+\+IO\+\_\+\+Init}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx)
+\begin{DoxyCompactList}\small\item\em Configure IO pins for SPI functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_a29fb790e4b342e3eb01fe807c9fc61f0}{SPI\+\_\+\+Transmit}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint8\+\_\+t data\+Size)
+\begin{DoxyCompactList}\small\item\em Transmit data through SPI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_s_p_i_8c_a2266be52a06b152fdbd039e232356cda}{SPI\+\_\+\+Transmit\+\_\+\+DMA}} (SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}SPIx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint8\+\_\+t data\+Size)
+\begin{DoxyCompactList}\small\item\em Transmit data through SPI using DMA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+SPI Hardware Abstraction Layer for STM32\+F103\+C8\+T6. 
+
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan (\href{mailto:quanvm198@gmail.com}{\texttt{ quanvm198@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/01-\/25 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_s_p_i_8c_a8cdb23f65a9244d9549be7697cf971f7}\label{_s_p_i_8c_a8cdb23f65a9244d9549be7697cf971f7} 
+\index{SPI.c@{SPI.c}!SPI\_Disable@{SPI\_Disable}}
+\index{SPI\_Disable@{SPI\_Disable}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_Disable()}{SPI\_Disable()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Disable (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx }\end{DoxyParamCaption})}
+
+
+
+Disable selected SPI instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_a2d860a76f454f4631adca7843f047b59}\label{_s_p_i_8c_a2d860a76f454f4631adca7843f047b59} 
+\index{SPI.c@{SPI.c}!SPI\_Enable@{SPI\_Enable}}
+\index{SPI\_Enable@{SPI\_Enable}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_Enable()}{SPI\_Enable()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Enable (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx }\end{DoxyParamCaption})}
+
+
+
+Enable selected SPI instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_ad6c9c6502f911e2d12210c3df9582420}\label{_s_p_i_8c_ad6c9c6502f911e2d12210c3df9582420} 
+\index{SPI.c@{SPI.c}!SPI\_EnableClock@{SPI\_EnableClock}}
+\index{SPI\_EnableClock@{SPI\_EnableClock}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_EnableClock()}{SPI\_EnableClock()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Enable\+Clock (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx }\end{DoxyParamCaption})}
+
+
+
+Enable clock for selected SPI instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_aa5f512db186aeba1489498394a85e482}\label{_s_p_i_8c_aa5f512db186aeba1489498394a85e482} 
+\index{SPI.c@{SPI.c}!SPI\_Init@{SPI\_Init}}
+\index{SPI\_Init@{SPI\_Init}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_Init()}{SPI\_Init()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Init (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx,  }\item[{uint8\+\_\+t}]{SPI\+\_\+\+Mode }\end{DoxyParamCaption})}
+
+
+
+Inititalize selected SPI instance. By default, SPI is configured to be low polarity, 1st-\/clock phase capture, 9Mb/s baudrate, MSBFirst and software slave select is enabled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+{\em SPI\+\_\+\+Mode} & SPI as slave or master \begin{DoxyItemize}
+\item SPI\+\_\+\+Slave\+Mode \item SPI\+\_\+\+Master\+Mode \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_abb87df6c8d54bd9e75efb68b69d509c2}\label{_s_p_i_8c_abb87df6c8d54bd9e75efb68b69d509c2} 
+\index{SPI.c@{SPI.c}!SPI\_IO\_Init@{SPI\_IO\_Init}}
+\index{SPI\_IO\_Init@{SPI\_IO\_Init}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_IO\_Init()}{SPI\_IO\_Init()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+IO\+\_\+\+Init (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx }\end{DoxyParamCaption})}
+
+
+
+Configure IO pins for SPI functionality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_a06ce98957ca342ef3b61e5c37a20783f}\label{_s_p_i_8c_a06ce98957ca342ef3b61e5c37a20783f} 
+\index{SPI.c@{SPI.c}!SPI\_SetClockPhase@{SPI\_SetClockPhase}}
+\index{SPI\_SetClockPhase@{SPI\_SetClockPhase}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_SetClockPhase()}{SPI\_SetClockPhase()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Set\+Clock\+Phase (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx,  }\item[{uint8\+\_\+t}]{Clock\+Phase }\end{DoxyParamCaption})}
+
+
+
+Configure SPI clock line\textquotesingle{}s edge to be used for data sampling. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+{\em Clock\+Phase} & Edge used for data sampling \begin{DoxyItemize}
+\item SPI\+\_\+\+Clock\+Phase\+\_\+1st \item SPI\+\_\+\+Clock\+Phase\+\_\+2nd \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_a75483365f1237e16ec4b6dafc46ccc4b}\label{_s_p_i_8c_a75483365f1237e16ec4b6dafc46ccc4b} 
+\index{SPI.c@{SPI.c}!SPI\_SetClockPolarity@{SPI\_SetClockPolarity}}
+\index{SPI\_SetClockPolarity@{SPI\_SetClockPolarity}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_SetClockPolarity()}{SPI\_SetClockPolarity()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Set\+Clock\+Polarity (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx,  }\item[{uint8\+\_\+t}]{Clock\+Polarity }\end{DoxyParamCaption})}
+
+
+
+Configure SPI clock\textquotesingle{}s logic level at idle state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+{\em Clock\+Polarity} & Logic level at idle state \begin{DoxyItemize}
+\item SPI\+\_\+\+Polarity\+\_\+\+LOW \item SPI\+\_\+\+Polarity\+\_\+\+HIGH \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_a8ff42236ba7e865a53e55a4dcedfbd8f}\label{_s_p_i_8c_a8ff42236ba7e865a53e55a4dcedfbd8f} 
+\index{SPI.c@{SPI.c}!SPI\_SetFrameFormat@{SPI\_SetFrameFormat}}
+\index{SPI\_SetFrameFormat@{SPI\_SetFrameFormat}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_SetFrameFormat()}{SPI\_SetFrameFormat()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Set\+Frame\+Format (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx,  }\item[{uint8\+\_\+t}]{Format }\end{DoxyParamCaption})}
+
+
+
+Configure data format for SPI data transfer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+{\em Format} & MSBFirst or LSBFirst \begin{DoxyItemize}
+\item SPI\+\_\+\+MSBFirst \item SPI\+\_\+\+LSBFirst \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_a0a2e5697d855d508c9c0dee05cdd3d3d}\label{_s_p_i_8c_a0a2e5697d855d508c9c0dee05cdd3d3d} 
+\index{SPI.c@{SPI.c}!SPI\_SetMasterSlave@{SPI\_SetMasterSlave}}
+\index{SPI\_SetMasterSlave@{SPI\_SetMasterSlave}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_SetMasterSlave()}{SPI\_SetMasterSlave()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Set\+Master\+Slave (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx,  }\item[{uint8\+\_\+t}]{Mode }\end{DoxyParamCaption})}
+
+
+
+Configure selected SPI as slave or master. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+{\em Mode} & Master or slave mode \begin{DoxyItemize}
+\item SPI\+\_\+\+Slave\+Mode \item SPI\+\_\+\+Master\+Mode \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_ad6f9f5290cfe6856eb2b633a0a6933a8}\label{_s_p_i_8c_ad6f9f5290cfe6856eb2b633a0a6933a8} 
+\index{SPI.c@{SPI.c}!SPI\_SetSourceClock@{SPI\_SetSourceClock}}
+\index{SPI\_SetSourceClock@{SPI\_SetSourceClock}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_SetSourceClock()}{SPI\_SetSourceClock()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Set\+Source\+Clock (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx }\end{DoxyParamCaption})}
+
+
+
+Configure selected SPI instance with 9Mb/s baudrate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI Instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_a76d30b128c2b158a2613addeba19fda4}\label{_s_p_i_8c_a76d30b128c2b158a2613addeba19fda4} 
+\index{SPI.c@{SPI.c}!SPI\_SoftwareSlaveSelect\_Enable@{SPI\_SoftwareSlaveSelect\_Enable}}
+\index{SPI\_SoftwareSlaveSelect\_Enable@{SPI\_SoftwareSlaveSelect\_Enable}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_SoftwareSlaveSelect\_Enable()}{SPI\_SoftwareSlaveSelect\_Enable()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Software\+Slave\+Select\+\_\+\+Enable (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx }\end{DoxyParamCaption})}
+
+
+
+Enable software slave select for target SPI instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_a29fb790e4b342e3eb01fe807c9fc61f0}\label{_s_p_i_8c_a29fb790e4b342e3eb01fe807c9fc61f0} 
+\index{SPI.c@{SPI.c}!SPI\_Transmit@{SPI\_Transmit}}
+\index{SPI\_Transmit@{SPI\_Transmit}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_Transmit()}{SPI\_Transmit()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Transmit (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data,  }\item[{uint8\+\_\+t}]{data\+Size }\end{DoxyParamCaption})}
+
+
+
+Transmit data through SPI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+{\em data} & Data to be transmitted \\
+\hline
+{\em data\+Size} & size of data (in bytes) to be transmitted \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_s_p_i_8c_a2266be52a06b152fdbd039e232356cda}\label{_s_p_i_8c_a2266be52a06b152fdbd039e232356cda} 
+\index{SPI.c@{SPI.c}!SPI\_Transmit\_DMA@{SPI\_Transmit\_DMA}}
+\index{SPI\_Transmit\_DMA@{SPI\_Transmit\_DMA}!SPI.c@{SPI.c}}
+\doxysubsubsection{\texorpdfstring{SPI\_Transmit\_DMA()}{SPI\_Transmit\_DMA()}}
+{\footnotesize\ttfamily void SPI\+\_\+\+Transmit\+\_\+\+DMA (\begin{DoxyParamCaption}\item[{SPI\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{SPIx,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data,  }\item[{uint8\+\_\+t}]{data\+Size }\end{DoxyParamCaption})}
+
+
+
+Transmit data through SPI using DMA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPIx} & SPI instance. \begin{DoxyItemize}
+\item SPI1 \item SPI2 \end{DoxyItemize}
+\\
+\hline
+{\em data} & Data to be transmitted. \\
+\hline
+{\em data\+Size} & Size of data (in bytes) to be transmitted. \\
+\hline
+\end{DoxyParams}

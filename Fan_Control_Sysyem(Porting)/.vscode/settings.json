@@ -10,7 +10,8 @@
         "spi.h": "c",
         "string.h": "c",
         "time.h": "c",
-        "timer.h": "c"
+        "timer.h": "c",
+        "i2c.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": false
 }

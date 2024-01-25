@@ -104,7 +104,7 @@ $(function(){initNavTree('_d_m_a_8c.html',''); initResizable(); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a291071e91d73466b5ea1d9b95eed6b74" id="r_a291071e91d73466b5ea1d9b95eed6b74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a291071e91d73466b5ea1d9b95eed6b74">DMA_EnableClock</a> (DMA_TypeDef *DMA_Instance)</td></tr>
-<tr class="memdesc:a291071e91d73466b5ea1d9b95eed6b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable clock for DMA peripheral.  <br /></td></tr>
+<tr class="memdesc:a291071e91d73466b5ea1d9b95eed6b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable clock for DMA peripheral (Since STM32 only have 1 DMA controller, DMA1 should be selected)  <br /></td></tr>
 <tr class="separator:a291071e91d73466b5ea1d9b95eed6b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ae2ca259963a6729405afe1de8aaf97" id="r_a1ae2ca259963a6729405afe1de8aaf97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ae2ca259963a6729405afe1de8aaf97">DMA_SetPeripheralAddress</a> (DMA_Channel_TypeDef *DMA_Channel, uint32_t PeripheralAddress)</td></tr>
 <tr class="memdesc:a1ae2ca259963a6729405afe1de8aaf97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load address of peripheral's register for data transferring.  <br /></td></tr>
@@ -168,7 +168,16 @@ Functions</h2></td></tr>
 <p>Enable selected DMA channel. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -190,10 +199,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Enable clock for DMA peripheral. </p>
+<p>Enable clock for DMA peripheral (Since STM32 only have 1 DMA controller, DMA1 should be selected) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Instance</td><td>Target DMA channel </td></tr>
+    <tr><td class="paramname">DMA_Instance</td><td>Target DMA channel <ul>
+<li>DMA1 </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -237,11 +249,37 @@ Functions</h2></td></tr>
 <p>Initialize DMA for data transferring (By default incremented mode is enabled on memory address and disabled on peripheral register) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMAx</td><td>DMA_Instance </td></tr>
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
-    <tr><td class="paramname">Direction</td><td>Data transferring direction </td></tr>
-    <tr><td class="paramname">Priority</td><td>DMA Channel priority </td></tr>
-    <tr><td class="paramname">CircularMode</td><td>Circular mode on or off </td></tr>
+    <tr><td class="paramname">DMAx</td><td>DMA_Instance <ul>
+<li>DMA1 </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">Direction</td><td>Data transferring direction <ul>
+<li>DMA_PeripheralToMemory </li>
+<li>DMA_MemoryToPeripheral </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">Priority</td><td>DMA Channel priority <ul>
+<li>DMA_PRIORITY_LOW </li>
+<li>DMA_PRIORITY_MEDIUM </li>
+<li>DMA_PRIORITY_HIGH </li>
+<li>DMA_PRIORITY_VERY HIGH </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">CircularMode</td><td>Circular mode on or off <ul>
+<li>DMA_CIRCULARMODE_DISABLE </li>
+<li>DMA_CIRCULARMODE_ENABLE </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -270,8 +308,23 @@ Functions</h2></td></tr>
 <p>Set DMA channel priority. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
-    <tr><td class="paramname">Priority</td><td>DMA Channel priority </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">Priority</td><td>DMA Channel priority <ul>
+<li>DMA_PRIORITY_LOW </li>
+<li>DMA_PRIORITY_MEDIUM </li>
+<li>DMA_PRIORITY_HIGH </li>
+<li>DMA_PRIORITY_VERY HIGH </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -300,8 +353,21 @@ Functions</h2></td></tr>
 <p>Enable or disable DMA Circular Mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
-    <tr><td class="paramname">isEnabled</td><td>Circular mode on or off </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">isEnabled</td><td>Circular mode on or off <ul>
+<li>DMA_CIRCULARMODE_DISABLE </li>
+<li>DMA_CIRCULARMODE_ENABLE </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -330,8 +396,21 @@ Functions</h2></td></tr>
 <p>Configure direction of DMA channel (MEMORY-PERIPHERAL or PERIPHERAL-MEMORY) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
-    <tr><td class="paramname">Direction</td><td>Data transferring direction </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">Direction</td><td>Data transferring direction <ul>
+<li>DMA_PeripheralToMemory </li>
+<li>DMA_MemoryToPeripheral </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -365,9 +444,26 @@ Functions</h2></td></tr>
 <p>Configure Incremented mode for memory or peripheral. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
-    <tr><td class="paramname">source</td><td>Target to be configured </td></tr>
-    <tr><td class="paramname">isEnabled</td><td>Enable or disable </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">source</td><td>Target to be configured <ul>
+<li>DMA_SOURCE_PERIPHERAL </li>
+<li>DMA_SOURCE_MEMORY </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">isEnabled</td><td>Enable or disable <ul>
+<li>DMA_INCREMENTED_DISABLE </li>
+<li>DMA_INCREMENTED_ENABLE </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -396,7 +492,16 @@ Functions</h2></td></tr>
 <p>Load address of memory region used for data transferring. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">MemoryAddress</td><td>Address of memory region used for data transferring </td></tr>
   </table>
   </dd>
@@ -426,7 +531,16 @@ Functions</h2></td></tr>
 <p>Configure size of memory address. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">MemSize</td><td>Size of memory address </td></tr>
   </table>
   </dd>
@@ -456,7 +570,16 @@ Functions</h2></td></tr>
 <p>Set number of data (in bytes) that will be transferred. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">NumberOfData</td><td>Number of bytes which will be transferred </td></tr>
   </table>
   </dd>
@@ -486,7 +609,16 @@ Functions</h2></td></tr>
 <p>Load address of peripheral's register for data transferring. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">PeripheralAddress</td><td>Address of peripheral register </td></tr>
   </table>
   </dd>
@@ -516,7 +648,16 @@ Functions</h2></td></tr>
 <p>Configure size of peripheral's register. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">PeripheralSize</td><td>Size of peripheral register </td></tr>
   </table>
   </dd>
@@ -556,7 +697,16 @@ Functions</h2></td></tr>
 <p>Configure information about source, destination and size of data to be transferred. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral </td></tr>
+    <tr><td class="paramname">DMA_Channel</td><td>DMA channel which includes the peripheral <ul>
+<li>DMA1_Channel1 </li>
+<li>DMA1_Channel2 </li>
+<li>DMA1_Channel3 </li>
+<li>DMA1_Channel4 </li>
+<li>DMA1_Channel5 </li>
+<li>DMA1_Channel6 </li>
+<li>DMA1_Channel7 </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">memoryAddress</td><td>Address of memory region used for data transferring </td></tr>
     <tr><td class="paramname">peripheralAddress</td><td>Address of peripheral register </td></tr>
     <tr><td class="paramname">size</td><td>Number of bytes which will be transferred </td></tr>

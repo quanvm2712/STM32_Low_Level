@@ -11,9 +11,10 @@
 #include "DMA.h"
 
 /**
- * @brief Enable clock for DMA peripheral
+ * @brief Enable clock for DMA peripheral (Since STM32 only have 1 DMA controller, DMA1 should be selected)
  * 
  * @param DMA_Instance Target DMA channel
+ * 	@arg DMA1
  */
 void DMA_EnableClock(DMA_TypeDef* DMA_Instance){
 	if(DMA_Instance == DMA1){
@@ -28,6 +29,13 @@ void DMA_EnableClock(DMA_TypeDef* DMA_Instance){
  * @brief Load address of peripheral's register for data transferring
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param PeripheralAddress Address of peripheral register
  */
 void DMA_SetPeripheralAddress(DMA_Channel_TypeDef* DMA_Channel, uint32_t PeripheralAddress){
@@ -38,6 +46,13 @@ void DMA_SetPeripheralAddress(DMA_Channel_TypeDef* DMA_Channel, uint32_t Periphe
  * @brief Load address of memory region used for data transferring
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param MemoryAddress Address of memory region used for data transferring
  */
 void DMA_SetMemoryAddress(DMA_Channel_TypeDef* DMA_Channel, uint32_t MemoryAddress){
@@ -48,6 +63,13 @@ void DMA_SetMemoryAddress(DMA_Channel_TypeDef* DMA_Channel, uint32_t MemoryAddre
  * @brief Set number of data (in bytes) that will be transferred
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param NumberOfData Number of bytes which will be transferred
  */
 void DMA_SetNumberOfData(DMA_Channel_TypeDef* DMA_Channel, uint16_t NumberOfData){
@@ -61,7 +83,18 @@ void DMA_SetNumberOfData(DMA_Channel_TypeDef* DMA_Channel, uint16_t NumberOfData
  * @brief Set DMA channel priority
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param Priority DMA Channel priority
+ * 	@arg DMA_PRIORITY_LOW
+ * 	@arg DMA_PRIORITY_MEDIUM
+ * 	@arg DMA_PRIORITY_HIGH
+ * 	@arg DMA_PRIORITY_VERY HIGH
  */
 void DMA_SetChannelPriority(DMA_Channel_TypeDef* DMA_Channel, uint8_t Priority){
 	DMA_Channel->CCR &= ~(0b11 << 12); //Reset bits
@@ -72,7 +105,16 @@ void DMA_SetChannelPriority(DMA_Channel_TypeDef* DMA_Channel, uint8_t Priority){
  * @brief Configure direction of DMA channel (MEMORY-PERIPHERAL or PERIPHERAL-MEMORY)
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param Direction Data transferring direction
+ * 	@arg DMA_PeripheralToMemory
+ * 	@arg DMA_MemoryToPeripheral
  */
 void DMA_SetDirection(DMA_Channel_TypeDef* DMA_Channel, uint8_t Direction){
 	DMA_Channel->CCR &= ~(1 << 4);  //Reset bit
@@ -83,7 +125,16 @@ void DMA_SetDirection(DMA_Channel_TypeDef* DMA_Channel, uint8_t Direction){
  * @brief Enable or disable DMA Circular Mode 
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param isEnabled Circular mode on or off
+ * 	@arg DMA_CIRCULARMODE_DISABLE
+ * 	@arg DMA_CIRCULARMODE_ENABLE
  */
 void DMA_SetCircularMode(DMA_Channel_TypeDef* DMA_Channel, _Bool isEnabled){
 	DMA_Channel->CCR &= ~(1 << 5);	//Reset bit
@@ -94,8 +145,19 @@ void DMA_SetCircularMode(DMA_Channel_TypeDef* DMA_Channel, _Bool isEnabled){
  * @brief Configure Incremented mode for memory or peripheral
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param source Target to be configured
+ * 	@arg DMA_SOURCE_PERIPHERAL
+ * 	@arg DMA_SOURCE_MEMORY
  * @param isEnabled Enable or disable
+ * 	@arg DMA_INCREMENTED_DISABLE
+ * 	@arg DMA_INCREMENTED_ENABLE
  */
 void DMA_SetIncrementedMode(DMA_Channel_TypeDef* DMA_Channel, _Bool source, _Bool isEnabled){
 	if(source == DMA_SOURCE_MEMORY){
@@ -112,6 +174,13 @@ void DMA_SetIncrementedMode(DMA_Channel_TypeDef* DMA_Channel, _Bool source, _Boo
  * @brief Configure size of memory address
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param MemSize Size of memory address
  */
 void DMA_SetMemorySize(DMA_Channel_TypeDef* DMA_Channel, uint8_t MemSize){
@@ -123,6 +192,13 @@ void DMA_SetMemorySize(DMA_Channel_TypeDef* DMA_Channel, uint8_t MemSize){
  * @brief Configure size of peripheral's register
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param PeripheralSize Size of peripheral register
  */
 void DMA_SetPeripheralSize(DMA_Channel_TypeDef* DMA_Channel, uint8_t PeripheralSize){
@@ -134,10 +210,26 @@ void DMA_SetPeripheralSize(DMA_Channel_TypeDef* DMA_Channel, uint8_t PeripheralS
  * @brief Initialize DMA for data transferring (By default incremented mode is enabled on memory address and disabled on peripheral register)
  * 
  * @param DMAx DMA_Instance
+ * 	@arg DMA1
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param Direction Data transferring direction
+ * 	@arg DMA_PeripheralToMemory
+ * 	@arg DMA_MemoryToPeripheral
  * @param Priority DMA Channel priority
+ * 	@arg DMA_PRIORITY_LOW
+ * 	@arg DMA_PRIORITY_MEDIUM
+ * 	@arg DMA_PRIORITY_HIGH
+ * 	@arg DMA_PRIORITY_VERY HIGH
  * @param CircularMode Circular mode on or off
+ * 	@arg DMA_CIRCULARMODE_DISABLE
+ * 	@arg DMA_CIRCULARMODE_ENABLE
  */
 void DMA_Init(DMA_TypeDef* DMAx, DMA_Channel_TypeDef* DMA_Channel, uint8_t Direction, uint8_t Priority, _Bool CircularMode){
 	DMA_EnableClock(DMAx);
@@ -155,6 +247,13 @@ void DMA_Init(DMA_TypeDef* DMAx, DMA_Channel_TypeDef* DMA_Channel, uint8_t Direc
  * @brief Configure information about source, destination and size of data to be transferred
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  * @param memoryAddress Address of memory region used for data transferring
  * @param peripheralAddress Address of peripheral register 
  * @param size Number of bytes which will be transferred
@@ -171,6 +270,13 @@ void DMA_SetTransactionInfo(DMA_Channel_TypeDef* DMA_Channel, uint32_t memoryAdd
  * @brief Enable selected DMA channel
  * 
  * @param DMA_Channel DMA channel which includes the peripheral
+ * 	@arg DMA1_Channel1
+ * 	@arg DMA1_Channel2
+ * 	@arg DMA1_Channel3
+ * 	@arg DMA1_Channel4
+ * 	@arg DMA1_Channel5
+ * 	@arg DMA1_Channel6
+ * 	@arg DMA1_Channel7
  */
 void DMA_Enable(DMA_Channel_TypeDef* DMA_Channel){
 	DMA_Channel->CCR |= (1 << 0);

@@ -149,7 +149,12 @@ Functions</h2></td></tr>
 <p>Enable clock for selected GPIO port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">GPIO_Port</td><td>GPIO port </td></tr>
+    <tr><td class="paramname">GPIO_Port</td><td>GPIO port <ul>
+<li>GPIO_A </li>
+<li>GPIO_B </li>
+<li>GPIO_C </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -183,9 +188,19 @@ Functions</h2></td></tr>
 <p>Configure a GPIO pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port </td></tr>
+    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port <ul>
+<li>GPIO_A </li>
+<li>GPIO_B </li>
+<li>GPIO_C </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">GPIO_Pin</td><td>Target GPIO pin </td></tr>
-    <tr><td class="paramname">mode</td><td>GPIO pin's mode </td></tr>
+    <tr><td class="paramname">mode</td><td>GPIO pin's mode <ul>
+<li>GPIO_OUTPUT </li>
+<li>GPIO_INPUT </li>
+<li>AFIO_OUTPUT </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -219,9 +234,18 @@ Functions</h2></td></tr>
 <p>Pull selected GPIO pin up or down. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. </td></tr>
+    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. <ul>
+<li>GPIO_A </li>
+<li>GPIO_B </li>
+<li>GPIO_C </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">GPIO_Pin</td><td>Target GPIO pin. </td></tr>
-    <tr><td class="paramname">pullMode</td><td>Pull up or down </td></tr>
+    <tr><td class="paramname">pullMode</td><td>Pull up or down <ul>
+<li>GPIO_PIN_PULLDOWN </li>
+<li>GPIO_PIN_PULLUP </li>
+</ul>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -250,7 +274,12 @@ Functions</h2></td></tr>
 <p>Read state of a GPIO pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. </td></tr>
+    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. <ul>
+<li>GPIO_A </li>
+<li>GPIO_B </li>
+<li>GPIO_C </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">GPIO_Pin</td><td>Target GPIO pin. </td></tr>
   </table>
   </dd>
@@ -281,7 +310,12 @@ Functions</h2></td></tr>
 <p>Set selected GPIO pin to low state. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. </td></tr>
+    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. <ul>
+<li>GPIO_A </li>
+<li>GPIO_B </li>
+<li>GPIO_C </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">GPIO_Pin</td><td>Target GPIO pin. </td></tr>
   </table>
   </dd>
@@ -311,7 +345,12 @@ Functions</h2></td></tr>
 <p>Set selected GPIO pin to high state. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. </td></tr>
+    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. <ul>
+<li>GPIO_A </li>
+<li>GPIO_B </li>
+<li>GPIO_C </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">GPIO_Pin</td><td>Target GPIO pin. </td></tr>
   </table>
   </dd>
@@ -341,7 +380,12 @@ Functions</h2></td></tr>
 <p>Toggle the state of selected GPIO pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. </td></tr>
+    <tr><td class="paramname">GPIO_Port</td><td>Target GPIO port. <ul>
+<li>GPIO_A </li>
+<li>GPIO_B </li>
+<li>GPIO_C </li>
+</ul>
+</td></tr>
     <tr><td class="paramname">GPIO_Pin</td><td>Target GPIO pin. </td></tr>
   </table>
   </dd>

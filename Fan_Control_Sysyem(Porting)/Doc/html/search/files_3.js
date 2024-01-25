@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timer_2ec_0',['Timer.c',['../_timer_8c.html',1,'']]]
+  ['spi_2ec_0',['SPI.c',['../_s_p_i_8c.html',1,'']]]
 ];

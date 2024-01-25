@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "2dgimpt",
-  1: "dgit",
-  2: "dgit",
+  0: "2dgimpst",
+  1: "dgist",
+  2: "dgist",
   3: "2mp"
 };
 

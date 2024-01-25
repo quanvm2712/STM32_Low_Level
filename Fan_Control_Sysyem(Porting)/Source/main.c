@@ -5,9 +5,11 @@
 #include "MAX7219.h"
 #include "IWDG.h"
 #include "Timer.h"
+#include "I2C.h"
 
-#define LED_PIN         13
-#define ENCODER_PPR     30
+#define LED_PIN         	13
+#define ENCODER_PPR     	30  	//Encoder resolution
+#define AHT20_I2C_ADDRESS	0x38	//AHT20 I2C slave address
 
 /*Motor variable*/
 int counterVal;
@@ -104,6 +106,9 @@ int main(void){
 	TIM_Encoder_Init(TIM4, SLAVE_EncoderMode_3);
 	TIM_EncoderStart(TIM4);
 
+	/**I2C Init */
+	I2C_Init(I2C1, I2C1_REMAPPING_ENABLE, I2C_MASTERMODE_SM);
+
 
     while (1){
         counterVal = GetCounterValue(); //Get current counter value from Timer 4	
@@ -111,8 +116,10 @@ int main(void){
 
         MAX7219_PrintInt(currentFanRPM, 4, DIGIT_POSITION_7);
         ToggleLED();
-        delay_ms(100);
 
+		I2C_Status status =  I2C_TransmitSlaveAddress(I2C1, AHT20_I2C_ADDRESS);
+
+        delay_ms(100);
         IWDG_Reset(); 
     }
     
