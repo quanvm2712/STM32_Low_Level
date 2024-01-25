@@ -16,6 +16,11 @@
 #define I2C_ACKNOWLEDGE_DISABLE     0
 #define I2C_ACKNOWLEDGE_ENABLE      1
 
+//I2C Operation
+#define I2C_WRITE                   0
+#define I2C_READ                    1
+
+
 typedef enum{
     I2C_OK = 0x00U,
     I2C_ERROR = 0x01U,
@@ -32,8 +37,9 @@ void I2C_SetCCRValue(I2C_TypeDef* I2Cx, uint16_t CCRValue);
 void I2C_SetTRISEValue(I2C_TypeDef* I2Cx, uint8_t TRISEValue);
 void I2C_ClockConfig(I2C_TypeDef* I2Cx);
 
-void I2C_Init(I2C_TypeDef* I2Cx, _Bool isRemapEnabled, uint8_t I2C_SpeedMode);
+void I2C_Init(I2C_TypeDef* I2Cx, _Bool isRemapEnabled, uint8_t I2C_MasterMode);
 I2C_Status I2C_GenerateStartCondition(I2C_TypeDef* I2Cx);
-I2C_Status I2C_TransmitSlaveAddress(I2C_TypeDef* I2Cx, uint8_t I2CSlaveAddress);
+I2C_Status I2C_TransmitSlaveAddress(I2C_TypeDef* I2Cx, uint8_t I2CSlaveAddress, _Bool I2C_Operation);
+I2C_Status I2C_TransmitData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* data, uint16_t DataSize);
 
 #endif  //__I2C_H

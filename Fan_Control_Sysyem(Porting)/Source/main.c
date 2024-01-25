@@ -117,7 +117,8 @@ int main(void){
         MAX7219_PrintInt(currentFanRPM, 4, DIGIT_POSITION_7);
         ToggleLED();
 
-		I2C_Status status =  I2C_TransmitSlaveAddress(I2C1, AHT20_I2C_ADDRESS);
+		uint8_t data[3] = {0xBE, 0x08, 0x00};
+		I2C_Status status =  I2C_TransmitData(I2C1, AHT20_I2C_ADDRESS, data, 3);
 
         delay_ms(100);
         IWDG_Reset(); 
