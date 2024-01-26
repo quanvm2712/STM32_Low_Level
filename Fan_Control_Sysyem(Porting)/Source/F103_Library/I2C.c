@@ -338,7 +338,7 @@ I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Dat
     uint32_t Timeout= UINT32_MAX;
     uint32_t TimeoutCount = 0;
 
-    I2C_EnableAcknowledge(I2Cx, I2C_ACKNOWLEDGE_ENABLE);
+    //I2C_EnableAcknowledge(I2Cx, I2C_ACKNOWLEDGE_ENABLE);
     
     //Transmit slave address with READ operation
     status = I2C_TransmitSlaveAddress(I2Cx, SlaveAddress, I2C_READ);
@@ -377,6 +377,7 @@ I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Dat
     }
 
     else if(DataSize > 2){
+        I2C_EnableAcknowledge(I2Cx, I2C_ACKNOWLEDGE_ENABLE);
         for(int dataCount = 0; dataCount < DataSize; dataCount++){
             //When dataCount does not reach the last 3 bytes
             if(dataCount < (DataSize - 3)){

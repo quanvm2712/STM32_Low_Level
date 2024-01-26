@@ -6,6 +6,7 @@
 #include "IWDG.h"
 #include "Timer.h"
 #include "I2C.h"
+#include "AHT20.h"
 
 #define LED_PIN         	13
 #define ENCODER_PPR     	30  	//Encoder resolution
@@ -21,7 +22,8 @@ uint16_t ms_count = 0;
 uint8_t rx_data = 60;
 
 /*I2C variable*/
-uint8_t RX_Data[6];
+uint8_t AHT20_data[6];
+
 
 void TIM1_UP_Handler(){
 	if(TIM1->SR & 0x1){  //Check if interrupt flag is set
@@ -88,6 +90,21 @@ void Set_DutyCycle(uint8_t DutyCycle){
 	TIM_SetCCRxReg(TIM3,DutyCycle, TIM_Channel_3);
 }
 
+void AHT20_Init1(I2C_TypeDef* I2Cx){
+	delay_ms(40);
+
+	uint8_t data[3] = {0xBE, 0x08, 0x00};
+	I2C_Status status =  I2C_TransmitData(I2Cx, AHT20_I2C_ADDRESS, data, 3);	
+}
+
+
+void AHT20_GetSensorData1(I2C_TypeDef* I2Cx, uint8_t* RX_Buffer){
+    AHT20_SendTriggerMeasurementCommand(I2Cx);
+    delay_ms(80);  //Wait for 80ms to wait for the measurement to be completed
+
+
+
+}
 
 int main(void){
     ClockInit();
@@ -111,7 +128,7 @@ int main(void){
 
 	/**I2C Init */
 	I2C_Init(I2C1, I2C1_REMAPPING_ENABLE, I2C_MASTERMODE_SM);
-
+	AHT20_Init(I2C1);
 
     while (1){
         counterVal = GetCounterValue(); //Get current counter value from Timer 4	
@@ -120,10 +137,7 @@ int main(void){
         MAX7219_PrintInt(currentFanRPM, 4, DIGIT_POSITION_7);
         ToggleLED();
 
-		uint8_t data[3] = {0xBE, 0x08, 0x00};
-		//I2C_Status status =  I2C_TransmitData(I2C1, AHT20_I2C_ADDRESS, data, 3);
-
-		I2C_Status status = I2C_ReadData(I2C1, 0x38, RX_Data, 6);
+		AHT20_GetSensorData(I2C1, AHT20_data);
 
         IWDG_Reset(); 
 		delay_ms(100);

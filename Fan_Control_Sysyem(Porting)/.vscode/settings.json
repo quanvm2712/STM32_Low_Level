@@ -11,7 +11,8 @@
         "string.h": "c",
         "time.h": "c",
         "timer.h": "c",
-        "i2c.h": "c"
+        "i2c.h": "c",
+        "aht20.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": false,
     "CodeGPT.apiKey": "Google AI Studio"
