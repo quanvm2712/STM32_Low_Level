@@ -41,5 +41,6 @@ void I2C_Init(I2C_TypeDef* I2Cx, _Bool isRemapEnabled, uint8_t I2C_MasterMode);
 I2C_Status I2C_GenerateStartCondition(I2C_TypeDef* I2Cx);
 I2C_Status I2C_TransmitSlaveAddress(I2C_TypeDef* I2Cx, uint8_t I2CSlaveAddress, _Bool I2C_Operation);
 I2C_Status I2C_TransmitData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* data, uint16_t DataSize);
+I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Data, uint16_t DataSize);
 
 #endif  //__I2C_H

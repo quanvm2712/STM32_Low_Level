@@ -215,9 +215,9 @@ void I2C_Init(I2C_TypeDef* I2Cx, _Bool isRemapEnabled, uint8_t I2C_MasterMode){
     I2C_IOConfig(I2Cx, isRemapEnabled);
     I2C_MasterModeSelect(I2Cx, I2C_MASTERMODE_SM); //Set standard mode
     I2C_ClockConfig(I2Cx);
-    I2C_EnableAcknowledge(I2Cx, I2C_ACKNOWLEDGE_ENABLE);
 
     I2C_Enable(I2Cx);
+    
 }
 
 /**
@@ -320,5 +320,112 @@ I2C_Status I2C_TransmitData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* da
     TimeoutCount = 0;
 
     I2C_GenerateStopCondition(I2Cx);
+    return I2C_OK;
+}
+
+
+/**
+ * @brief 
+ * 
+ * @param I2Cx 
+ * @param SlaveAddress 
+ * @param data 
+ * @param DataSize 
+ * @return I2C_Status 
+ */
+I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Data, uint16_t DataSize){
+    I2C_Status status = I2C_OK;
+    uint32_t Timeout= UINT32_MAX;
+    uint32_t TimeoutCount = 0;
+
+    I2C_EnableAcknowledge(I2Cx, I2C_ACKNOWLEDGE_ENABLE);
+    
+    //Transmit slave address with READ operation
+    status = I2C_TransmitSlaveAddress(I2Cx, SlaveAddress, I2C_READ);
+    if(status != I2C_OK){
+        return status;
+    }    
+
+    //Read I2C data
+    if(DataSize == 1){
+        I2C_GenerateStopCondition(I2Cx);
+
+        //Wait for RXNE to set
+        uint16_t RXNE_Status;
+        do{
+            RXNE_Status = (I2Cx->SR1 & (1UL << 6UL));  //Get status of RXNE bit
+            TimeoutCount++;
+        }while(!RXNE_Status && (TimeoutCount <= Timeout));  //Wait until RXNE flag is set or timeout is reached
+        if(!RXNE_Status) return I2C_ERROR;  //Return error if RXNE flag is not set within timeout
+
+        *RX_Data = I2Cx->DR; //Read received data and clear RxNE
+    }
+
+    else if(DataSize == 2){
+        I2C_EnableAcknowledge(I2Cx, I2C_ACKNOWLEDGE_DISABLE); //Acknowledge disable after ADDR is reset
+
+        //Wait until BTF bit is set
+        uint16_t BTF_Status;
+        do{
+            BTF_Status = (I2Cx->SR1 & (1UL << 2UL)); //Get status of BTF bit
+            TimeoutCount++;
+        }while(!BTF_Status && (TimeoutCount <= Timeout)); //Wait until BTF flag is set or timeout is reached
+        if(!BTF_Status) return I2C_ERROR;
+
+        //Generate stop condition
+        I2C_GenerateStopCondition(I2Cx);
+    }
+
+    else if(DataSize > 2){
+        for(int dataCount = 0; dataCount < DataSize; dataCount++){
+            //When dataCount does not reach the last 3 bytes
+            if(dataCount < (DataSize - 3)){
+                /*Wait for RXNE to set*/
+                uint16_t RXNE_Status;
+                do{
+                    RXNE_Status = (I2Cx->SR1 & (1UL << 6UL));  //Get status of RXNE bit
+                    TimeoutCount++;
+                }while(!RXNE_Status && (TimeoutCount <= Timeout));  //Wait until RXNE flag is set or timeout is reached
+                if(!RXNE_Status) return I2C_ERROR;  //Return error if RXNE flag is not set within timeout    
+                TimeoutCount = 0;  //Reset TimeoutCount      
+
+                /*Get data from DR register */
+                RX_Data[dataCount] = I2Cx->DR;
+            }
+
+            //When dataCount is within the last 3 bytes
+            else{
+                /*Wait until BTF bit is set*/
+                uint16_t BTF_Status;
+                do{
+                    BTF_Status = (I2Cx->SR1 & (1UL << 2UL)); //Get status of BTF bit
+                    TimeoutCount++;
+                }while(!BTF_Status && (TimeoutCount <= Timeout)); //Wait until BTF flag is set or timeout is reached
+                if(!BTF_Status) return I2C_ERROR;    
+                TimeoutCount = 0;  //Reset TimeoutCount 
+
+                /*Disable ACK and read data N-2*/
+                I2C_EnableAcknowledge(I2Cx, I2C_ACKNOWLEDGE_DISABLE);
+                RX_Data[dataCount++] = I2Cx->DR;
+
+                /*Generate stop condition and read data N-1 */
+                I2C_GenerateStopCondition(I2Cx);
+                RX_Data[dataCount++] = I2Cx->DR;
+
+                /**Wait until RxNE is set and read data N*/
+                //Wait for RXNE to set
+                uint16_t RXNE_Status;
+                do{
+                    RXNE_Status = (I2Cx->SR1 & (1UL << 6UL));  //Get status of RXNE bit
+                    TimeoutCount++;
+                }while(!RXNE_Status && (TimeoutCount <= Timeout));  //Wait until RXNE flag is set or timeout is reached
+                if(!RXNE_Status) return I2C_ERROR;  //Return error if RXNE flag is not set within timeout  
+                TimeoutCount = 0;
+ 
+                RX_Data[dataCount] = I2Cx->DR;
+            }
+        }
+    }
+
     return I2C_OK;
 }

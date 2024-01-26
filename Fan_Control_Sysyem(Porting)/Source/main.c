@@ -20,6 +20,9 @@ uint16_t currentFanRPM = 0;
 uint16_t ms_count = 0;
 uint8_t rx_data = 60;
 
+/*I2C variable*/
+uint8_t RX_Data[6];
+
 void TIM1_UP_Handler(){
 	if(TIM1->SR & 0x1){  //Check if interrupt flag is set
 		ms_count += 1;
@@ -118,10 +121,12 @@ int main(void){
         ToggleLED();
 
 		uint8_t data[3] = {0xBE, 0x08, 0x00};
-		I2C_Status status =  I2C_TransmitData(I2C1, AHT20_I2C_ADDRESS, data, 3);
+		//I2C_Status status =  I2C_TransmitData(I2C1, AHT20_I2C_ADDRESS, data, 3);
 
-        delay_ms(100);
+		I2C_Status status = I2C_ReadData(I2C1, 0x38, RX_Data, 6);
+
         IWDG_Reset(); 
+		delay_ms(100);
     }
     
 }
