@@ -48,6 +48,8 @@ void MAX7219_SetDecodeMode(uint8_t DecodeMode){
 
 void MAX7219_Init(uint8_t Intensity, uint8_t ScanLimit, uint8_t DecodeMode){
 	MAX7219_PowerOn();
+	MAX7219_Clean();
+	
 	MAX7219_SetIntensity(Intensity);
 	MAX7219_SetScanLimit(ScanLimit);
 	MAX7219_SetDecodeMode(DecodeMode);

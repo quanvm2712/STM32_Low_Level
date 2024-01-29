@@ -14,6 +14,6 @@
         "i2c.h": "c",
         "aht20.h": "c"
     },
-    "cortex-debug.variableUseNaturalFormat": false,
+    "cortex-debug.variableUseNaturalFormat": true,
     "CodeGPT.apiKey": "Google AI Studio"
 }

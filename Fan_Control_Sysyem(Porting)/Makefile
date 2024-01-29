@@ -1,3 +1,5 @@
+$(info $(SHELL))
+
 CC=arm-none-eabi-gcc -g
 CFLAGS=-mcpu=cortex-m3 -mthumb -nostdlib -Wall
 CPPFLAGS=-DSTM32F103xB \
@@ -5,8 +7,8 @@ CPPFLAGS=-DSTM32F103xB \
 		 -Ivendor/CMSIS/Device/ST/cmsis_device_f1/Include \
 		 -ISource/F103_LIBRARY/ \
 		 -ISource/Hardware_Library/
-LINKER_FILE=linker_script.ld
-LDFLAGS=-T $(LINKER_FILE) -Wl,-Map=$(target)final.map
+LINKER_FILE=linker_script.ld 
+LDFLAGS=-T $(LINKER_FILE) -Wl,-Map=Build/Output/final.map 
 
 PROGRAMMER=openocd
 PROGRAMMER_FLAGS = -f interface/stlink.cfg -f target/stm32f1x.cfg
@@ -30,7 +32,7 @@ OBJ2 := $(patsubst $(HARDWARE_LIBRARY_DIR)%.c, $(OBJECT_DIR)%.o, $(HARDWARE_LIBR
 all: $(TARGET_DIR)out.elf
 
 $(TARGET_DIR)out.elf: $(OBJ) $(OBJ2) $(OBJ1)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(CPPFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $^
 
 $(OBJECT_DIR)%.o: $(SOURCE_DIR)%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
