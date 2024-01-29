@@ -7,6 +7,7 @@
 #include "Timer.h"
 #include "I2C.h"
 #include "AHT20.h"
+#include "USART.h"
 
 #define LED_PIN         	13
 #define ENCODER_PPR     	30  	//Encoder resolution
@@ -111,19 +112,25 @@ int main(void){
 
 	/**I2C Init */
 	I2C_Init(I2C1, I2C1_REMAPPING_ENABLE, I2C_MASTERMODE_SM);
-	AHT20_Init(I2C1);
+	//AHT20_Init(I2C1);
+
+	/*USART1 Init */
+	USART_Init(USART1, UASRT_8_DATA_BITS, USART_1_STOP_BIT, USART_BAUDRATE_9600);
+
 
     while (1){
         counterVal = GetCounterValue(); //Get current counter value from Timer 4	
         Set_DutyCycle(rx_data);
 		ToggleLED();
 
-		AHT20_GetSensorData(I2C1, &Temperature, &Humidity);
-
+		//AHT20_GetSensorData(I2C1, &Temperature, &Humidity);
 		MAX7219_PrintInt(Temperature, 2, DIGIT_POSITION_7);
 
+		uint8_t UART_Data[5] = {0x1, 0x3f, 0x4f, 0x65, 0x27};
+		USART_TransmitData(USART1, UART_Data, 5);
+
         IWDG_Reset(); 
-		delay_ms(1);
+		delay_ms(100);
     }
     
 }
