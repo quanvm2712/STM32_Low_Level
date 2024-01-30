@@ -27,6 +27,9 @@ uint8_t rx_data = 60;
 uint8_t AHT20_data[6];
 uint8_t Humidity, Temperature;
 
+/*UASRT */
+uint8_t UART_ReceiveData[10];
+
 void TIM1_UP_Handler(){
 	if(TIM1->SR & 0x1){  //Check if interrupt flag is set
 		ms_count += 1;
@@ -127,8 +130,9 @@ int main(void){
 		//AHT20_GetSensorData(I2C1, &Temperature, &Humidity);
 		MAX7219_PrintInt(Temperature, 2, DIGIT_POSITION_7);
 
-		char UART_Data[] = "Hello";
-		USART_TransmitData(USART1, (uint8_t*)UART_Data, strlen(UART_Data) + 1);
+		//char UART_Data[] = "Hello";
+		//USART_TransmitData(USART1, (uint8_t*)UART_Data, strlen(UART_Data) + 1);
+		USART_ReceiveData(USART1, UART_ReceiveData, 3);
 
         IWDG_Reset(); 
 		delay_ms(100);

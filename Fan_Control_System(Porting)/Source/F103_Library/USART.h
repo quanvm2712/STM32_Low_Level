@@ -24,5 +24,6 @@
 
 void USART_Init(USART_TypeDef* USARTx, _Bool WordLength, uint8_t NumberOfStopBits, uint8_t DesiredBaudrate);
 void USART_TransmitData(USART_TypeDef* USARTx, uint8_t* Data, uint16_t DataSize);
+void USART_ReceiveData(USART_TypeDef* USARTx, uint8_t* ReceivedData, uint8_t DataSize);
 
 #endif //__USART_H

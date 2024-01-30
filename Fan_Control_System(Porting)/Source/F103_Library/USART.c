@@ -1,10 +1,12 @@
-#include "USART.h"
-
 /**
  * @brief 
  * 
  * @param USARTx 
  */
+
+#include "USART.h"
+#include "DMA.h"
+
 void USART_EnableClock(USART_TypeDef* USARTx){
     if(USARTx == USART1){
         RCC->APB2ENR |= (1UL << 14);
@@ -90,6 +92,10 @@ void USART_IOInit(USART_TypeDef* USARTx){
     }
 }
 
+void USART_ReceiverEnable(USART_TypeDef* USARTx){
+    USARTx->CR1 |= (1UL << 2UL);
+}
+
 void USART_Init(USART_TypeDef* USARTx, _Bool WordLength, uint8_t NumberOfStopBits, uint8_t DesiredBaudrate){
     USART_EnableClock(USARTx);
     USART_EnablePeripheral(USARTx);
@@ -112,6 +118,17 @@ void USART_TransmitData(USART_TypeDef* USARTx, uint8_t* Data, uint16_t DataSize)
     USARTx->SR &= ~(1UL << 7UL); //Clear TC bits
 }
 
-void USART_ReceiveData_DMA(USART_TypeDef* USARTx, uint8_t ReceivedData){
-    
+void USART_ReceiveData(USART_TypeDef* USARTx, uint8_t* ReceivedData, uint8_t DataSize){
+    static uint8_t DataCount = 0;
+
+    USART_ReceiverEnable(USARTx);
+    if(USARTx->SR & (1UL << 5UL)){  //Check if RDR contains data
+        ReceivedData[DataCount] = USARTx->DR;  //Read if RDR contains data
+        DataCount ++;
+    }
+
+    if(DataCount >= (DataSize)){
+        DataCount = 0;  //Reset buffer index if exceed desired data size
+    }
+
 }
