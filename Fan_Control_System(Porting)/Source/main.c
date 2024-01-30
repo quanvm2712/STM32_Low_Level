@@ -8,6 +8,7 @@
 #include "I2C.h"
 #include "AHT20.h"
 #include "USART.h"
+#include "string.h"
 
 #define LED_PIN         	13
 #define ENCODER_PPR     	30  	//Encoder resolution
@@ -126,8 +127,8 @@ int main(void){
 		//AHT20_GetSensorData(I2C1, &Temperature, &Humidity);
 		MAX7219_PrintInt(Temperature, 2, DIGIT_POSITION_7);
 
-		uint8_t UART_Data[5] = {0x1, 0x3f, 0x4f, 0x65, 0x27};
-		USART_TransmitData(USART1, UART_Data, 5);
+		char UART_Data[] = "Hello";
+		USART_TransmitData(USART1, (uint8_t*)UART_Data, strlen(UART_Data) + 1);
 
         IWDG_Reset(); 
 		delay_ms(100);

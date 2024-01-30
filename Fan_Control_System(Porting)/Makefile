@@ -1,14 +1,15 @@
 $(info $(SHELL))
 
-CC=arm-none-eabi-gcc -g
-CFLAGS=-mcpu=cortex-m3 -mthumb -nostdlib -Wall
+CC=arm-none-eabi-gcc -g --specs=nosys.specs -nostartfiles
+CFLAGS=-mcpu=cortex-m3 -mthumb -Wall
 CPPFLAGS=-DSTM32F103xB \
 		 -Ivendor/CMSIS/CMSIS/Core/Include \
 		 -Ivendor/CMSIS/Device/ST/cmsis_device_f1/Include \
 		 -ISource/F103_LIBRARY/ \
-		 -ISource/Hardware_Library/
+		 -ISource/Hardware_Library/ \
+		 -ISource/Include/
 LINKER_FILE=linker_script.ld 
-LDFLAGS=-T $(LINKER_FILE) -Wl,-Map=Build/Output/final.map 
+LDFLAGS=-T $(LINKER_FILE) -Wl,-Map=Build/Output/final.map -lc
 
 PROGRAMMER=openocd
 PROGRAMMER_FLAGS = -f interface/stlink.cfg -f target/stm32f1x.cfg

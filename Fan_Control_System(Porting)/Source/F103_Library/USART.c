@@ -83,18 +83,6 @@ void USART_TransmitterDisable(USART_TypeDef* USARTx){
     USARTx->CR1 &= ~(1UL << 3UL);
 }
 
-void USART_TransmitData(USART_TypeDef* USARTx, uint8_t* Data, uint16_t DataSize){
-    USART_TransmitterEnable(USARTx);
-
-    for(int count=0; count < DataSize; count++){
-        USARTx->DR = Data[count];
-        while (!(USARTx->SR & (1UL << 7UL))){};  //Wait until TXE is set
-    }
-
-    while (!(USARTx->SR & (1UL << 7UL))){};  //Wait until TC is set
-    USARTx->SR &= ~(1UL << 7UL); //Clear TC bits
-}
-
 void USART_IOInit(USART_TypeDef* USARTx){
     if(USARTx == USART1){
         GPIO_Init(GPIO_A, 9, AFIO_OUTPUT);
@@ -110,4 +98,20 @@ void USART_Init(USART_TypeDef* USARTx, _Bool WordLength, uint8_t NumberOfStopBit
     USART_ConfigWordLength(USARTx, WordLength);
     USART_ConfigStopBits(USARTx, NumberOfStopBits);
     USART_ConfigBaudrate(USARTx, DesiredBaudrate);
+}
+
+void USART_TransmitData(USART_TypeDef* USARTx, uint8_t* Data, uint16_t DataSize){
+    USART_TransmitterEnable(USARTx);
+
+    for(int count=0; count < DataSize; count++){
+        USARTx->DR = Data[count];
+        while (!(USARTx->SR & (1UL << 7UL))){};  //Wait until TXE is set
+    }
+
+    while (!(USARTx->SR & (1UL << 7UL))){};  //Wait until TC is set
+    USARTx->SR &= ~(1UL << 7UL); //Clear TC bits
+}
+
+void USART_ReceiveData_DMA(USART_TypeDef* USARTx, uint8_t ReceivedData){
+    
 }
