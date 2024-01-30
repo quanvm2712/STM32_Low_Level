@@ -3,6 +3,7 @@
 
 #include "stm32f1xx.h"
 #include "GPIO.h"
+#include "DMA.h"
 
 /*Number of stop bits */
 #define USART_1_STOP_BIT            0

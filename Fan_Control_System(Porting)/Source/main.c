@@ -9,6 +9,7 @@
 #include "AHT20.h"
 #include "USART.h"
 #include "string.h"
+#include "ARM_System.h"
 
 #define LED_PIN         	13
 #define ENCODER_PPR     	30  	//Encoder resolution
@@ -96,7 +97,7 @@ void Set_DutyCycle(uint8_t DutyCycle){
 }
 
 int main(void){
-    ClockInit();
+	ARM_SystemInit();
     TIM1_Config();
 
     IWDG_Init(IWDG_DIV_64, 3125);
@@ -125,7 +126,7 @@ int main(void){
     while (1){
         counterVal = GetCounterValue(); //Get current counter value from Timer 4	
         Set_DutyCycle(rx_data);
-		ToggleLED();
+		//ToggleLED();
 
 		//AHT20_GetSensorData(I2C1, &Temperature, &Humidity);
 		MAX7219_PrintInt(Temperature, 2, DIGIT_POSITION_7);

@@ -149,7 +149,7 @@ void reset_handler(void){
     }
 
     //Write 0 to entire .bss region
-    uint32_t bss_size = (uint32_t) &_ebss - (uint32_t)&_ebss;
+    uint32_t bss_size = (uint32_t) &_ebss - (uint32_t)&_sbss;
     uint32_t* bss = (uint32_t*)&_ebss;
 
     for(int i=0; i<bss_size; i++){

@@ -1,4 +1,4 @@
-CC=arm-none-eabi-gcc -g --specs=nosys.specs -nostartfiles
+CC=arm-none-eabi-gcc -g --specs=nosys.specs -nostartfiles -O0
 CFLAGS=-mcpu=cortex-m3 -mthumb -Wall
 CPPFLAGS=-DSTM32F103xB \
 		 -Ivendor/CMSIS/CMSIS/Core/Include \

@@ -9,7 +9,7 @@
             "type": "cortex-debug",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "runToEntryPoint": "main",
+            "runToEntryPoint": "reset_handler",
             "showDevDebugOutput": "none",
             "servertype": "openocd",
             "configFiles": [
