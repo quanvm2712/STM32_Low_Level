@@ -74,20 +74,19 @@ void I2C_Enable(I2C_TypeDef* I2Cx){
  *  @arg I2C2
  * @return I2C_Status Status of the operation
  */
-I2C_Status I2C_GenerateStartCondition(I2C_TypeDef* I2Cx){
+I2C_Status I2C_GenerateStartCondition(I2C_TypeDef* I2Cx, uint8_t Timeout){
     I2C_Status status = I2C_OK;
-    uint32_t Timeout = UINT32_MAX;
-    uint32_t TimeoutCount = 0;
+    uint32_t lastTicks;
 
     I2C_Enable(I2Cx);
 
     I2Cx->CR1 |= (1UL << 8UL);  //Generate start condition
     uint8_t StartConditionStatus;
 
+    lastTicks = ARM_GetTick();
     do{ 
         StartConditionStatus = (I2Cx->SR1 & (1UL << 0UL));
-        TimeoutCount++;
-    }while((!StartConditionStatus) && (TimeoutCount<=Timeout)); //Wait until SB is set or until Timeout is reached
+    }while((!StartConditionStatus) && ((ARM_GetTick() - lastTicks) < Timeout)); //Wait until SB is set or until Timeout is reached
 
     if(!StartConditionStatus){
         status = I2C_ERROR;  //Set error flag to error if SB bit is not set
@@ -233,22 +232,23 @@ void I2C_Init(I2C_TypeDef* I2Cx, _Bool isRemapEnabled, uint8_t I2C_MasterMode){
  * 
  * @return I2C_Status 
  */
-I2C_Status I2C_TransmitSlaveAddress(I2C_TypeDef* I2Cx, uint8_t I2CSlaveAddress, _Bool I2C_Operation){
+I2C_Status I2C_TransmitSlaveAddress(I2C_TypeDef* I2Cx, uint8_t I2CSlaveAddress, _Bool I2C_Operation, uint8_t Timeout){
     I2C_Status status = I2C_OK;
-    uint32_t Timeout = UINT32_MAX;
-    uint32_t TimeoutCount = 0;
+    uint32_t lastTicks = 0;
 
-    I2C_GenerateStartCondition(I2Cx);
+    if(I2C_GenerateStartCondition(I2Cx, 50) != I2C_OK){
+        return I2C_ERROR;
+    }
 
     uint16_t dummy = I2Cx->SR1;  //Dummy read for SR1 register
     I2Cx->DR = (I2CSlaveAddress << 1UL) | I2C_Operation;  //Write address of slave device to I2C bus
 
     /**Check if ADDR flag is set*/
     uint8_t ADDRStatus;
+    lastTicks = ARM_GetTick();
     do{
         ADDRStatus = (I2Cx->SR1 & (1UL << 1UL)); //Get status of ADDR bit
-        TimeoutCount++;
-    }while(!ADDRStatus && (TimeoutCount <= Timeout));   //Wait until ADDR bit is set or until timeout is reached
+    }while(!ADDRStatus && ((ARM_GetTick() - lastTicks) < Timeout));   //Wait until ADDR bit is set or until timeout is reached
 
     if(!ADDRStatus){
         status = I2C_ERROR;  //Set I2C status flag to ERROR if ADDR bit is not set
@@ -260,11 +260,10 @@ I2C_Status I2C_TransmitSlaveAddress(I2C_TypeDef* I2Cx, uint8_t I2CSlaveAddress, 
     dummy = I2Cx->SR2;
 
     /**Check if ADDR flag is reset*/
-    TimeoutCount = 0;
+    lastTicks = ARM_GetTick();
     do{
         ADDRStatus = (I2Cx->SR1 & (1UL << 1UL)); //Get status of ADDR bit
-        TimeoutCount++;
-    }while(ADDRStatus && (TimeoutCount <= Timeout));   //Wait until ADDR bit is reset or until timeout is reached
+    }while(ADDRStatus && ((ARM_GetTick() - lastTicks) < Timeout));   //Wait until ADDR bit is reset or until timeout is reached
 
     if(ADDRStatus){
         status = I2C_ERROR; //Set I2C status flag to ERROR if ADDR bit is set
@@ -286,12 +285,11 @@ I2C_Status I2C_TransmitSlaveAddress(I2C_TypeDef* I2Cx, uint8_t I2CSlaveAddress, 
  * 
  * @return I2C_Status 
  */
-I2C_Status I2C_TransmitData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* data, uint16_t DataSize){
+I2C_Status I2C_TransmitData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* data, uint16_t DataSize, uint8_t Timeout){
     I2C_Status status = I2C_OK;
-    uint32_t Timeout= UINT32_MAX;
-    uint32_t TimeoutCount = 0;
+    uint32_t lastTicks;
 
-    status = I2C_TransmitSlaveAddress(I2Cx, SlaveAddress, I2C_WRITE);
+    status = I2C_TransmitSlaveAddress(I2Cx, SlaveAddress, I2C_WRITE, 50);
     if(status != I2C_OK){
         return status;
     }
@@ -301,23 +299,21 @@ I2C_Status I2C_TransmitData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* da
     //Write data to transmit buffer
     for(int dataCount=0; dataCount < DataSize; dataCount++){
         //Wait until TxE is set (indicate transmit buffer is empty)
+        lastTicks = ARM_GetTick();
         do{
             TXE_Status = (I2Cx->SR1 & (1UL << 7UL));  //Read TXE flag
-            TimeoutCount++;
-        }while((!TXE_Status) && (TimeoutCount <= Timeout)); //Wait until TXE flag is set or Timeout is reached
+        }while((!TXE_Status) && ((ARM_GetTick() - lastTicks) < Timeout)); //Wait until TXE flag is set or Timeout is reached
         if(!TXE_Status) return I2C_ERROR;
-        TimeoutCount = 0;
 
         I2Cx->DR = data[dataCount]; //Write data to DR
     }
 
     //Wait until TxE is set (indicate transmit buffer is empty)
+    lastTicks = ARM_GetTick();
     do{
         TXE_Status = (I2Cx->SR1 & (1UL << 7UL));  //Read TXE flag
-        TimeoutCount++;
-    }while((!TXE_Status) && (TimeoutCount <= Timeout)); //Wait until TXE flag is set or Timeout is reached
+    }while((!TXE_Status) && ((ARM_GetTick() - lastTicks) < Timeout)); //Wait until TXE flag is set or Timeout is reached
     if(!TXE_Status) return I2C_ERROR;
-    TimeoutCount = 0;
 
     I2C_GenerateStopCondition(I2Cx);
     return I2C_OK;
@@ -333,15 +329,14 @@ I2C_Status I2C_TransmitData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* da
  * @param DataSize 
  * @return I2C_Status 
  */
-I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Data, uint16_t DataSize){
+I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Data, uint16_t DataSize, uint8_t Timeout){
     I2C_Status status = I2C_OK;
-    uint32_t Timeout= UINT32_MAX;
-    uint32_t TimeoutCount = 0;
+    uint32_t lastTicks;
 
     //I2C_EnableAcknowledge(I2Cx, I2C_ACKNOWLEDGE_ENABLE);
     
     //Transmit slave address with READ operation
-    status = I2C_TransmitSlaveAddress(I2Cx, SlaveAddress, I2C_READ);
+    status = I2C_TransmitSlaveAddress(I2Cx, SlaveAddress, I2C_READ, 50);
     if(status != I2C_OK){
         return status;
     }    
@@ -352,10 +347,10 @@ I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Dat
 
         //Wait for RXNE to set
         uint16_t RXNE_Status;
+        lastTicks = ARM_GetTick();
         do{
             RXNE_Status = (I2Cx->SR1 & (1UL << 6UL));  //Get status of RXNE bit
-            TimeoutCount++;
-        }while(!RXNE_Status && (TimeoutCount <= Timeout));  //Wait until RXNE flag is set or timeout is reached
+        }while(!RXNE_Status && ((ARM_GetTick() - lastTicks) < Timeout));  //Wait until RXNE flag is set or timeout is reached
         if(!RXNE_Status) return I2C_ERROR;  //Return error if RXNE flag is not set within timeout
 
         *RX_Data = I2Cx->DR; //Read received data and clear RxNE
@@ -366,10 +361,10 @@ I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Dat
 
         //Wait until BTF bit is set
         uint16_t BTF_Status;
+        lastTicks = ARM_GetTick();
         do{
             BTF_Status = (I2Cx->SR1 & (1UL << 2UL)); //Get status of BTF bit
-            TimeoutCount++;
-        }while(!BTF_Status && (TimeoutCount <= Timeout)); //Wait until BTF flag is set or timeout is reached
+        }while(!BTF_Status && ((ARM_GetTick() - lastTicks) < Timeout)); //Wait until BTF flag is set or timeout is reached
         if(!BTF_Status) return I2C_ERROR;
 
         //Generate stop condition
@@ -383,12 +378,11 @@ I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Dat
             if(dataCount < (DataSize - 3)){
                 /*Wait for RXNE to set*/
                 uint16_t RXNE_Status;
+                lastTicks = ARM_GetTick();
                 do{
                     RXNE_Status = (I2Cx->SR1 & (1UL << 6UL));  //Get status of RXNE bit
-                    TimeoutCount++;
-                }while(!RXNE_Status && (TimeoutCount <= Timeout));  //Wait until RXNE flag is set or timeout is reached
-                if(!RXNE_Status) return I2C_ERROR;  //Return error if RXNE flag is not set within timeout    
-                TimeoutCount = 0;  //Reset TimeoutCount      
+                }while(!RXNE_Status && ((ARM_GetTick() - lastTicks) < Timeout));  //Wait until RXNE flag is set or timeout is reached
+                if(!RXNE_Status) return I2C_ERROR;  //Return error if RXNE flag is not set within timeout       
 
                 /*Get data from DR register */
                 RX_Data[dataCount] = I2Cx->DR;
@@ -398,12 +392,12 @@ I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Dat
             else{
                 /*Wait until BTF bit is set*/
                 uint16_t BTF_Status;
+                lastTicks = ARM_GetTick();
                 do{
                     BTF_Status = (I2Cx->SR1 & (1UL << 2UL)); //Get status of BTF bit
-                    TimeoutCount++;
-                }while(!BTF_Status && (TimeoutCount <= Timeout)); //Wait until BTF flag is set or timeout is reached
-                if(!BTF_Status) return I2C_ERROR;    
-                TimeoutCount = 0;  //Reset TimeoutCount 
+                }while(!BTF_Status && ((ARM_GetTick() - lastTicks) < Timeout)); //Wait until BTF flag is set or timeout is reached
+                if(!BTF_Status) return I2C_ERROR; 
+
 
                 /*Disable ACK and read data N-2*/
                 I2C_EnableAcknowledge(I2Cx, I2C_ACKNOWLEDGE_DISABLE);
@@ -416,12 +410,11 @@ I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Dat
                 /**Wait until RxNE is set and read data N*/
                 //Wait for RXNE to set
                 uint16_t RXNE_Status;
+                lastTicks = ARM_GetTick();
                 do{
                     RXNE_Status = (I2Cx->SR1 & (1UL << 6UL));  //Get status of RXNE bit
-                    TimeoutCount++;
-                }while(!RXNE_Status && (TimeoutCount <= Timeout));  //Wait until RXNE flag is set or timeout is reached
+                }while(!RXNE_Status && ((ARM_GetTick() - lastTicks) < Timeout));  //Wait until RXNE flag is set or timeout is reached
                 if(!RXNE_Status) return I2C_ERROR;  //Return error if RXNE flag is not set within timeout  
-                TimeoutCount = 0;
  
                 RX_Data[dataCount] = I2Cx->DR;
             }

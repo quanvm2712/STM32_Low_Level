@@ -139,6 +139,28 @@ void USART_ReceiveData(USART_TypeDef* USARTx, uint8_t* ReceivedData, uint8_t Dat
     if(UARTDataCount >= (DataSize)){
         UARTDataCount = 0;  //Reset buffer index if exceed desired data size
     }
+}
 
+void USART_ReceiveData_DMA(USART_TypeDef* USARTx, uint8_t* ReceivedBuffer, uint8_t DataSize){
+    uint8_t Timeout = 50;
+    uint32_t lastTicks;
+    //DMA_SetIncrementedMode(DMA1_Channel5, DMA_SOURCE_MEMORY, DMA_INCREMENTED_DISABLE);
+    //DMA_SetCircularMode(DMA1_Channel5, DMA_CIRCULARMODE_DISABLE);
 
+    DMA_SetTransactionInfo(DMA1_Channel5, (uint32_t)ReceivedBuffer, (uint32_t)&USARTx->DR, 3);
+    USART_ReceiverEnable(USARTx);
+
+    if(USARTx->SR & (1UL << 5UL)){    //Check if RXNE is set
+        USARTx->CR3 |= (1UL << 6UL);  //Enable USART DMA receiver
+
+        //Wait until RX buffer is empty
+        uint8_t status;
+        lastTicks = ARM_GetTick();
+        do{
+            status = USARTx->SR & (1UL << 5UL);
+        }while(status && ((ARM_GetTick() - lastTicks) < Timeout));
+
+        DMA1->IFCR |= (1UL << 16UL); //Clear TCIF flag
+        USARTx->CR3 &= ~(1UL << 6UL); //Disable USART DMA channel
+    }
 }

@@ -249,5 +249,4 @@ void SPI_Transmit_DMA(SPI_TypeDef* SPIx, uint8_t* data, uint8_t dataSize){
 	
 	SPIx->CR2 &= ~(1 << 1); //Release request
 	SPI_Disable(SPIx);
-	
 }

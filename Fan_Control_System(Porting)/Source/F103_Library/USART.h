@@ -4,6 +4,8 @@
 #include "stm32f1xx.h"
 #include "GPIO.h"
 #include "DMA.h"
+#include "Delay.h"
+#include "ARM_System.h"
 
 /*Number of stop bits */
 #define USART_1_STOP_BIT            0
@@ -26,5 +28,6 @@
 void USART_Init(USART_TypeDef* USARTx, _Bool WordLength, uint8_t NumberOfStopBits, uint8_t DesiredBaudrate);
 void USART_TransmitData(USART_TypeDef* USARTx, uint8_t* Data, uint16_t DataSize);
 void USART_ReceiveData(USART_TypeDef* USARTx, uint8_t* ReceivedData, uint8_t DataSize);
+void USART_ReceiveData_DMA(USART_TypeDef* USARTx, uint8_t* ReceivedBuffer, uint8_t DataSize);
 
 #endif //__USART_H

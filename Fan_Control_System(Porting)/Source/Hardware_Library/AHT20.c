@@ -11,7 +11,7 @@
 
 AHT20_Status AHT20_SendInitializeCommand(I2C_TypeDef* I2Cx){
     uint8_t AHT20_InitCommand[3] = {0xBE, 0x08, 0x00};
-    I2C_Status I2CStatus = I2C_TransmitData(I2Cx, AHT20_I2C_ADDRESS, AHT20_InitCommand, 3);    
+    I2C_Status I2CStatus = I2C_TransmitData(I2Cx, AHT20_I2C_ADDRESS, AHT20_InitCommand, 3, 50);    
 
     if(I2CStatus != I2C_OK) return AHT20_ERROR;
     return AHT20_OK;
@@ -19,36 +19,48 @@ AHT20_Status AHT20_SendInitializeCommand(I2C_TypeDef* I2Cx){
 
 AHT20_Status AHT20_SendTriggerMeasurementCommand(I2C_TypeDef* I2Cx){
     uint8_t AHT20_TriggerMeasurementCommand[3] = {0xAC, 0x33, 0x00};
-    I2C_Status I2CStatus = I2C_TransmitData(I2Cx, AHT20_I2C_ADDRESS, AHT20_TriggerMeasurementCommand, 3);
+    I2C_Status I2CStatus = I2C_TransmitData(I2Cx, AHT20_I2C_ADDRESS, AHT20_TriggerMeasurementCommand, 3, 50);
 
     if(I2CStatus != I2C_OK) return AHT20_ERROR;
 
     return AHT20_OK;
 }
 
-void AHT20_Init(I2C_TypeDef* I2Cx){
+AHT20_Status AHT20_Init(I2C_TypeDef* I2Cx){
     delay_ms(40);
 
-    AHT20_Reset(I2Cx);
+    if(AHT20_Reset(I2Cx) != AHT20_OK){
+        return AHT20_ERROR;
+    }
     
     uint8_t InitCommand[3] = {0xBE, 0x08, 0x00};
-    I2C_TransmitData(I2Cx, AHT20_I2C_ADDRESS, InitCommand, 3);
+    if(I2C_TransmitData(I2Cx, AHT20_I2C_ADDRESS, InitCommand, 3, 50) != I2C_OK){
+        return AHT20_ERROR;
+    }
+
+    return AHT20_OK;
 }
 
-void AHT20_Reset(I2C_TypeDef* I2Cx){
+AHT20_Status AHT20_Reset(I2C_TypeDef* I2Cx){
     uint8_t AHT20_ResetCommand = 0b10111010;
-    I2C_TransmitData(I2Cx, AHT20_I2C_ADDRESS, &AHT20_ResetCommand, 1);
+    if(I2C_TransmitData(I2Cx, AHT20_I2C_ADDRESS, &AHT20_ResetCommand, 1, 50) != I2C_OK){
+        return AHT20_ERROR;
+    }
+
+    return AHT20_OK;
 }
 
 AHT20_Status AHT20_GetSensorSignal(I2C_TypeDef* I2Cx, uint8_t* RX_Buffer){
-    AHT20_Status status = I2C_OK;
-    AHT20_SendTriggerMeasurementCommand(I2Cx);
+    AHT20_Status status = AHT20_OK;
+    I2C_Status I2CStatus;
+    if(AHT20_SendTriggerMeasurementCommand(I2Cx) != AHT20_OK) return AHT20_ERROR;
     delay_ms(80);  //Wait for 80ms to wait for the measurement to be completed
 
     do{
-        status = I2C_ReadData(I2Cx, AHT20_I2C_ADDRESS, RX_Buffer, 6);
-    }while((RX_Buffer[0] & (1UL << 7UL)));  //Wait until AHT20 is not busy
+        I2CStatus = I2C_ReadData(I2Cx, AHT20_I2C_ADDRESS, RX_Buffer, 6, 50);
+    }while((RX_Buffer[0] & (1UL << 7UL)) && I2CStatus==I2C_OK);  //Wait until AHT20 is not busy
 
+    if(I2CStatus != I2C_OK) return AHT20_ERROR;
 
     return status;
 }

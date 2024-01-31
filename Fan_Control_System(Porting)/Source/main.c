@@ -10,6 +10,7 @@
 #include "USART.h"
 #include "string.h"
 #include "ARM_System.h"
+#include "DMA.h"
 
 #define LED_PIN         	13
 #define ENCODER_PPR     	30  	//Encoder resolution
@@ -96,6 +97,19 @@ void Set_DutyCycle(uint8_t DutyCycle){
 	TIM_SetCCRxReg(TIM3,DutyCycle, TIM_Channel_3);
 }
 
+
+void USART1_ConfigInterrupt(){
+	USART1->CR1 |= (1UL << 5UL); //Enable interrupt on RXNE flag
+	NVIC_EnableIRQ(USART1_IRQn);
+	NVIC_SetPriority(USART1_IRQn, 1);
+}
+
+void USART1_Handler(void){
+	if(USART1->SR & (1UL << 5UL)){
+		USART_ReceiveData(USART1, UART_ReceiveData, 3);
+	}
+}
+
 int main(void){
 	ARM_SystemInit();
     TIM1_Config();
@@ -117,26 +131,34 @@ int main(void){
 
 	/**I2C Init */
 	I2C_Init(I2C1, I2C1_REMAPPING_ENABLE, I2C_MASTERMODE_SM);
-	//AHT20_Init(I2C1);
+	AHT20_Status AHT20Status = AHT20_Init(I2C1);
 
 	/*USART1 Init */
 	USART_Init(USART1, UASRT_8_DATA_BITS, USART_1_STOP_BIT, USART_BAUDRATE_9600);
-
+	DMA_Init(DMA1, DMA1_Channel5, DMA_PeripheralToMemory, DMA_PRIORITY_HIGH, DMA_CIRCULARMODE_ENABLE);
+	//USART1_ConfigInterrupt();
 
     while (1){
         counterVal = GetCounterValue(); //Get current counter value from Timer 4	
         Set_DutyCycle(rx_data);
 		//ToggleLED();
 
-		//AHT20_GetSensorData(I2C1, &Temperature, &Humidity);
+		if(AHT20Status == AHT20_OK){
+			AHT20_GetSensorData(I2C1, &Temperature, &Humidity);
+		}
+		
 		MAX7219_PrintInt(Temperature, 2, DIGIT_POSITION_7);
 
 		//char UART_Data[] = "Hello";
 		//USART_TransmitData(USART1, (uint8_t*)UART_Data, strlen(UART_Data) + 1);
-		USART_ReceiveData(USART1, UART_ReceiveData, 3);
+		//USART_ReceiveData(USART1, UART_ReceiveData, 3);
+
+		USART_ReceiveData_DMA(USART1, UART_ReceiveData, 3);
+
+		ToggleLED();
 
         IWDG_Reset(); 
-		delay_ms(100);
+		//delay_ms(10);
     }
     
 }

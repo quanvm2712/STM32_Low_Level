@@ -3,6 +3,7 @@
 
 #include "stm32f1xx.h"
 #include "GPIO.h"
+#include "ARM_System.h"
 
 //I2C IO remapping
 #define I2C1_REMAPPING_DISABLE      0
@@ -38,9 +39,9 @@ void I2C_SetTRISEValue(I2C_TypeDef* I2Cx, uint8_t TRISEValue);
 void I2C_ClockConfig(I2C_TypeDef* I2Cx);
 
 void I2C_Init(I2C_TypeDef* I2Cx, _Bool isRemapEnabled, uint8_t I2C_MasterMode);
-I2C_Status I2C_GenerateStartCondition(I2C_TypeDef* I2Cx);
-I2C_Status I2C_TransmitSlaveAddress(I2C_TypeDef* I2Cx, uint8_t I2CSlaveAddress, _Bool I2C_Operation);
-I2C_Status I2C_TransmitData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* data, uint16_t DataSize);
-I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Data, uint16_t DataSize);
+I2C_Status I2C_GenerateStartCondition(I2C_TypeDef* I2Cx, uint8_t Timeout);
+I2C_Status I2C_TransmitSlaveAddress(I2C_TypeDef* I2Cx, uint8_t I2CSlaveAddress, _Bool I2C_Operation, uint8_t Timeout);
+I2C_Status I2C_TransmitData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* data, uint16_t DataSize, uint8_t Timeout);
+I2C_Status I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t SlaveAddress, uint8_t* RX_Data, uint16_t DataSize, uint8_t Timeout);
 
 #endif  //__I2C_H

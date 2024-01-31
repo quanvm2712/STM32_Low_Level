@@ -234,13 +234,13 @@ void DMA_SetPeripheralSize(DMA_Channel_TypeDef* DMA_Channel, uint8_t PeripheralS
 void DMA_Init(DMA_TypeDef* DMAx, DMA_Channel_TypeDef* DMA_Channel, uint8_t Direction, uint8_t Priority, _Bool CircularMode){
 	DMA_EnableClock(DMAx);
 	
-	DMA_SetChannelPriority(DMA1_Channel3, Priority);
-	DMA_SetDirection(DMA1_Channel3, Direction);
+	DMA_SetChannelPriority(DMA_Channel, Priority);
+	DMA_SetDirection(DMA_Channel, Direction);
 	
-	DMA_SetIncrementedMode(DMA1_Channel3, DMA_SOURCE_MEMORY, DMA_INCREMENTED_ENABLE);
-	DMA_SetIncrementedMode(DMA1_Channel3, DMA_SOURCE_PERIPHERAL, DMA_INCREMENTED_DISABLE);
+	DMA_SetIncrementedMode(DMA_Channel, DMA_SOURCE_MEMORY, DMA_INCREMENTED_ENABLE);
+	DMA_SetIncrementedMode(DMA_Channel, DMA_SOURCE_PERIPHERAL, DMA_INCREMENTED_DISABLE);
 
-	DMA_SetCircularMode(DMA1_Channel3, CircularMode);		
+	DMA_SetCircularMode(DMA_Channel, CircularMode);		
 }
 
 /**

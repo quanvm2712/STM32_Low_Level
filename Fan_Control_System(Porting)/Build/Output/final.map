@@ -38,218 +38,220 @@ END GROUP
  .isr_vector    0x08000000       0xec Build/Objects/startup.o
                 0x08000000                isr_vector
 
-.text           0x080000ec     0x2e6c
+.text           0x080000ec     0x301c
                 0x080000ec                . = ALIGN (0x4)
  *(.text)
- .text          0x080000ec      0x334 Build/Objects/main.o
+ .text          0x080000ec      0x3ac Build/Objects/main.o
                 0x08000178                TIM1_UP_Handler
                 0x0800021c                TIM1_Config
                 0x08000264                ClockInit
                 0x080002f8                ToggleLED
                 0x08000308                GetCounterValue
                 0x08000320                Set_DutyCycle
-                0x08000344                systick_handler
-                0x08000350                main
- .text          0x08000420       0x8c Build/Objects/startup.o
-                0x08000420                FLASH_Handler
-                0x08000420                TIM1_TRG_COM_Handler
-                0x08000420                USART3_Handler
-                0x08000420                DMA1_Channel7_Handler
-                0x08000420                DMA1_Channel6_Handler
-                0x08000420                EXTI15_10_Handler
-                0x08000420                USBWakeup_Handler
-                0x08000420                I2C1_EV_Handler
-                0x08000420                ADC1_2_Handler
-                0x08000420                WWDG_Handler
-                0x08000420                EXTI4_Handler
-                0x08000420                DMA1_Channel1_Handler
-                0x08000420                svcall_handler
-                0x08000420                I2C1_ER_Handler
-                0x08000420                RTC_Handler
-                0x08000420                TIM1_CC_Handler
-                0x08000420                I2C2_ER_Handler
-                0x08000420                usage_fault_handler
-                0x08000420                USB_HP_CAN_TX_Handler
-                0x08000420                default_handler
-                0x08000420                CAN_RX1_Handler
-                0x08000420                TIM1_BRK_Handler
-                0x08000420                EXTI1_Handler
-                0x08000420                EXTI3_Handler
-                0x08000420                USB_LP_CAN_RX0_Handler
-                0x08000420                EXTI2_Handler
-                0x08000420                EXTI9_5_Handler
-                0x08000420                TIM2_Handler
-                0x08000420                USART1_Handler
-                0x08000420                hard_fault_handler
-                0x08000420                DMA1_Channel4_Handler
-                0x08000420                TIM3_Handler
-                0x08000420                CAN_SCE_Handler
-                0x08000420                DMA1_Channel3_Handler
-                0x08000420                TIM4_Handler
-                0x08000420                debug_monitor_handler
-                0x08000420                SPI2_Handler
-                0x08000420                DMA1_Channel2_Handler
-                0x08000420                pendsv_handler
-                0x08000420                EXTI0_Handler
-                0x08000420                mem_manage_handler
-                0x08000420                DMA1_Channel5_Handler
-                0x08000420                USART2_Handler
-                0x08000420                SPI1_Handler
-                0x08000420                I2C2_EV_Handler
-                0x08000420                RCC_Handler
-                0x08000420                PVD_Handler
-                0x08000420                nmi_handler
-                0x08000420                RTCAlarm_Handler
-                0x08000420                bus_fault_handler
-                0x08000420                TAMPER_Handler
-                0x08000426                reset_handler
- .text          0x080004ac      0x1b0 Build/Objects/AHT20.o
-                0x080004ac                AHT20_SendInitializeCommand
-                0x080004f0                AHT20_SendTriggerMeasurementCommand
-                0x08000534                AHT20_Init
-                0x08000574                AHT20_Reset
-                0x08000596                AHT20_GetSensorSignal
-                0x080005d4                AHT20_GetSensorData
- .text          0x0800065c      0x164 Build/Objects/DHT11.o
-                0x0800065c                DHT11_SendStartSignal
-                0x080006d6                DHT11_GetSignal
-                0x08000762                DHT11_GetValue
- .text          0x080007c0      0x28c Build/Objects/MAX7219.o
-                0x080007c0                MAX7219_SendData
-                0x08000804                MAX7219_PowerOn
-                0x08000814                MAX7219_SetIntensity
-                0x08000830                MAX7219_SetScanLimit
-                0x0800084c                MAX7219_Clean
-                0x08000880                MAX7219_SetDecodeMode
-                0x0800089c                MAX7219_Init
-                0x080008d6                MAX7219_EmptyAllDigits
-                0x08000904                MAX7219_PrintString
-                0x08000954                MAX7219_PrintInt
- .text          0x08000a4c      0x190 Build/Objects/ARM_System.o
-                0x08000ad8                ARM_ClockInit
-                0x08000b6c                ARM_SystickInit
-                0x08000bb8                ARM_SystemInit
-                0x08000bc8                ARM_GetTick
- .text          0x08000bdc       0xb0 Build/Objects/Delay.o
-                0x08000bdc                TIM2_Config
-                0x08000c2c                delay_us
-                0x08000c5a                delay_ms
- .text          0x08000c8c      0x28c Build/Objects/DMA.o
-                0x08000c8c                DMA_EnableClock
-                0x08000cc8                DMA_SetPeripheralAddress
-                0x08000ce2                DMA_SetMemoryAddress
-                0x08000cfc                DMA_SetNumberOfData
-                0x08000d24                DMA_SetChannelPriority
-                0x08000d54                DMA_SetDirection
-                0x08000d84                DMA_SetCircularMode
-                0x08000db4                DMA_SetIncrementedMode
-                0x08000e0a                DMA_SetMemorySize
-                0x08000e3a                DMA_SetPeripheralSize
-                0x08000e6a                DMA_Init
-                0x08000ec4                DMA_SetTransactionInfo
-                0x08000efa                DMA_Enable
- .text          0x08000f18      0xa04 Build/Objects/GPIO.o
-                0x08000f18                GPIO_EnableClock
-                0x08000f44                GPIO_Init
-                0x08001520                GPIO_Set
-                0x080015c4                GPIO_Reset
-                0x08001670                GPIO_Toggle
-                0x08001794                GPIO_PullUpDown
-                0x0800189c                GPIO_ReadPin
- .text          0x0800191c      0x63c Build/Objects/I2C.o
-                0x0800191c                I2C_EnableClock
-                0x08001964                I2C_IOConfig
-                0x08001a1c                I2C_Enable
-                0x08001a3a                I2C_GenerateStartCondition
-                0x08001a9a                I2C_GenerateStopCondition
-                0x08001ab8                I2C_SetClockFrequency
-                0x08001af2                I2C_MasterModeSelect
-                0x08001b22                I2C_SetCCRValue
-                0x08001b4c                I2C_SetTRISEValue
-                0x08001b68                I2C_ClockConfig
-                0x08001b98                I2C_EnableAcknowledge
-                0x08001bc8                I2C_Init
-                0x08001c04                I2C_TransmitSlaveAddress
-                0x08001cb2                I2C_TransmitData
-                0x08001d7c                I2C_ReadData
- .text          0x08001f58       0xc4 Build/Objects/IWDG.o
-                0x08001f58                IWDG_SetPrescaler
-                0x08001f94                IWDG_SetReloadValue
-                0x08001fbc                IWDG_Start
-                0x08001fd4                IWDG_Reset
-                0x08001fec                IWDG_Init
- .text          0x0800201c      0x3c4 Build/Objects/SPI.o
-                0x0800201c                SPI_EnableClock
-                0x08002064                SPI_SetClockPhase
-                0x08002092                SPI_SetClockPolarity
-                0x080020c2                SPI_SetMasterSlave
-                0x080020f2                SPI_SetSourceClock
-                0x08002138                SPI_Enable
-                0x08002156                SPI_Disable
-                0x08002190                SPI_SoftwareSlaveSelect_Enable
-                0x080021c6                SPI_SetFrameFormat
-                0x080021f6                SPI_Init
-                0x08002244                SPI_SetTransmitOnlyMode
-                0x0800226c                SPI_IO_Init
-                0x080022fc                SPI_Transmit
-                0x0800237c                SPI_Transmit_DMA
- .text          0x080023e0      0x800 Build/Objects/Timer.o
-                0x080023e0                TIM_EnableTimerClock
-                0x08002458                TIM_SetSlaveMode
-                0x08002486                TIM_SetPolarity
-                0x0800252e                TIM_SetChannelDirection
-                0x080025d2                TIM_SetInputCaptureFilter
-                0x0800267a                TIM_EnableCounter
-                0x08002698                TIM_EnableCaptureInput
-                0x08002704                TIM_PWM_IO_Config
-                0x08002898                TIM_PWM_Init
-                0x08002986                TIM_EnableCCOutput
-                0x080029ea                TIM_PWM_Mode
-                0x08002a92                TIM_EnableUpdateGeneration
-                0x08002ab0                TIM_PWM_Start
-                0x08002ada                TIM_SetPrescaler
-                0x08002afa                TIM_SetARRReg
-                0x08002b16                TIM_SetCCRxReg
-                0x08002b6e                TIM_Encoder_Init
-                0x08002bba                TIM_EncoderStart
- .text          0x08002be0      0x370 Build/Objects/USART.o
-                0x08002be0                USART_EnableClock
-                0x08002c44                USART_EnablePeripheral
-                0x08002c62                USART_ConfigStopBits
-                0x08002c92                USART_ConfigWordLength
-                0x08002cc2                USART_ConfigBaudrate
-                0x08002d90                USART_TransmitterEnable
-                0x08002dae                USART_TransmitterDisable
-                0x08002dcc                USART_IOInit
-                0x08002dfc                USART_ReceiverEnable
-                0x08002e1a                USART_Init
-                0x08002e6c                USART_TransmitData
-                0x08002ed2                USART_ReceiveData
+                0x08000344                USART1_ConfigInterrupt
+                0x0800036c                USART1_Handler
+                0x08000394                main
+ .text          0x08000498       0x8c Build/Objects/startup.o
+                0x08000498                FLASH_Handler
+                0x08000498                TIM1_TRG_COM_Handler
+                0x08000498                USART3_Handler
+                0x08000498                DMA1_Channel7_Handler
+                0x08000498                DMA1_Channel6_Handler
+                0x08000498                EXTI15_10_Handler
+                0x08000498                USBWakeup_Handler
+                0x08000498                I2C1_EV_Handler
+                0x08000498                ADC1_2_Handler
+                0x08000498                WWDG_Handler
+                0x08000498                EXTI4_Handler
+                0x08000498                DMA1_Channel1_Handler
+                0x08000498                svcall_handler
+                0x08000498                I2C1_ER_Handler
+                0x08000498                RTC_Handler
+                0x08000498                TIM1_CC_Handler
+                0x08000498                I2C2_ER_Handler
+                0x08000498                usage_fault_handler
+                0x08000498                USB_HP_CAN_TX_Handler
+                0x08000498                default_handler
+                0x08000498                CAN_RX1_Handler
+                0x08000498                TIM1_BRK_Handler
+                0x08000498                EXTI1_Handler
+                0x08000498                EXTI3_Handler
+                0x08000498                USB_LP_CAN_RX0_Handler
+                0x08000498                EXTI2_Handler
+                0x08000498                EXTI9_5_Handler
+                0x08000498                TIM2_Handler
+                0x08000498                hard_fault_handler
+                0x08000498                DMA1_Channel4_Handler
+                0x08000498                TIM3_Handler
+                0x08000498                CAN_SCE_Handler
+                0x08000498                DMA1_Channel3_Handler
+                0x08000498                TIM4_Handler
+                0x08000498                debug_monitor_handler
+                0x08000498                SPI2_Handler
+                0x08000498                DMA1_Channel2_Handler
+                0x08000498                pendsv_handler
+                0x08000498                EXTI0_Handler
+                0x08000498                mem_manage_handler
+                0x08000498                DMA1_Channel5_Handler
+                0x08000498                USART2_Handler
+                0x08000498                SPI1_Handler
+                0x08000498                I2C2_EV_Handler
+                0x08000498                RCC_Handler
+                0x08000498                PVD_Handler
+                0x08000498                nmi_handler
+                0x08000498                RTCAlarm_Handler
+                0x08000498                bus_fault_handler
+                0x08000498                TAMPER_Handler
+                0x0800049e                reset_handler
+ .text          0x08000524      0x200 Build/Objects/AHT20.o
+                0x08000524                AHT20_SendInitializeCommand
+                0x0800056c                AHT20_SendTriggerMeasurementCommand
+                0x080005b4                AHT20_Init
+                0x08000610                AHT20_Reset
+                0x08000642                AHT20_GetSensorSignal
+                0x0800069e                AHT20_GetSensorData
+ .text          0x08000724      0x164 Build/Objects/DHT11.o
+                0x08000724                DHT11_SendStartSignal
+                0x0800079e                DHT11_GetSignal
+                0x0800082a                DHT11_GetValue
+ .text          0x08000888      0x28c Build/Objects/MAX7219.o
+                0x08000888                MAX7219_SendData
+                0x080008cc                MAX7219_PowerOn
+                0x080008dc                MAX7219_SetIntensity
+                0x080008f8                MAX7219_SetScanLimit
+                0x08000914                MAX7219_Clean
+                0x08000948                MAX7219_SetDecodeMode
+                0x08000964                MAX7219_Init
+                0x0800099e                MAX7219_EmptyAllDigits
+                0x080009cc                MAX7219_PrintString
+                0x08000a1c                MAX7219_PrintInt
+ .text          0x08000b14      0x1ac Build/Objects/ARM_System.o
+                0x08000ba0                ARM_ClockInit
+                0x08000c34                systick_handler
+                0x08000c50                ARM_SystickInit
+                0x08000c9c                ARM_SystemInit
+                0x08000cac                ARM_GetTick
+ .text          0x08000cc0       0xb0 Build/Objects/Delay.o
+                0x08000cc0                TIM2_Config
+                0x08000d10                delay_us
+                0x08000d3e                delay_ms
+ .text          0x08000d70      0x288 Build/Objects/DMA.o
+                0x08000d70                DMA_EnableClock
+                0x08000dac                DMA_SetPeripheralAddress
+                0x08000dc6                DMA_SetMemoryAddress
+                0x08000de0                DMA_SetNumberOfData
+                0x08000e08                DMA_SetChannelPriority
+                0x08000e38                DMA_SetDirection
+                0x08000e68                DMA_SetCircularMode
+                0x08000e98                DMA_SetIncrementedMode
+                0x08000eee                DMA_SetMemorySize
+                0x08000f1e                DMA_SetPeripheralSize
+                0x08000f4e                DMA_Init
+                0x08000fa4                DMA_SetTransactionInfo
+                0x08000fda                DMA_Enable
+ .text          0x08000ff8      0xa04 Build/Objects/GPIO.o
+                0x08000ff8                GPIO_EnableClock
+                0x08001024                GPIO_Init
+                0x08001600                GPIO_Set
+                0x080016a4                GPIO_Reset
+                0x08001750                GPIO_Toggle
+                0x08001874                GPIO_PullUpDown
+                0x0800197c                GPIO_ReadPin
+ .text          0x080019fc      0x67c Build/Objects/I2C.o
+                0x080019fc                I2C_EnableClock
+                0x08001a44                I2C_IOConfig
+                0x08001afc                I2C_Enable
+                0x08001b1a                I2C_GenerateStartCondition
+                0x08001b7c                I2C_GenerateStopCondition
+                0x08001b9a                I2C_SetClockFrequency
+                0x08001bd4                I2C_MasterModeSelect
+                0x08001c04                I2C_SetCCRValue
+                0x08001c2e                I2C_SetTRISEValue
+                0x08001c4a                I2C_ClockConfig
+                0x08001c7a                I2C_EnableAcknowledge
+                0x08001caa                I2C_Init
+                0x08001ce6                I2C_TransmitSlaveAddress
+                0x08001db0                I2C_TransmitData
+                0x08001e7c                I2C_ReadData
+ .text          0x08002078       0xc4 Build/Objects/IWDG.o
+                0x08002078                IWDG_SetPrescaler
+                0x080020b4                IWDG_SetReloadValue
+                0x080020dc                IWDG_Start
+                0x080020f4                IWDG_Reset
+                0x0800210c                IWDG_Init
+ .text          0x0800213c      0x3c4 Build/Objects/SPI.o
+                0x0800213c                SPI_EnableClock
+                0x08002184                SPI_SetClockPhase
+                0x080021b2                SPI_SetClockPolarity
+                0x080021e2                SPI_SetMasterSlave
+                0x08002212                SPI_SetSourceClock
+                0x08002258                SPI_Enable
+                0x08002276                SPI_Disable
+                0x080022b0                SPI_SoftwareSlaveSelect_Enable
+                0x080022e6                SPI_SetFrameFormat
+                0x08002316                SPI_Init
+                0x08002364                SPI_SetTransmitOnlyMode
+                0x0800238c                SPI_IO_Init
+                0x0800241c                SPI_Transmit
+                0x0800249c                SPI_Transmit_DMA
+ .text          0x08002500      0x800 Build/Objects/Timer.o
+                0x08002500                TIM_EnableTimerClock
+                0x08002578                TIM_SetSlaveMode
+                0x080025a6                TIM_SetPolarity
+                0x0800264e                TIM_SetChannelDirection
+                0x080026f2                TIM_SetInputCaptureFilter
+                0x0800279a                TIM_EnableCounter
+                0x080027b8                TIM_EnableCaptureInput
+                0x08002824                TIM_PWM_IO_Config
+                0x080029b8                TIM_PWM_Init
+                0x08002aa6                TIM_EnableCCOutput
+                0x08002b0a                TIM_PWM_Mode
+                0x08002bb2                TIM_EnableUpdateGeneration
+                0x08002bd0                TIM_PWM_Start
+                0x08002bfa                TIM_SetPrescaler
+                0x08002c1a                TIM_SetARRReg
+                0x08002c36                TIM_SetCCRxReg
+                0x08002c8e                TIM_Encoder_Init
+                0x08002cda                TIM_EncoderStart
+ .text          0x08002d00      0x400 Build/Objects/USART.o
+                0x08002d00                USART_EnableClock
+                0x08002d64                USART_EnablePeripheral
+                0x08002d82                USART_ConfigStopBits
+                0x08002db2                USART_ConfigWordLength
+                0x08002de2                USART_ConfigBaudrate
+                0x08002eb0                USART_TransmitterEnable
+                0x08002ece                USART_TransmitterDisable
+                0x08002eec                USART_IOInit
+                0x08002f1c                USART_ReceiverEnable
+                0x08002f3a                USART_Init
+                0x08002f8c                USART_TransmitData
+                0x08002ff2                USART_ReceiveData
+                0x08003070                USART_ReceiveData_DMA
  *(.rodata)
- .rodata        0x08002f50        0x7 Build/Objects/AHT20.o
-                0x08002f58                . = ALIGN (0x4)
- *fill*         0x08002f57        0x1 
-                0x08002f58                _etext = .
+ .rodata        0x08003100        0x7 Build/Objects/AHT20.o
+                0x08003108                . = ALIGN (0x4)
+ *fill*         0x08003107        0x1 
+                0x08003108                _etext = .
 
-.glue_7         0x08002f58        0x0
- .glue_7        0x08002f58        0x0 linker stubs
+.glue_7         0x08003108        0x0
+ .glue_7        0x08003108        0x0 linker stubs
 
-.glue_7t        0x08002f58        0x0
- .glue_7t       0x08002f58        0x0 linker stubs
+.glue_7t        0x08003108        0x0
+ .glue_7t       0x08003108        0x0 linker stubs
 
-.vfp11_veneer   0x08002f58        0x0
- .vfp11_veneer  0x08002f58        0x0 linker stubs
+.vfp11_veneer   0x08003108        0x0
+ .vfp11_veneer  0x08003108        0x0 linker stubs
 
-.v4_bx          0x08002f58        0x0
- .v4_bx         0x08002f58        0x0 linker stubs
+.v4_bx          0x08003108        0x0
+ .v4_bx         0x08003108        0x0 linker stubs
 
-.iplt           0x08002f58        0x0
- .iplt          0x08002f58        0x0 Build/Objects/main.o
+.iplt           0x08003108        0x0
+ .iplt          0x08003108        0x0 Build/Objects/main.o
 
-.rel.dyn        0x08002f58        0x0
- .rel.iplt      0x08002f58        0x0 Build/Objects/main.o
+.rel.dyn        0x08003108        0x0
+ .rel.iplt      0x08003108        0x0 Build/Objects/main.o
 
-.data           0x20000000       0x10 load address 0x08002f58
+.data           0x20000000       0x10 load address 0x08003108
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -274,10 +276,10 @@ END GROUP
  *fill*         0x2000000f        0x1 
                 0x20000010                _edata = .
 
-.igot.plt       0x20000010        0x0 load address 0x08002f68
+.igot.plt       0x20000010        0x0 load address 0x08003118
  .igot.plt      0x20000010        0x0 Build/Objects/main.o
 
-.bss            0x20000010       0x2c load address 0x08002f68
+.bss            0x20000010       0x2c load address 0x08003118
                 0x20000010                . = ALIGN (0x4)
                 0x20000010                _sbss = .
  *(.bss)
@@ -313,37 +315,37 @@ END GROUP
 OUTPUT(Build/Output/out.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000     0x42f4
- .debug_info    0x00000000      0xb20 Build/Objects/main.o
- .debug_info    0x00000b20      0x1ac Build/Objects/startup.o
- .debug_info    0x00000ccc      0x385 Build/Objects/AHT20.o
- .debug_info    0x00001051      0x1f9 Build/Objects/DHT11.o
- .debug_info    0x0000124a      0x390 Build/Objects/MAX7219.o
- .debug_info    0x000015da      0x739 Build/Objects/ARM_System.o
- .debug_info    0x00001d13      0x2f5 Build/Objects/Delay.o
- .debug_info    0x00002008      0x4e3 Build/Objects/DMA.o
- .debug_info    0x000024eb      0x4a0 Build/Objects/GPIO.o
- .debug_info    0x0000298b      0x793 Build/Objects/I2C.o
- .debug_info    0x0000311e      0x1a7 Build/Objects/IWDG.o
- .debug_info    0x000032c5      0x4fb Build/Objects/SPI.o
- .debug_info    0x000037c0      0x6b1 Build/Objects/Timer.o
- .debug_info    0x00003e71      0x483 Build/Objects/USART.o
+.debug_info     0x00000000     0x44ed
+ .debug_info    0x00000000      0xbf1 Build/Objects/main.o
+ .debug_info    0x00000bf1      0x1ac Build/Objects/startup.o
+ .debug_info    0x00000d9d      0x39c Build/Objects/AHT20.o
+ .debug_info    0x00001139      0x1f9 Build/Objects/DHT11.o
+ .debug_info    0x00001332      0x390 Build/Objects/MAX7219.o
+ .debug_info    0x000016c2      0x74b Build/Objects/ARM_System.o
+ .debug_info    0x00001e0d      0x2f5 Build/Objects/Delay.o
+ .debug_info    0x00002102      0x4e3 Build/Objects/DMA.o
+ .debug_info    0x000025e5      0x4a0 Build/Objects/GPIO.o
+ .debug_info    0x00002a85      0x793 Build/Objects/I2C.o
+ .debug_info    0x00003218      0x1a7 Build/Objects/IWDG.o
+ .debug_info    0x000033bf      0x4fb Build/Objects/SPI.o
+ .debug_info    0x000038ba      0x6b1 Build/Objects/Timer.o
+ .debug_info    0x00003f6b      0x582 Build/Objects/USART.o
 
-.debug_abbrev   0x00000000     0x1154
- .debug_abbrev  0x00000000      0x215 Build/Objects/main.o
- .debug_abbrev  0x00000215       0xe6 Build/Objects/startup.o
- .debug_abbrev  0x000002fb      0x12f Build/Objects/AHT20.o
- .debug_abbrev  0x0000042a       0xe6 Build/Objects/DHT11.o
- .debug_abbrev  0x00000510      0x143 Build/Objects/MAX7219.o
- .debug_abbrev  0x00000653      0x19e Build/Objects/ARM_System.o
- .debug_abbrev  0x000007f1       0xe1 Build/Objects/Delay.o
- .debug_abbrev  0x000008d2      0x135 Build/Objects/DMA.o
- .debug_abbrev  0x00000a07      0x172 Build/Objects/GPIO.o
- .debug_abbrev  0x00000b79      0x19d Build/Objects/I2C.o
- .debug_abbrev  0x00000d16       0xec Build/Objects/IWDG.o
- .debug_abbrev  0x00000e02      0x117 Build/Objects/SPI.o
- .debug_abbrev  0x00000f19      0x135 Build/Objects/Timer.o
- .debug_abbrev  0x0000104e      0x106 Build/Objects/USART.o
+.debug_abbrev   0x00000000     0x114b
+ .debug_abbrev  0x00000000      0x228 Build/Objects/main.o
+ .debug_abbrev  0x00000228       0xe6 Build/Objects/startup.o
+ .debug_abbrev  0x0000030e      0x113 Build/Objects/AHT20.o
+ .debug_abbrev  0x00000421       0xe6 Build/Objects/DHT11.o
+ .debug_abbrev  0x00000507      0x143 Build/Objects/MAX7219.o
+ .debug_abbrev  0x0000064a      0x19e Build/Objects/ARM_System.o
+ .debug_abbrev  0x000007e8       0xe1 Build/Objects/Delay.o
+ .debug_abbrev  0x000008c9      0x135 Build/Objects/DMA.o
+ .debug_abbrev  0x000009fe      0x172 Build/Objects/GPIO.o
+ .debug_abbrev  0x00000b70      0x19d Build/Objects/I2C.o
+ .debug_abbrev  0x00000d0d       0xec Build/Objects/IWDG.o
+ .debug_abbrev  0x00000df9      0x117 Build/Objects/SPI.o
+ .debug_abbrev  0x00000f10      0x135 Build/Objects/Timer.o
+ .debug_abbrev  0x00001045      0x106 Build/Objects/USART.o
 
 .debug_aranges  0x00000000      0x1c0
  .debug_aranges
@@ -375,51 +377,51 @@ LOAD linker stubs
  .debug_aranges
                 0x000001a0       0x20 Build/Objects/USART.o
 
-.debug_line     0x00000000     0x2924
- .debug_line    0x00000000      0x2ef Build/Objects/main.o
- .debug_line    0x000002ef      0x195 Build/Objects/startup.o
- .debug_line    0x00000484      0x253 Build/Objects/AHT20.o
- .debug_line    0x000006d7      0x203 Build/Objects/DHT11.o
- .debug_line    0x000008da      0x23e Build/Objects/MAX7219.o
- .debug_line    0x00000b18      0x268 Build/Objects/ARM_System.o
- .debug_line    0x00000d80      0x1cd Build/Objects/Delay.o
- .debug_line    0x00000f4d      0x237 Build/Objects/DMA.o
- .debug_line    0x00001184      0x695 Build/Objects/GPIO.o
- .debug_line    0x00001819      0x565 Build/Objects/I2C.o
- .debug_line    0x00001d7e      0x1b9 Build/Objects/IWDG.o
- .debug_line    0x00001f37      0x2fa Build/Objects/SPI.o
- .debug_line    0x00002231      0x439 Build/Objects/Timer.o
- .debug_line    0x0000266a      0x2ba Build/Objects/USART.o
+.debug_line     0x00000000     0x2a84
+ .debug_line    0x00000000      0x312 Build/Objects/main.o
+ .debug_line    0x00000312      0x195 Build/Objects/startup.o
+ .debug_line    0x000004a7      0x292 Build/Objects/AHT20.o
+ .debug_line    0x00000739      0x203 Build/Objects/DHT11.o
+ .debug_line    0x0000093c      0x23e Build/Objects/MAX7219.o
+ .debug_line    0x00000b7a      0x271 Build/Objects/ARM_System.o
+ .debug_line    0x00000deb      0x1cd Build/Objects/Delay.o
+ .debug_line    0x00000fb8      0x237 Build/Objects/DMA.o
+ .debug_line    0x000011ef      0x695 Build/Objects/GPIO.o
+ .debug_line    0x00001884      0x5fc Build/Objects/I2C.o
+ .debug_line    0x00001e80      0x1b9 Build/Objects/IWDG.o
+ .debug_line    0x00002039      0x2fa Build/Objects/SPI.o
+ .debug_line    0x00002333      0x439 Build/Objects/Timer.o
+ .debug_line    0x0000276c      0x318 Build/Objects/USART.o
 
-.debug_str      0x00000000     0x1459
- .debug_str     0x00000000      0x6b6 Build/Objects/main.o
-                                0x759 (size before relaxing)
- .debug_str     0x000006b6       0x83 Build/Objects/startup.o
+.debug_str      0x00000000     0x14ad
+ .debug_str     0x00000000      0x72f Build/Objects/main.o
+                                0x7d2 (size before relaxing)
+ .debug_str     0x0000072f       0x83 Build/Objects/startup.o
                                 0x1d4 (size before relaxing)
- .debug_str     0x00000739      0x16b Build/Objects/AHT20.o
+ .debug_str     0x000007b2      0x149 Build/Objects/AHT20.o
                                 0x324 (size before relaxing)
- .debug_str     0x000008a4       0xad Build/Objects/DHT11.o
+ .debug_str     0x000008fb       0xad Build/Objects/DHT11.o
                                 0x203 (size before relaxing)
- .debug_str     0x00000951      0x138 Build/Objects/MAX7219.o
+ .debug_str     0x000009a8      0x138 Build/Objects/MAX7219.o
                                 0x2f3 (size before relaxing)
- .debug_str     0x00000a89       0x7d Build/Objects/ARM_System.o
-                                0x611 (size before relaxing)
- .debug_str     0x00000b06       0x4a Build/Objects/Delay.o
+ .debug_str     0x00000ae0       0x8d Build/Objects/ARM_System.o
+                                0x621 (size before relaxing)
+ .debug_str     0x00000b6d       0x4a Build/Objects/Delay.o
                                 0x221 (size before relaxing)
- .debug_str     0x00000b50      0x1a4 Build/Objects/DMA.o
+ .debug_str     0x00000bb7      0x16f Build/Objects/DMA.o
                                 0x3a9 (size before relaxing)
- .debug_str     0x00000cf4       0xc7 Build/Objects/GPIO.o
+ .debug_str     0x00000d26       0xc7 Build/Objects/GPIO.o
                                 0x280 (size before relaxing)
- .debug_str     0x00000dbb      0x1de Build/Objects/I2C.o
-                                0x450 (size before relaxing)
- .debug_str     0x00000f99       0x7d Build/Objects/IWDG.o
+ .debug_str     0x00000ded      0x1db Build/Objects/I2C.o
+                                0x44d (size before relaxing)
+ .debug_str     0x00000fc8       0x7d Build/Objects/IWDG.o
                                 0x1ee (size before relaxing)
- .debug_str     0x00001016      0x127 Build/Objects/SPI.o
+ .debug_str     0x00001045      0x127 Build/Objects/SPI.o
                                 0x344 (size before relaxing)
- .debug_str     0x0000113d      0x1c4 Build/Objects/Timer.o
+ .debug_str     0x0000116c      0x1c4 Build/Objects/Timer.o
                                 0x3cd (size before relaxing)
- .debug_str     0x00001301      0x158 Build/Objects/USART.o
-                                0x334 (size before relaxing)
+ .debug_str     0x00001330      0x17d Build/Objects/USART.o
+                                0x3a7 (size before relaxing)
 
 .comment        0x00000000       0x49
  .comment       0x00000000       0x49 Build/Objects/main.o
@@ -469,21 +471,21 @@ LOAD linker stubs
  .ARM.attributes
                 0x00000249       0x2d Build/Objects/USART.o
 
-.debug_frame    0x00000000     0x12f0
- .debug_frame   0x00000000      0x158 Build/Objects/main.o
- .debug_frame   0x00000158       0x4c Build/Objects/startup.o
- .debug_frame   0x000001a4       0xe8 Build/Objects/AHT20.o
- .debug_frame   0x0000028c       0x7c Build/Objects/DHT11.o
- .debug_frame   0x00000308      0x17c Build/Objects/MAX7219.o
- .debug_frame   0x00000484       0xd8 Build/Objects/ARM_System.o
- .debug_frame   0x0000055c       0x78 Build/Objects/Delay.o
- .debug_frame   0x000005d4      0x210 Build/Objects/DMA.o
- .debug_frame   0x000007e4      0x128 Build/Objects/GPIO.o
- .debug_frame   0x0000090c      0x24c Build/Objects/I2C.o
- .debug_frame   0x00000b58       0xc4 Build/Objects/IWDG.o
- .debug_frame   0x00000c1c      0x228 Build/Objects/SPI.o
- .debug_frame   0x00000e44      0x2cc Build/Objects/Timer.o
- .debug_frame   0x00001110      0x1e0 Build/Objects/USART.o
+.debug_frame    0x00000000     0x1350
+ .debug_frame   0x00000000      0x174 Build/Objects/main.o
+ .debug_frame   0x00000174       0x4c Build/Objects/startup.o
+ .debug_frame   0x000001c0       0xe8 Build/Objects/AHT20.o
+ .debug_frame   0x000002a8       0x7c Build/Objects/DHT11.o
+ .debug_frame   0x00000324      0x17c Build/Objects/MAX7219.o
+ .debug_frame   0x000004a0       0xf8 Build/Objects/ARM_System.o
+ .debug_frame   0x00000598       0x78 Build/Objects/Delay.o
+ .debug_frame   0x00000610      0x210 Build/Objects/DMA.o
+ .debug_frame   0x00000820      0x128 Build/Objects/GPIO.o
+ .debug_frame   0x00000948      0x24c Build/Objects/I2C.o
+ .debug_frame   0x00000b94       0xc4 Build/Objects/IWDG.o
+ .debug_frame   0x00000c58      0x228 Build/Objects/SPI.o
+ .debug_frame   0x00000e80      0x2cc Build/Objects/Timer.o
+ .debug_frame   0x0000114c      0x204 Build/Objects/USART.o
 
 .debug_ranges   0x00000000      0x138
  .debug_ranges  0x00000000      0x138 Build/Objects/GPIO.o
