@@ -106,7 +106,7 @@ void USART1_ConfigInterrupt(){
 
 void USART1_Handler(void){
 	if(USART1->SR & (1UL << 5UL)){
-		USART_ReceiveData(USART1, UART_ReceiveData, 3);
+		USART_ReceiveData_DMA(USART1, UART_ReceiveData, 10);
 	}
 }
 
@@ -135,8 +135,9 @@ int main(void){
 
 	/*USART1 Init */
 	USART_Init(USART1, UASRT_8_DATA_BITS, USART_1_STOP_BIT, USART_BAUDRATE_9600);
+	USART1_ConfigInterrupt();
 	DMA_Init(DMA1, DMA1_Channel5, DMA_PeripheralToMemory, DMA_PRIORITY_HIGH, DMA_CIRCULARMODE_ENABLE);
-	//USART1_ConfigInterrupt();
+	
 
     while (1){
         counterVal = GetCounterValue(); //Get current counter value from Timer 4	
@@ -153,7 +154,7 @@ int main(void){
 		//USART_TransmitData(USART1, (uint8_t*)UART_Data, strlen(UART_Data) + 1);
 		//USART_ReceiveData(USART1, UART_ReceiveData, 3);
 
-		USART_ReceiveData_DMA(USART1, UART_ReceiveData, 3);
+		//USART_ReceiveData_DMA(USART1, UART_ReceiveData, 3);
 
 		ToggleLED();
 

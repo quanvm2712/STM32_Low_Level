@@ -104,6 +104,9 @@ void USART_Init(USART_TypeDef* USARTx, _Bool WordLength, uint8_t NumberOfStopBit
     USART_ConfigWordLength(USARTx, WordLength);
     USART_ConfigStopBits(USARTx, NumberOfStopBits);
     USART_ConfigBaudrate(USARTx, DesiredBaudrate);
+
+    USART_ReceiverEnable(USARTx);
+    USART_TransmitterEnable(USARTx);
 }
 
 void USART_TransmitData(USART_TypeDef* USARTx, uint8_t* Data, uint16_t DataSize){
@@ -144,11 +147,9 @@ void USART_ReceiveData(USART_TypeDef* USARTx, uint8_t* ReceivedData, uint8_t Dat
 void USART_ReceiveData_DMA(USART_TypeDef* USARTx, uint8_t* ReceivedBuffer, uint8_t DataSize){
     uint8_t Timeout = 50;
     uint32_t lastTicks;
-    //DMA_SetIncrementedMode(DMA1_Channel5, DMA_SOURCE_MEMORY, DMA_INCREMENTED_DISABLE);
-    //DMA_SetCircularMode(DMA1_Channel5, DMA_CIRCULARMODE_DISABLE);
 
-    DMA_SetTransactionInfo(DMA1_Channel5, (uint32_t)ReceivedBuffer, (uint32_t)&USARTx->DR, 3);
-    USART_ReceiverEnable(USARTx);
+    DMA_SetTransactionInfo(DMA1_Channel5, (uint32_t)ReceivedBuffer, (uint32_t)&USARTx->DR, DataSize);
+    //USART_ReceiverEnable(USARTx);
 
     if(USARTx->SR & (1UL << 5UL)){    //Check if RXNE is set
         USARTx->CR3 |= (1UL << 6UL);  //Enable USART DMA receiver
