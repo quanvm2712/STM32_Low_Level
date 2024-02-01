@@ -1,17 +1,13 @@
 var searchData=
 [
-  ['spi_5fdisable_0',['SPI_Disable',['../_s_p_i_8c.html#a8cdb23f65a9244d9549be7697cf971f7',1,'SPI.c']]],
-  ['spi_5fenable_1',['SPI_Enable',['../_s_p_i_8c.html#a2d860a76f454f4631adca7843f047b59',1,'SPI.c']]],
-  ['spi_5fenableclock_2',['SPI_EnableClock',['../_s_p_i_8c.html#ad6c9c6502f911e2d12210c3df9582420',1,'SPI.c']]],
-  ['spi_5finit_3',['SPI_Init',['../_s_p_i_8c.html#aa5f512db186aeba1489498394a85e482',1,'SPI.c']]],
-  ['spi_5fio_5finit_4',['SPI_IO_Init',['../_s_p_i_8c.html#abb87df6c8d54bd9e75efb68b69d509c2',1,'SPI.c']]],
-  ['spi_5fsetclockphase_5',['SPI_SetClockPhase',['../_s_p_i_8c.html#a06ce98957ca342ef3b61e5c37a20783f',1,'SPI.c']]],
-  ['spi_5fsetclockpolarity_6',['SPI_SetClockPolarity',['../_s_p_i_8c.html#a75483365f1237e16ec4b6dafc46ccc4b',1,'SPI.c']]],
-  ['spi_5fsetframeformat_7',['SPI_SetFrameFormat',['../_s_p_i_8c.html#a8ff42236ba7e865a53e55a4dcedfbd8f',1,'SPI.c']]],
-  ['spi_5fsetmasterslave_8',['SPI_SetMasterSlave',['../_s_p_i_8c.html#a0a2e5697d855d508c9c0dee05cdd3d3d',1,'SPI.c']]],
-  ['spi_5fsetsourceclock_9',['SPI_SetSourceClock',['../_s_p_i_8c.html#ad6f9f5290cfe6856eb2b633a0a6933a8',1,'SPI.c']]],
-  ['spi_5fsettransmitonlymode_10',['SPI_SetTransmitOnlyMode',['../_s_p_i_8c.html#ad2084534d4ee7d998e3c6fabdadff98c',1,'SPI.c']]],
-  ['spi_5fsoftwareslaveselect_5fenable_11',['SPI_SoftwareSlaveSelect_Enable',['../_s_p_i_8c.html#a76d30b128c2b158a2613addeba19fda4',1,'SPI.c']]],
-  ['spi_5ftransmit_12',['SPI_Transmit',['../_s_p_i_8c.html#a29fb790e4b342e3eb01fe807c9fc61f0',1,'SPI.c']]],
-  ['spi_5ftransmit_5fdma_13',['SPI_Transmit_DMA',['../_s_p_i_8c.html#a2266be52a06b152fdbd039e232356cda',1,'SPI.c']]]
+  ['max7219_5fclean_0',['MAX7219_Clean',['../_m_a_x7219_8c.html#a8ada6e98f0fcc5dfb9f2fdd589dac0b4',1,'MAX7219.c']]],
+  ['max7219_5femptyalldigits_1',['MAX7219_EmptyAllDigits',['../_m_a_x7219_8c.html#ac104b5c0a3635f98bbebac80fb9d7ded',1,'MAX7219.c']]],
+  ['max7219_5finit_2',['MAX7219_Init',['../_m_a_x7219_8c.html#a70ec0f4677530f15b8dc54f07d0fc3eb',1,'MAX7219.c']]],
+  ['max7219_5fpoweron_3',['MAX7219_PowerOn',['../_m_a_x7219_8c.html#a4caf36b831eb08ba7af834b243fc180e',1,'MAX7219.c']]],
+  ['max7219_5fprintint_4',['MAX7219_PrintInt',['../_m_a_x7219_8c.html#a827f2369568bc795c0efbe59652cbad5',1,'MAX7219.c']]],
+  ['max7219_5fprintstring_5',['MAX7219_PrintString',['../_m_a_x7219_8c.html#a0db5587e05703cc71fe4bad709a710b0',1,'MAX7219.c']]],
+  ['max7219_5fsenddata_6',['MAX7219_SendData',['../_m_a_x7219_8c.html#acd8f609158d9d9272c60a4d097252b8c',1,'MAX7219.c']]],
+  ['max7219_5fsetdecodemode_7',['MAX7219_SetDecodeMode',['../_m_a_x7219_8c.html#af8a73c8313cdc453eddf523d3a9c0d5f',1,'MAX7219.c']]],
+  ['max7219_5fsetintensity_8',['MAX7219_SetIntensity',['../_m_a_x7219_8c.html#ac9c0e43e4443925ca10d5667d9f98799',1,'MAX7219.c']]],
+  ['max7219_5fsetscanlimit_9',['MAX7219_SetScanLimit',['../_m_a_x7219_8c.html#a170269316d08fb6a1dd2f4bc2fe539a0',1,'MAX7219.c']]]
 ];

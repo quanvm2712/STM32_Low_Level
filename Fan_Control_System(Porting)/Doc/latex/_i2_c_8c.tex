@@ -1,0 +1,364 @@
+\doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+System(Porting)/\+Source/\+F103\+\_\+\+Library/\+I2C.c File Reference}
+\hypertarget{_i2_c_8c}{}\label{_i2_c_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_System(Porting)/Source/F103\_Library/I2C.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_System(Porting)/Source/F103\_Library/I2C.c}}
+
+
+I2C Hardware Abstraction Layer for STM32\+F103\+C8\+T6.  
+
+
+{\ttfamily \#include "{}I2\+C.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_i2_c_8c_a8bf0bb6c326ccfb385a4a8b3b786f771}{I2\+C\+\_\+\+Enable\+Clock}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx)
+\begin{DoxyCompactList}\small\item\em Enable clock for selected I2C instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_a8a9af629982765ebd1ab9b50d766624d}{I2\+C\+\_\+\+IOConfig}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, \+\_\+\+Bool is\+Remap\+Enabled)
+\begin{DoxyCompactList}\small\item\em Configure IO pins for selected I2C instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_a86d7fe2f2f101ab7c43c67d7aa74a8a3}{I2\+C\+\_\+\+Enable}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx)
+\begin{DoxyCompactList}\small\item\em Enable selected I2C instance. \end{DoxyCompactList}\item 
+I2\+C\+\_\+\+Status \mbox{\hyperlink{_i2_c_8c_a6f72335c628b027c5401f3362dcc245a}{I2\+C\+\_\+\+Generate\+Start\+Condition}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, uint8\+\_\+t Timeout)
+\begin{DoxyCompactList}\small\item\em Generate start signal for I2C data transmission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_ad8c6c1864cdcb9e5a6fd6137be3b7c9c}{I2\+C\+\_\+\+Generate\+Stop\+Condition}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx)
+\begin{DoxyCompactList}\small\item\em Generate stop signal for ending data transmission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_a98781baa34c73d53137f53505fe0d3f9}{I2\+C\+\_\+\+Set\+Clock\+Frequency}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, uint8\+\_\+t Clock\+Frequency)
+\begin{DoxyCompactList}\small\item\em Configure I2C input clock frequency. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_a95a3898184f01fda7b1969ce130197d2}{I2\+C\+\_\+\+Master\+Mode\+Select}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, \+\_\+\+Bool Master\+Mode)
+\begin{DoxyCompactList}\small\item\em Configure I2C standard or fast mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_a605592fe306f184be22ebd15638094cf}{I2\+C\+\_\+\+Set\+CCRValue}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, uint16\+\_\+t CCRValue)
+\begin{DoxyCompactList}\small\item\em Set CCR value of selected I2C instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_a20556892b88eaef48b33b10fa7386d29}{I2\+C\+\_\+\+Set\+TRISEValue}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, uint8\+\_\+t TRISEValue)
+\begin{DoxyCompactList}\small\item\em Set TRISE value of selected I2C instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_a4c5f777d940e94180dc13e7a4b6b2dca}{I2\+C\+\_\+\+Clock\+Config}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx)
+\begin{DoxyCompactList}\small\item\em Configure I2C clock for standard mode(100k\+Hz) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_a8ae5cc094a6153b046ea63a2b35c5107}{I2\+C\+\_\+\+Enable\+Acknowledge}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, \+\_\+\+Bool is\+Enabled)
+\begin{DoxyCompactList}\small\item\em Generate ACK signal when receiving data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i2_c_8c_a620cc33d5840b7487c93c0eeaaebca49}{I2\+C\+\_\+\+Init}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, \+\_\+\+Bool is\+Remap\+Enabled, uint8\+\_\+t I2\+C\+\_\+\+Master\+Mode)
+\begin{DoxyCompactList}\small\item\em Initialize selected I2C instance. \end{DoxyCompactList}\item 
+I2\+C\+\_\+\+Status \mbox{\hyperlink{_i2_c_8c_ad302e9074841ff2dd7571de78eafcbc2}{I2\+C\+\_\+\+Transmit\+Slave\+Address}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, uint8\+\_\+t I2\+CSlave\+Address, \+\_\+\+Bool I2\+C\+\_\+\+Operation, uint8\+\_\+t Timeout)
+\begin{DoxyCompactList}\small\item\em Slave address transmission. \end{DoxyCompactList}\item 
+I2\+C\+\_\+\+Status \mbox{\hyperlink{_i2_c_8c_abb10a60f560cbe5e9d958b03a4dcda83}{I2\+C\+\_\+\+Transmit\+Data}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, uint8\+\_\+t Slave\+Address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t Data\+Size, uint8\+\_\+t Timeout)
+\begin{DoxyCompactList}\small\item\em Transmit data to selected I2C slave. \end{DoxyCompactList}\item 
+I2\+C\+\_\+\+Status \mbox{\hyperlink{_i2_c_8c_a0257d361be3267a771623d5e01f1b49b}{I2\+C\+\_\+\+Read\+Data}} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, uint8\+\_\+t Slave\+Address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}RX\+\_\+\+Data, uint16\+\_\+t Data\+Size, uint8\+\_\+t Timeout)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+I2C Hardware Abstraction Layer for STM32\+F103\+C8\+T6. 
+
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan (\href{mailto:quanvm198@gmail.com}{\texttt{ quanvm198@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/01-\/25 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_i2_c_8c_a4c5f777d940e94180dc13e7a4b6b2dca}\label{_i2_c_8c_a4c5f777d940e94180dc13e7a4b6b2dca} 
+\index{I2C.c@{I2C.c}!I2C\_ClockConfig@{I2C\_ClockConfig}}
+\index{I2C\_ClockConfig@{I2C\_ClockConfig}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_ClockConfig()}{I2C\_ClockConfig()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Clock\+Config (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx }\end{DoxyParamCaption})}
+
+
+
+Configure I2C clock for standard mode(100k\+Hz) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a86d7fe2f2f101ab7c43c67d7aa74a8a3}\label{_i2_c_8c_a86d7fe2f2f101ab7c43c67d7aa74a8a3} 
+\index{I2C.c@{I2C.c}!I2C\_Enable@{I2C\_Enable}}
+\index{I2C\_Enable@{I2C\_Enable}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_Enable()}{I2C\_Enable()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Enable (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx }\end{DoxyParamCaption})}
+
+
+
+Enable selected I2C instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a8ae5cc094a6153b046ea63a2b35c5107}\label{_i2_c_8c_a8ae5cc094a6153b046ea63a2b35c5107} 
+\index{I2C.c@{I2C.c}!I2C\_EnableAcknowledge@{I2C\_EnableAcknowledge}}
+\index{I2C\_EnableAcknowledge@{I2C\_EnableAcknowledge}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_EnableAcknowledge()}{I2C\_EnableAcknowledge()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Enable\+Acknowledge (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{\+\_\+\+Bool}]{is\+Enabled }\end{DoxyParamCaption})}
+
+
+
+Generate ACK signal when receiving data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+{\em is\+Enabled} & Enable or disable. \begin{DoxyItemize}
+\item I2\+C\+\_\+\+ACKNOWLEDGE\+\_\+\+DISABLE \item I2\+C\+\_\+\+ACKNOWLEDGE\+\_\+\+ENABLE \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a8bf0bb6c326ccfb385a4a8b3b786f771}\label{_i2_c_8c_a8bf0bb6c326ccfb385a4a8b3b786f771} 
+\index{I2C.c@{I2C.c}!I2C\_EnableClock@{I2C\_EnableClock}}
+\index{I2C\_EnableClock@{I2C\_EnableClock}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_EnableClock()}{I2C\_EnableClock()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Enable\+Clock (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx }\end{DoxyParamCaption})}
+
+
+
+Enable clock for selected I2C instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a6f72335c628b027c5401f3362dcc245a}\label{_i2_c_8c_a6f72335c628b027c5401f3362dcc245a} 
+\index{I2C.c@{I2C.c}!I2C\_GenerateStartCondition@{I2C\_GenerateStartCondition}}
+\index{I2C\_GenerateStartCondition@{I2C\_GenerateStartCondition}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_GenerateStartCondition()}{I2C\_GenerateStartCondition()}}
+{\footnotesize\ttfamily I2\+C\+\_\+\+Status I2\+C\+\_\+\+Generate\+Start\+Condition (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{uint8\+\_\+t}]{Timeout }\end{DoxyParamCaption})}
+
+
+
+Generate start signal for I2C data transmission. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+I2\+C\+\_\+\+Status Status of the operation 
+\end{DoxyReturn}
+\Hypertarget{_i2_c_8c_ad8c6c1864cdcb9e5a6fd6137be3b7c9c}\label{_i2_c_8c_ad8c6c1864cdcb9e5a6fd6137be3b7c9c} 
+\index{I2C.c@{I2C.c}!I2C\_GenerateStopCondition@{I2C\_GenerateStopCondition}}
+\index{I2C\_GenerateStopCondition@{I2C\_GenerateStopCondition}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_GenerateStopCondition()}{I2C\_GenerateStopCondition()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Generate\+Stop\+Condition (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx }\end{DoxyParamCaption})}
+
+
+
+Generate stop signal for ending data transmission. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a620cc33d5840b7487c93c0eeaaebca49}\label{_i2_c_8c_a620cc33d5840b7487c93c0eeaaebca49} 
+\index{I2C.c@{I2C.c}!I2C\_Init@{I2C\_Init}}
+\index{I2C\_Init@{I2C\_Init}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_Init()}{I2C\_Init()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Init (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{\+\_\+\+Bool}]{is\+Remap\+Enabled,  }\item[{uint8\+\_\+t}]{I2\+C\+\_\+\+Master\+Mode }\end{DoxyParamCaption})}
+
+
+
+Initialize selected I2C instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+{\em is\+Remap\+Enabled} & Enable IO remapping (I2\+C1 only) \begin{DoxyItemize}
+\item I2\+C1\+\_\+\+REMAPPING\+\_\+\+DISABLE \item I2\+C1\+\_\+\+REMAPPING\+\_\+\+ENABLE \end{DoxyItemize}
+\\
+\hline
+{\em Master\+Mode} & I2C standard or fast mode \begin{DoxyItemize}
+\item I2\+C\+\_\+\+MASTERMODE\+\_\+\+SM \item I2\+C\+\_\+\+MASTERMODE\+\_\+\+FM \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a8a9af629982765ebd1ab9b50d766624d}\label{_i2_c_8c_a8a9af629982765ebd1ab9b50d766624d} 
+\index{I2C.c@{I2C.c}!I2C\_IOConfig@{I2C\_IOConfig}}
+\index{I2C\_IOConfig@{I2C\_IOConfig}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_IOConfig()}{I2C\_IOConfig()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+IOConfig (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{\+\_\+\+Bool}]{is\+Remap\+Enabled }\end{DoxyParamCaption})}
+
+
+
+Configure IO pins for selected I2C instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+{\em is\+Remap\+Enabled} & Enable IO remapping (I2\+C1 only) \begin{DoxyItemize}
+\item I2\+C1\+\_\+\+REMAPPING\+\_\+\+DISABLE \item I2\+C1\+\_\+\+REMAPPING\+\_\+\+ENABLE \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a95a3898184f01fda7b1969ce130197d2}\label{_i2_c_8c_a95a3898184f01fda7b1969ce130197d2} 
+\index{I2C.c@{I2C.c}!I2C\_MasterModeSelect@{I2C\_MasterModeSelect}}
+\index{I2C\_MasterModeSelect@{I2C\_MasterModeSelect}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_MasterModeSelect()}{I2C\_MasterModeSelect()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Master\+Mode\+Select (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{\+\_\+\+Bool}]{Master\+Mode }\end{DoxyParamCaption})}
+
+
+
+Configure I2C standard or fast mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+{\em Master\+Mode} & I2C standard or fast mode \begin{DoxyItemize}
+\item I2\+C\+\_\+\+MASTERMODE\+\_\+\+SM \item I2\+C\+\_\+\+MASTERMODE\+\_\+\+FM \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a0257d361be3267a771623d5e01f1b49b}\label{_i2_c_8c_a0257d361be3267a771623d5e01f1b49b} 
+\index{I2C.c@{I2C.c}!I2C\_ReadData@{I2C\_ReadData}}
+\index{I2C\_ReadData@{I2C\_ReadData}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_ReadData()}{I2C\_ReadData()}}
+{\footnotesize\ttfamily I2\+C\+\_\+\+Status I2\+C\+\_\+\+Read\+Data (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{uint8\+\_\+t}]{Slave\+Address,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{RX\+\_\+\+Data,  }\item[{uint16\+\_\+t}]{Data\+Size,  }\item[{uint8\+\_\+t}]{Timeout }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & \\
+\hline
+{\em Slave\+Address} & \\
+\hline
+{\em data} & \\
+\hline
+{\em Data\+Size} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+I2\+C\+\_\+\+Status 
+\end{DoxyReturn}
+Wait until Rx\+NE is set and read data N\Hypertarget{_i2_c_8c_a605592fe306f184be22ebd15638094cf}\label{_i2_c_8c_a605592fe306f184be22ebd15638094cf} 
+\index{I2C.c@{I2C.c}!I2C\_SetCCRValue@{I2C\_SetCCRValue}}
+\index{I2C\_SetCCRValue@{I2C\_SetCCRValue}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_SetCCRValue()}{I2C\_SetCCRValue()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Set\+CCRValue (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{uint16\+\_\+t}]{CCRValue }\end{DoxyParamCaption})}
+
+
+
+Set CCR value of selected I2C instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+{\em CCRValue} & Value to write to CCR bits \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a98781baa34c73d53137f53505fe0d3f9}\label{_i2_c_8c_a98781baa34c73d53137f53505fe0d3f9} 
+\index{I2C.c@{I2C.c}!I2C\_SetClockFrequency@{I2C\_SetClockFrequency}}
+\index{I2C\_SetClockFrequency@{I2C\_SetClockFrequency}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_SetClockFrequency()}{I2C\_SetClockFrequency()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Set\+Clock\+Frequency (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{uint8\+\_\+t}]{Clock\+Frequency }\end{DoxyParamCaption})}
+
+
+
+Configure I2C input clock frequency. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+{\em Clock\+Frequency} & I2C input clock frequency (2 \texorpdfstring{$<$}{<}= Clock\+Frequency \texorpdfstring{$<$}{<}= 50) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_a20556892b88eaef48b33b10fa7386d29}\label{_i2_c_8c_a20556892b88eaef48b33b10fa7386d29} 
+\index{I2C.c@{I2C.c}!I2C\_SetTRISEValue@{I2C\_SetTRISEValue}}
+\index{I2C\_SetTRISEValue@{I2C\_SetTRISEValue}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_SetTRISEValue()}{I2C\_SetTRISEValue()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Set\+TRISEValue (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{uint8\+\_\+t}]{TRISEValue }\end{DoxyParamCaption})}
+
+
+
+Set TRISE value of selected I2C instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+{\em TRISEValue} & Value to write to TRISE register \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i2_c_8c_abb10a60f560cbe5e9d958b03a4dcda83}\label{_i2_c_8c_abb10a60f560cbe5e9d958b03a4dcda83} 
+\index{I2C.c@{I2C.c}!I2C\_TransmitData@{I2C\_TransmitData}}
+\index{I2C\_TransmitData@{I2C\_TransmitData}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_TransmitData()}{I2C\_TransmitData()}}
+{\footnotesize\ttfamily I2\+C\+\_\+\+Status I2\+C\+\_\+\+Transmit\+Data (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{uint8\+\_\+t}]{Slave\+Address,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data,  }\item[{uint16\+\_\+t}]{Data\+Size,  }\item[{uint8\+\_\+t}]{Timeout }\end{DoxyParamCaption})}
+
+
+
+Transmit data to selected I2C slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+{\em Slave\+Address} & Address of I2C slave device \\
+\hline
+{\em data} & Data to be transmitted \\
+\hline
+{\em Data\+Size} & Number of bytes to be transmitted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+I2\+C\+\_\+\+Status 
+\end{DoxyReturn}
+\Hypertarget{_i2_c_8c_ad302e9074841ff2dd7571de78eafcbc2}\label{_i2_c_8c_ad302e9074841ff2dd7571de78eafcbc2} 
+\index{I2C.c@{I2C.c}!I2C\_TransmitSlaveAddress@{I2C\_TransmitSlaveAddress}}
+\index{I2C\_TransmitSlaveAddress@{I2C\_TransmitSlaveAddress}!I2C.c@{I2C.c}}
+\doxysubsubsection{\texorpdfstring{I2C\_TransmitSlaveAddress()}{I2C\_TransmitSlaveAddress()}}
+{\footnotesize\ttfamily I2\+C\+\_\+\+Status I2\+C\+\_\+\+Transmit\+Slave\+Address (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{I2\+Cx,  }\item[{uint8\+\_\+t}]{I2\+CSlave\+Address,  }\item[{\+\_\+\+Bool}]{I2\+C\+\_\+\+Operation,  }\item[{uint8\+\_\+t}]{Timeout }\end{DoxyParamCaption})}
+
+
+
+Slave address transmission. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I2\+Cx} & I2C instance \begin{DoxyItemize}
+\item I2\+C1 \item I2\+C2 \end{DoxyItemize}
+\\
+\hline
+{\em I2\+CSlave\+Address} & Address of I2C slave device \\
+\hline
+{\em I2\+C\+\_\+\+Operation} & Read or write operation \begin{DoxyItemize}
+\item I2\+C\+\_\+\+READ \item I2\+C\+\_\+\+WRITE\end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+I2\+C\+\_\+\+Status 
+\end{DoxyReturn}
+Check if ADDR flag is set
+
+Check if ADDR flag is reset

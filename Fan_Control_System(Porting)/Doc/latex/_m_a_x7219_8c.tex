@@ -1,0 +1,213 @@
+\doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+System(Porting)/\+Source/\+Hardware\+\_\+\+Library/\+MAX7219.c File Reference}
+\hypertarget{_m_a_x7219_8c}{}\label{_m_a_x7219_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_System(Porting)/Source/Hardware\_Library/MAX7219.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_System(Porting)/Source/Hardware\_Library/MAX7219.c}}
+
+
+MAX7219-\/based display module driver for STM32\+F1xx microcontroller.  
+
+
+{\ttfamily \#include "{}MAX7219.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_m_a_x7219_8c_acd8f609158d9d9272c60a4d097252b8c}{MAX7219\+\_\+\+Send\+Data}} (uint8\+\_\+t address, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Send data to the module. \end{DoxyCompactList}\item 
+\Hypertarget{_m_a_x7219_8c_a4caf36b831eb08ba7af834b243fc180e}\label{_m_a_x7219_8c_a4caf36b831eb08ba7af834b243fc180e} 
+void {\bfseries MAX7219\+\_\+\+Power\+On} (void)
+\begin{DoxyCompactList}\small\item\em Turn on the display module (The module is off after reset) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_m_a_x7219_8c_ac9c0e43e4443925ca10d5667d9f98799}{MAX7219\+\_\+\+Set\+Intensity}} (uint8\+\_\+t Intensity)
+\begin{DoxyCompactList}\small\item\em Set intensity (brightness) for the module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_m_a_x7219_8c_a170269316d08fb6a1dd2f4bc2fe539a0}{MAX7219\+\_\+\+Set\+Scan\+Limit}} (uint8\+\_\+t Scan\+Limit)
+\begin{DoxyCompactList}\small\item\em Configure which digits to be displayed. \end{DoxyCompactList}\item 
+\Hypertarget{_m_a_x7219_8c_a8ada6e98f0fcc5dfb9f2fdd589dac0b4}\label{_m_a_x7219_8c_a8ada6e98f0fcc5dfb9f2fdd589dac0b4} 
+void {\bfseries MAX7219\+\_\+\+Clean} (void)
+\begin{DoxyCompactList}\small\item\em Clear all the registers\textquotesingle{} data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_m_a_x7219_8c_af8a73c8313cdc453eddf523d3a9c0d5f}{MAX7219\+\_\+\+Set\+Decode\+Mode}} (uint8\+\_\+t Decode\+Mode)
+\begin{DoxyCompactList}\small\item\em Configure decode mode for the module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_m_a_x7219_8c_a70ec0f4677530f15b8dc54f07d0fc3eb}{MAX7219\+\_\+\+Init}} (uint8\+\_\+t Intensity, uint8\+\_\+t Scan\+Limit, uint8\+\_\+t Decode\+Mode)
+\begin{DoxyCompactList}\small\item\em Initialize MAX7219 display module. \end{DoxyCompactList}\item 
+\Hypertarget{_m_a_x7219_8c_ac104b5c0a3635f98bbebac80fb9d7ded}\label{_m_a_x7219_8c_ac104b5c0a3635f98bbebac80fb9d7ded} 
+void {\bfseries MAX7219\+\_\+\+Empty\+All\+Digits} (void)
+\begin{DoxyCompactList}\small\item\em Make all digits not to display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_m_a_x7219_8c_a0db5587e05703cc71fe4bad709a710b0}{MAX7219\+\_\+\+Print\+String}} (char \texorpdfstring{$\ast$}{*}String\+To\+Print, uint8\+\_\+t Start\+Position)
+\begin{DoxyCompactList}\small\item\em Print string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_m_a_x7219_8c_a827f2369568bc795c0efbe59652cbad5}{MAX7219\+\_\+\+Print\+Int}} (uint32\+\_\+t Int\+To\+Print, uint8\+\_\+t Num\+Of\+Digits, uint8\+\_\+t Start\+Position)
+\begin{DoxyCompactList}\small\item\em Print string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_m_a_x7219_8c_a2d828942ab8fe38d203ef3f3b3c479d1}{Digit\+Codes}} \mbox{[}10\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+MAX7219-\/based display module driver for STM32\+F1xx microcontroller. 
+
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan (\href{mailto:quanvm198@gmail.com}{\texttt{ quanvm198@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/02-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_m_a_x7219_8c_a70ec0f4677530f15b8dc54f07d0fc3eb}\label{_m_a_x7219_8c_a70ec0f4677530f15b8dc54f07d0fc3eb} 
+\index{MAX7219.c@{MAX7219.c}!MAX7219\_Init@{MAX7219\_Init}}
+\index{MAX7219\_Init@{MAX7219\_Init}!MAX7219.c@{MAX7219.c}}
+\doxysubsubsection{\texorpdfstring{MAX7219\_Init()}{MAX7219\_Init()}}
+{\footnotesize\ttfamily void MAX7219\+\_\+\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Intensity,  }\item[{uint8\+\_\+t}]{Scan\+Limit,  }\item[{uint8\+\_\+t}]{Decode\+Mode }\end{DoxyParamCaption})}
+
+
+
+Initialize MAX7219 display module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Intensity} & Desired intensity \\
+\hline
+{\em Scan\+Limit} & Desired scan limit \begin{DoxyItemize}
+\item DIGIT\+\_\+0\+\_\+\+ONLY \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+1 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+2 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+3 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+4 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+5 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+6 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+7 \end{DoxyItemize}
+\\
+\hline
+{\em Decode\+Mode} & Desired decode mode \begin{DoxyItemize}
+\item DECODE\+\_\+\+MODE\+\_\+\+DISABLE \item DECODE\+\_\+\+MODE\+\_\+\+DIGIT\+\_\+0 \item DECODE\+\_\+\+MODE\+\_\+\+DIGIT\+\_\+0\+\_\+\+TO\+\_\+3 \item DECODE\+\_\+\+MODE\+\_\+\+DIGIT\+\_\+0\+\_\+\+TO\+\_\+7 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_m_a_x7219_8c_a827f2369568bc795c0efbe59652cbad5}\label{_m_a_x7219_8c_a827f2369568bc795c0efbe59652cbad5} 
+\index{MAX7219.c@{MAX7219.c}!MAX7219\_PrintInt@{MAX7219\_PrintInt}}
+\index{MAX7219\_PrintInt@{MAX7219\_PrintInt}!MAX7219.c@{MAX7219.c}}
+\doxysubsubsection{\texorpdfstring{MAX7219\_PrintInt()}{MAX7219\_PrintInt()}}
+{\footnotesize\ttfamily void MAX7219\+\_\+\+Print\+Int (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{Int\+To\+Print,  }\item[{uint8\+\_\+t}]{Num\+Of\+Digits,  }\item[{uint8\+\_\+t}]{Start\+Position }\end{DoxyParamCaption})}
+
+
+
+Print string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em String\+To\+Print} & Desired integer to be printed (e.\+g 2024) \\
+\hline
+{\em Start\+Position} & Position where the integer start to be printed on the module \begin{DoxyItemize}
+\item DIGIT\+\_\+\+POSITION\+\_\+0 \item DIGIT\+\_\+\+POSITION\+\_\+1 \item DIGIT\+\_\+\+POSITION\+\_\+2 \item DIGIT\+\_\+\+POSITION\+\_\+3 \item DIGIT\+\_\+\+POSITION\+\_\+4 \item DIGIT\+\_\+\+POSITION\+\_\+5 \item DIGIT\+\_\+\+POSITION\+\_\+6 \item DIGIT\+\_\+\+POSITION\+\_\+7 ~\newline
+ \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_m_a_x7219_8c_a0db5587e05703cc71fe4bad709a710b0}\label{_m_a_x7219_8c_a0db5587e05703cc71fe4bad709a710b0} 
+\index{MAX7219.c@{MAX7219.c}!MAX7219\_PrintString@{MAX7219\_PrintString}}
+\index{MAX7219\_PrintString@{MAX7219\_PrintString}!MAX7219.c@{MAX7219.c}}
+\doxysubsubsection{\texorpdfstring{MAX7219\_PrintString()}{MAX7219\_PrintString()}}
+{\footnotesize\ttfamily void MAX7219\+\_\+\+Print\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{String\+To\+Print,  }\item[{uint8\+\_\+t}]{Start\+Position }\end{DoxyParamCaption})}
+
+
+
+Print string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em String\+To\+Print} & Desired string to be printed (e.\+g "{}2024"{}) \\
+\hline
+{\em Start\+Position} & Position where the string start to be printed on the module \begin{DoxyItemize}
+\item DIGIT\+\_\+\+POSITION\+\_\+0 \item DIGIT\+\_\+\+POSITION\+\_\+1 \item DIGIT\+\_\+\+POSITION\+\_\+2 \item DIGIT\+\_\+\+POSITION\+\_\+3 \item DIGIT\+\_\+\+POSITION\+\_\+4 \item DIGIT\+\_\+\+POSITION\+\_\+5 \item DIGIT\+\_\+\+POSITION\+\_\+6 \item DIGIT\+\_\+\+POSITION\+\_\+7 ~\newline
+ \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_m_a_x7219_8c_acd8f609158d9d9272c60a4d097252b8c}\label{_m_a_x7219_8c_acd8f609158d9d9272c60a4d097252b8c} 
+\index{MAX7219.c@{MAX7219.c}!MAX7219\_SendData@{MAX7219\_SendData}}
+\index{MAX7219\_SendData@{MAX7219\_SendData}!MAX7219.c@{MAX7219.c}}
+\doxysubsubsection{\texorpdfstring{MAX7219\_SendData()}{MAX7219\_SendData()}}
+{\footnotesize\ttfamily void MAX7219\+\_\+\+Send\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Send data to the module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & Address of the register to receive data \\
+\hline
+{\em data} & Data to be transmitted to the selected register \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_m_a_x7219_8c_af8a73c8313cdc453eddf523d3a9c0d5f}\label{_m_a_x7219_8c_af8a73c8313cdc453eddf523d3a9c0d5f} 
+\index{MAX7219.c@{MAX7219.c}!MAX7219\_SetDecodeMode@{MAX7219\_SetDecodeMode}}
+\index{MAX7219\_SetDecodeMode@{MAX7219\_SetDecodeMode}!MAX7219.c@{MAX7219.c}}
+\doxysubsubsection{\texorpdfstring{MAX7219\_SetDecodeMode()}{MAX7219\_SetDecodeMode()}}
+{\footnotesize\ttfamily void MAX7219\+\_\+\+Set\+Decode\+Mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Decode\+Mode }\end{DoxyParamCaption})}
+
+
+
+Configure decode mode for the module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Decode\+Mode} & Desired decode mode \begin{DoxyItemize}
+\item DECODE\+\_\+\+MODE\+\_\+\+DISABLE \item DECODE\+\_\+\+MODE\+\_\+\+DIGIT\+\_\+0 \item DECODE\+\_\+\+MODE\+\_\+\+DIGIT\+\_\+0\+\_\+\+TO\+\_\+3 \item DECODE\+\_\+\+MODE\+\_\+\+DIGIT\+\_\+0\+\_\+\+TO\+\_\+7 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_m_a_x7219_8c_ac9c0e43e4443925ca10d5667d9f98799}\label{_m_a_x7219_8c_ac9c0e43e4443925ca10d5667d9f98799} 
+\index{MAX7219.c@{MAX7219.c}!MAX7219\_SetIntensity@{MAX7219\_SetIntensity}}
+\index{MAX7219\_SetIntensity@{MAX7219\_SetIntensity}!MAX7219.c@{MAX7219.c}}
+\doxysubsubsection{\texorpdfstring{MAX7219\_SetIntensity()}{MAX7219\_SetIntensity()}}
+{\footnotesize\ttfamily void MAX7219\+\_\+\+Set\+Intensity (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Intensity }\end{DoxyParamCaption})}
+
+
+
+Set intensity (brightness) for the module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Intensity} & Desired intensity (0 -\/\texorpdfstring{$>$}{>} 15) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_m_a_x7219_8c_a170269316d08fb6a1dd2f4bc2fe539a0}\label{_m_a_x7219_8c_a170269316d08fb6a1dd2f4bc2fe539a0} 
+\index{MAX7219.c@{MAX7219.c}!MAX7219\_SetScanLimit@{MAX7219\_SetScanLimit}}
+\index{MAX7219\_SetScanLimit@{MAX7219\_SetScanLimit}!MAX7219.c@{MAX7219.c}}
+\doxysubsubsection{\texorpdfstring{MAX7219\_SetScanLimit()}{MAX7219\_SetScanLimit()}}
+{\footnotesize\ttfamily void MAX7219\+\_\+\+Set\+Scan\+Limit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Scan\+Limit }\end{DoxyParamCaption})}
+
+
+
+Configure which digits to be displayed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Scan\+Limit} & Desired scan limit \begin{DoxyItemize}
+\item DIGIT\+\_\+0\+\_\+\+ONLY \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+1 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+2 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+3 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+4 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+5 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+6 \item DIGIT\+\_\+0\+\_\+\+TO\+\_\+7 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_m_a_x7219_8c_a2d828942ab8fe38d203ef3f3b3c479d1}\label{_m_a_x7219_8c_a2d828942ab8fe38d203ef3f3b3c479d1} 
+\index{MAX7219.c@{MAX7219.c}!DigitCodes@{DigitCodes}}
+\index{DigitCodes@{DigitCodes}!MAX7219.c@{MAX7219.c}}
+\doxysubsubsection{\texorpdfstring{DigitCodes}{DigitCodes}}
+{\footnotesize\ttfamily uint8\+\_\+t Digit\+Codes\mbox{[}10\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ 0x7E,\ }
+\DoxyCodeLine{\ \ \ \ 0x30,\ }
+\DoxyCodeLine{\ \ \ \ 0x6D,\ }
+\DoxyCodeLine{\ \ \ \ 0x79,\ }
+\DoxyCodeLine{\ \ \ \ 0x33,\ }
+\DoxyCodeLine{\ \ \ \ 0x5B,\ }
+\DoxyCodeLine{\ \ \ \ 0x5F,\ }
+\DoxyCodeLine{\ \ \ \ 0x70,\ }
+\DoxyCodeLine{\ \ \ \ 0x7F,\ }
+\DoxyCodeLine{\ \ \ \ 0x7B\ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

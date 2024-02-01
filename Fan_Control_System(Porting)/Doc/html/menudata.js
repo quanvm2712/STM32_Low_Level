@@ -32,11 +32,15 @@ var menudata={children:[
 {text:"d",url:"globals.html#index_d"},
 {text:"g",url:"globals.html#index_g"},
 {text:"i",url:"globals.html#index_i"},
+{text:"m",url:"globals.html#index_m"},
 {text:"s",url:"globals.html#index_s"},
-{text:"t",url:"globals.html#index_t"}]},
+{text:"t",url:"globals.html#index_t"},
+{text:"u",url:"globals.html#index_u"}]},
 {text:"Functions",url:"globals_func.html",children:[
 {text:"d",url:"globals_func.html#index_d"},
 {text:"g",url:"globals_func.html#index_g"},
 {text:"i",url:"globals_func.html#index_i"},
+{text:"m",url:"globals_func.html#index_m"},
 {text:"s",url:"globals_func.html#index_s"},
-{text:"t",url:"globals_func.html#index_t"}]}]}]}]}
+{text:"t",url:"globals_func.html#index_t"},
+{text:"u",url:"globals_func.html#index_u"}]}]}]}]}

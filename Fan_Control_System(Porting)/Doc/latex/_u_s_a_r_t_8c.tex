@@ -1,0 +1,286 @@
+\doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+System(Porting)/\+Source/\+F103\+\_\+\+Library/\+USART.c File Reference}
+\hypertarget{_u_s_a_r_t_8c}{}\label{_u_s_a_r_t_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_System(Porting)/Source/F103\_Library/USART.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_System(Porting)/Source/F103\_Library/USART.c}}
+
+
+USART Hardware Abstraction Layer for STM32\+F103\+C8\+T6.  
+
+
+{\ttfamily \#include "{}USART.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_aa004e08e3b86a2421c7dfc9e57daa354}{USART\+\_\+\+Enable\+Clock}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx)
+\begin{DoxyCompactList}\small\item\em Enable clock for selected USART instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_adee6917a5b9d199b4dd2ef7e81e5d1e9}{USART\+\_\+\+Enable\+Peripheral}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx)
+\begin{DoxyCompactList}\small\item\em Enable USART functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_a2095bd219562e18493b12b799e402ad1}{USART\+\_\+\+Config\+Stop\+Bits}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx, uint8\+\_\+t Number\+Of\+Stop\+Bits)
+\begin{DoxyCompactList}\small\item\em Set number of stop bits for selected USART instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_a100eca4319f17e9c45a922653f5d8b21}{USART\+\_\+\+Config\+Word\+Length}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx, \+\_\+\+Bool Word\+Length)
+\begin{DoxyCompactList}\small\item\em Configure word length for USART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_a57c0c2d4bf7b478287f6dc52268438e5}{USART\+\_\+\+Config\+Baudrate}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx, uint8\+\_\+t Desired\+Baudrate)
+\begin{DoxyCompactList}\small\item\em Configure baudrate for USART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_a86aba2cb8fd3c3f4c82148513ed17c8c}{USART\+\_\+\+Transmitter\+Enable}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx)
+\begin{DoxyCompactList}\small\item\em Enable USART Transmit functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_a0b2622ff9b45bd8cab2b1fc17d3a1f29}{USART\+\_\+\+Transmitter\+Disable}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx)
+\begin{DoxyCompactList}\small\item\em Disable USART transmit functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_addb72bac6c0b19c88ad799a2fa295d06}{USART\+\_\+\+IOInit}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx)
+\begin{DoxyCompactList}\small\item\em Configure IO Pin for USART functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_a1af989b387cd4003c3291cecf0a7c83b}{USART\+\_\+\+Receiver\+Enable}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx)
+\begin{DoxyCompactList}\small\item\em Enable UASRT receive functionality. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_acdae79eedd90807cd709a649495fe8a0}{USART\+\_\+\+Init}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx, \+\_\+\+Bool Word\+Length, uint8\+\_\+t Number\+Of\+Stop\+Bits, uint8\+\_\+t Desired\+Baudrate)
+\begin{DoxyCompactList}\small\item\em Initialize selected USART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_a98055f2d085fbd4f1df588f008dd342e}{USART\+\_\+\+Transmit\+Data}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}Data, uint16\+\_\+t Data\+Size)
+\begin{DoxyCompactList}\small\item\em Transmit data using USART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_abbda807cbfe169f3a68b56c258612dad}{USART\+\_\+\+Receive\+Data}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}Received\+Data, uint8\+\_\+t Data\+Size)
+\begin{DoxyCompactList}\small\item\em Receive data using USART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_s_a_r_t_8c_acb1ad58d5f3cecb00c341c8d09320812}{USART\+\_\+\+Receive\+Data\+\_\+\+DMA}} (USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}USARTx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}Received\+Buffer, uint8\+\_\+t Data\+Size)
+\begin{DoxyCompactList}\small\item\em Receive data through UASRT using DMA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+USART Hardware Abstraction Layer for STM32\+F103\+C8\+T6. 
+
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan (\href{mailto:quanvm198@gmail.com}{\texttt{ quanvm198@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/02-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_u_s_a_r_t_8c_a57c0c2d4bf7b478287f6dc52268438e5}\label{_u_s_a_r_t_8c_a57c0c2d4bf7b478287f6dc52268438e5} 
+\index{USART.c@{USART.c}!USART\_ConfigBaudrate@{USART\_ConfigBaudrate}}
+\index{USART\_ConfigBaudrate@{USART\_ConfigBaudrate}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_ConfigBaudrate()}{USART\_ConfigBaudrate()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Config\+Baudrate (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx,  }\item[{uint8\+\_\+t}]{Desired\+Baudrate }\end{DoxyParamCaption})}
+
+
+
+Configure baudrate for USART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \\
+\hline
+{\em Desired\+Baudrate} & User\textquotesingle{}s desired baudrate \begin{DoxyItemize}
+\item USART\+\_\+\+BAUDRATE\+\_\+9600 \item USART\+\_\+\+BAUDRATE\+\_\+19200 \item USART\+\_\+\+BAUDRATE\+\_\+57600 \item USART\+\_\+\+BAUDRATE\+\_\+115200 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_a2095bd219562e18493b12b799e402ad1}\label{_u_s_a_r_t_8c_a2095bd219562e18493b12b799e402ad1} 
+\index{USART.c@{USART.c}!USART\_ConfigStopBits@{USART\_ConfigStopBits}}
+\index{USART\_ConfigStopBits@{USART\_ConfigStopBits}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_ConfigStopBits()}{USART\_ConfigStopBits()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Config\+Stop\+Bits (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx,  }\item[{uint8\+\_\+t}]{Number\+Of\+Stop\+Bits }\end{DoxyParamCaption})}
+
+
+
+Set number of stop bits for selected USART instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \\
+\hline
+{\em Number\+Of\+Stop\+Bits} & Number of stop bits for USART communication \begin{DoxyItemize}
+\item USART\+\_\+1\+\_\+\+STOP\+\_\+\+BIT \item USART\+\_\+\+HALF\+\_\+\+STOP\+\_\+\+BITS \item USART\+\_\+2\+\_\+\+STOP\+\_\+\+BITS \item USART\+\_\+1\+ANDHALF\+\_\+\+STOP\+\_\+\+BIT \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_a100eca4319f17e9c45a922653f5d8b21}\label{_u_s_a_r_t_8c_a100eca4319f17e9c45a922653f5d8b21} 
+\index{USART.c@{USART.c}!USART\_ConfigWordLength@{USART\_ConfigWordLength}}
+\index{USART\_ConfigWordLength@{USART\_ConfigWordLength}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_ConfigWordLength()}{USART\_ConfigWordLength()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Config\+Word\+Length (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx,  }\item[{\+\_\+\+Bool}]{Word\+Length }\end{DoxyParamCaption})}
+
+
+
+Configure word length for USART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \\
+\hline
+{\em Word\+Length} & USART word length \begin{DoxyItemize}
+\item UASRT\+\_\+8\+\_\+\+DATA\+\_\+\+BITS \item UASRT\+\_\+9\+\_\+\+DATA\+\_\+\+BITS \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_aa004e08e3b86a2421c7dfc9e57daa354}\label{_u_s_a_r_t_8c_aa004e08e3b86a2421c7dfc9e57daa354} 
+\index{USART.c@{USART.c}!USART\_EnableClock@{USART\_EnableClock}}
+\index{USART\_EnableClock@{USART\_EnableClock}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_EnableClock()}{USART\_EnableClock()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Enable\+Clock (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx }\end{DoxyParamCaption})}
+
+
+
+Enable clock for selected USART instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & UASRT instance \begin{DoxyItemize}
+\item USART1 \item USART2 \item USART3 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_adee6917a5b9d199b4dd2ef7e81e5d1e9}\label{_u_s_a_r_t_8c_adee6917a5b9d199b4dd2ef7e81e5d1e9} 
+\index{USART.c@{USART.c}!USART\_EnablePeripheral@{USART\_EnablePeripheral}}
+\index{USART\_EnablePeripheral@{USART\_EnablePeripheral}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_EnablePeripheral()}{USART\_EnablePeripheral()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Enable\+Peripheral (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx }\end{DoxyParamCaption})}
+
+
+
+Enable USART functionality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \begin{DoxyItemize}
+\item USART1 \item USART2 \item USART3 \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_acdae79eedd90807cd709a649495fe8a0}\label{_u_s_a_r_t_8c_acdae79eedd90807cd709a649495fe8a0} 
+\index{USART.c@{USART.c}!USART\_Init@{USART\_Init}}
+\index{USART\_Init@{USART\_Init}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_Init()}{USART\_Init()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Init (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx,  }\item[{\+\_\+\+Bool}]{Word\+Length,  }\item[{uint8\+\_\+t}]{Number\+Of\+Stop\+Bits,  }\item[{uint8\+\_\+t}]{Desired\+Baudrate }\end{DoxyParamCaption})}
+
+
+
+Initialize selected USART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \\
+\hline
+{\em Word\+Length} & USART word length \\
+\hline
+{\em Number\+Of\+Stop\+Bits} & USART number of stop bits \\
+\hline
+{\em Desired\+Baudrate} & User desired baudrate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_addb72bac6c0b19c88ad799a2fa295d06}\label{_u_s_a_r_t_8c_addb72bac6c0b19c88ad799a2fa295d06} 
+\index{USART.c@{USART.c}!USART\_IOInit@{USART\_IOInit}}
+\index{USART\_IOInit@{USART\_IOInit}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_IOInit()}{USART\_IOInit()}}
+{\footnotesize\ttfamily void USART\+\_\+\+IOInit (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx }\end{DoxyParamCaption})}
+
+
+
+Configure IO Pin for USART functionality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_abbda807cbfe169f3a68b56c258612dad}\label{_u_s_a_r_t_8c_abbda807cbfe169f3a68b56c258612dad} 
+\index{USART.c@{USART.c}!USART\_ReceiveData@{USART\_ReceiveData}}
+\index{USART\_ReceiveData@{USART\_ReceiveData}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_ReceiveData()}{USART\_ReceiveData()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Receive\+Data (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{Received\+Data,  }\item[{uint8\+\_\+t}]{Data\+Size }\end{DoxyParamCaption})}
+
+
+
+Receive data using USART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \\
+\hline
+{\em Received\+Data} & Buffer to store received data \\
+\hline
+{\em Data\+Size} & Number of bytes to be received \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_acb1ad58d5f3cecb00c341c8d09320812}\label{_u_s_a_r_t_8c_acb1ad58d5f3cecb00c341c8d09320812} 
+\index{USART.c@{USART.c}!USART\_ReceiveData\_DMA@{USART\_ReceiveData\_DMA}}
+\index{USART\_ReceiveData\_DMA@{USART\_ReceiveData\_DMA}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_ReceiveData\_DMA()}{USART\_ReceiveData\_DMA()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Receive\+Data\+\_\+\+DMA (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{Received\+Buffer,  }\item[{uint8\+\_\+t}]{Data\+Size }\end{DoxyParamCaption})}
+
+
+
+Receive data through UASRT using DMA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \\
+\hline
+{\em Received\+Buffer} & Buffer to store received data \\
+\hline
+{\em Data\+Size} & Number of bytes to be received \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_a1af989b387cd4003c3291cecf0a7c83b}\label{_u_s_a_r_t_8c_a1af989b387cd4003c3291cecf0a7c83b} 
+\index{USART.c@{USART.c}!USART\_ReceiverEnable@{USART\_ReceiverEnable}}
+\index{USART\_ReceiverEnable@{USART\_ReceiverEnable}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_ReceiverEnable()}{USART\_ReceiverEnable()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Receiver\+Enable (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx }\end{DoxyParamCaption})}
+
+
+
+Enable UASRT receive functionality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_a98055f2d085fbd4f1df588f008dd342e}\label{_u_s_a_r_t_8c_a98055f2d085fbd4f1df588f008dd342e} 
+\index{USART.c@{USART.c}!USART\_TransmitData@{USART\_TransmitData}}
+\index{USART\_TransmitData@{USART\_TransmitData}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_TransmitData()}{USART\_TransmitData()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Transmit\+Data (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{Data,  }\item[{uint16\+\_\+t}]{Data\+Size }\end{DoxyParamCaption})}
+
+
+
+Transmit data using USART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & UASRT instance \\
+\hline
+{\em Data} & Data to be transmitted \\
+\hline
+{\em Data\+Size} & Number of bytes to be transmitted \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_a0b2622ff9b45bd8cab2b1fc17d3a1f29}\label{_u_s_a_r_t_8c_a0b2622ff9b45bd8cab2b1fc17d3a1f29} 
+\index{USART.c@{USART.c}!USART\_TransmitterDisable@{USART\_TransmitterDisable}}
+\index{USART\_TransmitterDisable@{USART\_TransmitterDisable}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_TransmitterDisable()}{USART\_TransmitterDisable()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Transmitter\+Disable (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx }\end{DoxyParamCaption})}
+
+
+
+Disable USART transmit functionality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART intance \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_s_a_r_t_8c_a86aba2cb8fd3c3f4c82148513ed17c8c}\label{_u_s_a_r_t_8c_a86aba2cb8fd3c3f4c82148513ed17c8c} 
+\index{USART.c@{USART.c}!USART\_TransmitterEnable@{USART\_TransmitterEnable}}
+\index{USART\_TransmitterEnable@{USART\_TransmitterEnable}!USART.c@{USART.c}}
+\doxysubsubsection{\texorpdfstring{USART\_TransmitterEnable()}{USART\_TransmitterEnable()}}
+{\footnotesize\ttfamily void USART\+\_\+\+Transmitter\+Enable (\begin{DoxyParamCaption}\item[{USART\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{USARTx }\end{DoxyParamCaption})}
+
+
+
+Enable USART Transmit functionality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em USARTx} & USART instance \\
+\hline
+\end{DoxyParams}

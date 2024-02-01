@@ -1,0 +1,43 @@
+\doxysection{C\+:/\+Quan/\+Learning/\+Embedded/\+STM32\+\_\+\+Low\+\_\+\+Level/\+Fan\+\_\+\+Control\+\_\+\+System(Porting)/\+Source/\+Hardware\+\_\+\+Library/\+AHT20.c File Reference}
+\hypertarget{_a_h_t20_8c}{}\label{_a_h_t20_8c}\index{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_System(Porting)/Source/Hardware\_Library/AHT20.c@{C:/Quan/Learning/Embedded/STM32\_Low\_Level/Fan\_Control\_System(Porting)/Source/Hardware\_Library/AHT20.c}}
+
+
+STM32\+F1x library for AHT20 sensor.  
+
+
+{\ttfamily \#include "{}AHT20.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_a_h_t20_8c_ad294de43e88b21af7b894c13f87f70cd}\label{_a_h_t20_8c_ad294de43e88b21af7b894c13f87f70cd} 
+AHT20\+\_\+\+Status {\bfseries AHT20\+\_\+\+Send\+Initialize\+Command} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx)
+\item 
+\Hypertarget{_a_h_t20_8c_a6d7dd413bacd344591f87cfaf4c6e702}\label{_a_h_t20_8c_a6d7dd413bacd344591f87cfaf4c6e702} 
+AHT20\+\_\+\+Status {\bfseries AHT20\+\_\+\+Send\+Trigger\+Measurement\+Command} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx)
+\item 
+\Hypertarget{_a_h_t20_8c_a3b6e0346234783247c1eca81d889a46e}\label{_a_h_t20_8c_a3b6e0346234783247c1eca81d889a46e} 
+AHT20\+\_\+\+Status {\bfseries AHT20\+\_\+\+Init} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx)
+\item 
+\Hypertarget{_a_h_t20_8c_a47fc196c30c914e22573cd7f9583c82d}\label{_a_h_t20_8c_a47fc196c30c914e22573cd7f9583c82d} 
+AHT20\+\_\+\+Status {\bfseries AHT20\+\_\+\+Reset} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx)
+\item 
+\Hypertarget{_a_h_t20_8c_aab1a37b806758c2aaab970346004fb5e}\label{_a_h_t20_8c_aab1a37b806758c2aaab970346004fb5e} 
+AHT20\+\_\+\+Status {\bfseries AHT20\+\_\+\+Get\+Sensor\+Signal} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}RX\+\_\+\+Buffer)
+\item 
+\Hypertarget{_a_h_t20_8c_aa40f5dfa622a70b95b7b681cfcbc83f3}\label{_a_h_t20_8c_aa40f5dfa622a70b95b7b681cfcbc83f3} 
+AHT20\+\_\+\+Status {\bfseries AHT20\+\_\+\+Get\+Sensor\+Data} (I2\+C\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}I2\+Cx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}Temperature, uint8\+\_\+t \texorpdfstring{$\ast$}{*}Humidity)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+STM32\+F1x library for AHT20 sensor. 
+
+\begin{DoxyAuthor}{Author}
+Vo Minh Quan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/01-\/26 
+\end{DoxyDate}
