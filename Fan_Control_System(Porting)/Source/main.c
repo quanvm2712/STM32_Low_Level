@@ -11,6 +11,7 @@
 #include "string.h"
 #include "ARM_System.h"
 #include "DMA.h"
+#include "ADC.h"
 
 #define LED_PIN         	13
 #define ENCODER_PPR     	30  	//Encoder resolution
@@ -31,6 +32,9 @@ uint8_t Humidity, Temperature;
 
 /*UASRT */
 uint8_t UART_ReceiveData[10];
+
+/*ADC Value */
+uint16_t adcValue;
 
 void TIM1_UP_Handler(){
 	if(TIM1->SR & 0x1){  //Check if interrupt flag is set
@@ -114,7 +118,7 @@ int main(void){
 	ARM_SystemInit();
     TIM1_Config();
 
-    IWDG_Init(IWDG_DIV_64, 3125);
+    IWDG_Init(IWDG_DIV_64, 3125);		//setup IWDG reset after 5s
 
     GPIO_Init(GPIO_C, LED_PIN, GPIO_OUTPUT);  //Config IO for blinking LED
 
@@ -122,7 +126,7 @@ int main(void){
     MAX7219_Init(15, DIGIT_0_TO_7, DECODE_MODE_DISABLE);
 
 	//Init Timer 3 channel 3 for PWM functionality
-	TIM_PWM_Init(TIM3, TIM_Channel_3, 72, 100, 50);
+	TIM_PWM_Init(TIM3, TIM_Channel_3, 72, 100, 50);		//Setup 10kHz PWM, 50% of duty cycle
 	TIM_PWM_Start(TIM3, TIM_Channel_3);
 	
 	//Encoder Mode Init and run
@@ -137,6 +141,10 @@ int main(void){
 	USART_Init(USART1, UASRT_8_DATA_BITS, USART_1_STOP_BIT, USART_BAUDRATE_9600);
 	USART1_ConfigInterrupt();
 	DMA_Init(DMA1, DMA1_Channel5, DMA_PeripheralToMemory, DMA_PRIORITY_HIGH, DMA_CIRCULARMODE_ENABLE);
+
+	/*ADC Init */
+	ADC_Init(ADC1, ADC_CHANNEL_0, ADC_SAMPLETIME_1ANDHALF, ADC_DIV_8, 1);
+	
 	
 
     while (1){
@@ -155,11 +163,11 @@ int main(void){
 		//USART_ReceiveData(USART1, UART_ReceiveData, 3);
 
 		//USART_ReceiveData_DMA(USART1, UART_ReceiveData, 3);
-
+		ADC_StartConversion(ADC1, &adcValue);
 		ToggleLED();
 
         IWDG_Reset(); 
-		//delay_ms(10);
+		delay_ms(10);
     }
     
 }

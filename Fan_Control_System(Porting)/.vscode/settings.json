@@ -16,7 +16,8 @@
         "cstdint": "c",
         "usart.h": "c",
         "cstring": "c",
-        "rope": "c"
+        "rope": "c",
+        "adc.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": true,
     "CodeGPT.apiKey": "Google AI Studio"
